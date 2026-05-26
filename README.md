@@ -13,7 +13,7 @@ speeds up the human-led setup work, paired with a visual primer for the
 underlying concept.
 
 If you want to build your own AIOS, **reach out and I'll walk you
-through it personally**: [kyletd4@gmail.com](mailto:kyletd4@gmail.com).
+through it personally**: [kyle@kyledunne.ai](mailto:kyle@kyledunne.ai).
 We'll use this starter pack as a reference along the way — not as a
 skeleton to fill in.
 
