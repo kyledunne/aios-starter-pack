@@ -117,8 +117,10 @@ rule.)
 The [`guidance/`](guidance/) folder holds setup notes for specific
 pieces — Google Workspace via the `gws` CLI, Slack, Codex, Playwright,
 Printing Press, plus general patterns (git habits, the scratchpad
-idea). Consult them when a relevant setup task comes up. They're
-*reference material*, not a script to follow front-to-back.
+idea). See [`guidance/README.md`](guidance/README.md) for a one-line
+description of every file, and consult them when a relevant setup task
+comes up. They're *reference material*, not a script to follow
+front-to-back.
 
 If you're working on a setup task this pack doesn't cover, check
 [`guidance/more-guidance-online.md`](guidance/more-guidance-online.md)
