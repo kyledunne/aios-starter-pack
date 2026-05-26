@@ -34,4 +34,4 @@ material; it doesn't belong copied wholesale into anyone's repo.
 ## For humans
 
 If you're a human reading this and there's a setup task you wish were
-covered — email <kyletd4@gmail.com> and it'll probably get written up.
+covered — email <kyle@kyledunne.ai> and it'll probably get written up.
