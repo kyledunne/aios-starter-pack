@@ -1,7 +1,6 @@
 ---
 name: get-connected
 description: Walk a new AIOS user through their first two connections — Google Workspace (Gmail / Drive / Calendar / Docs) and Slack. Use as the natural next step after `/onboarding`, when the Context layer exists and the user is ready to wire the AIOS into the services they actually use day-to-day.
-model: sonnet
 ---
 
 # Get connected — first two connections

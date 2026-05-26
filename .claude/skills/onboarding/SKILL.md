@@ -1,7 +1,6 @@
 ---
 name: onboarding
 description: First-run onboarding for a new AIOS. Walks the user through the Context layer setup — who they are, what they do, the org(s) they work in, verbatim tone-of-voice samples, and their preferred task-management cadence — and writes the answers into the AIOS as structured Markdown files. Use the first time a new person sits down with their AIOS, before anything else.
-model: sonnet
 ---
 
 # Onboarding — set up the Context layer
