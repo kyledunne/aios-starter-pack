@@ -126,3 +126,43 @@ If you're working on a setup task this pack doesn't cover, check
 [`guidance/more-guidance-online.md`](guidance/more-guidance-online.md)
 — Kyle keeps adding guidance to the upstream repo as new territory
 gets explored.
+
+## Tracking local setup
+
+What's installed and configured *on this machine* lives in
+`local-setup.md` at the repo root — installed CLIs and tools, where
+each service is authenticated locally, and the machine's specs (CPU,
+GPU, RAM, OS). That file is gitignored: tooling, credentials, and
+OS-level config don't transfer across machines, so each machine keeps
+its own copy.
+
+Update it whenever you install something or wire up a new service
+locally. On a fresh machine the file won't exist yet — create it,
+record the machine's specs as a starting point, and add entries as
+things get set up.
+
+## Secrets
+
+Secrets and API tokens live in a single gitignored `.env` file at the
+repo root. When a workflow needs a credential, read it from there
+rather than asking the user to paste it into chat — pasted secrets
+end up in conversation transcripts, which is exactly where they
+shouldn't be.
+
+If `.env` doesn't exist yet, create it (it's already in `.gitignore`).
+If a needed key isn't in it yet, tell the user which variable to add
+and where to get it, then read it back from the file once they've
+saved it. Never commit `.env`, never echo its contents back in full,
+and never copy a secret out of it into another tracked file.
+
+## Git strategy: commit and push automatically
+
+When a coherent unit of work is complete — even small ones like a
+single scratchpad note — commit and push it automatically, without
+asking. Keeping the AIOS synced across machines is the whole point of
+it being a git repo, so this is the normal habit, not a per-change
+decision.
+
+See [`guidance/git-practices.md`](guidance/git-practices.md) for the
+fuller rationale and the edge cases where you should pause and confirm
+first (mid-task changes, experimental tries, sensitive files).
