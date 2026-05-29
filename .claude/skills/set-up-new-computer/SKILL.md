@@ -32,9 +32,7 @@ never create a new app, project, or OAuth client when onboarding a machine.
   on. When you run this skill, treat Phase 0 as "verify it's done," then
   proceed.
 - **Secrets come from the password manager** — never email, paste into chat, or
-  commit them. See [`CLAUDE.md` → Secrets](../../../CLAUDE.md). Whatever manager
-  the user has, each value is stored with the path it belongs at, so restoring
-  is a matter of copying each one to its destination.
+  commit them. See [`CLAUDE.md` → Secrets](../../../CLAUDE.md).
 - **Match the other machines.** `devices.md` (tracked) is the **parity spec** —
   read it first; it's the roster of what each existing machine runs, and it's
   maintained from the first machine onward precisely so a new one can read it
@@ -100,19 +98,17 @@ this machine's `local-setup.md` as you go.
 
 ### The secrets, and where each goes
 
-Keep the canonical copy of every secret in the user's password manager, each one
-stored *with the path it belongs at*, so restoring is "copy each value to its
-destination." How that's organized inside the manager — one combined note, an
-entry per secret, whatever it supports — is the user's call. A typical set:
+Secrets are left out of git for security; the user should use a password manager
+to carry them to a new computer. A typical set:
 
 - the Slack user token (`xoxp-…`) → root `.env`
 - each service's OAuth client (e.g. `client_secret.json`) → its on-disk location
   (e.g. `~/.config/<service>/`)
 - any per-project API keys → that project's own gitignored env file
 
-You do **not** restore from the note anything a browser login re-mints on this
-machine — refresh tokens, GitHub auth, hosting auth. Create the root `.env`
-(gitignored) and place credential files from the note; the rest follow per
+You do **not** restore anything a browser login re-mints on this machine —
+refresh tokens, GitHub auth, hosting auth. Create the root `.env` (gitignored)
+and place credential files from the password manager; the rest follow per
 connection below.
 
 ### Bring up each connection

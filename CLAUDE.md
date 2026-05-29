@@ -175,11 +175,8 @@ and never copy a secret out of it into another tracked file.
 
 Because `.env` is per-machine and never committed, the cross-machine
 source of truth is the user's **password manager** — keep the canonical
-copies there so a new machine can be brought up from them. Store each
-value *with the path it belongs at*, so restoring a machine is a matter
-of copying each one to its destination; the `/set-up-new-computer` skill
-leans on this. How you organize that inside the manager — one combined
-note, an entry per secret, whatever it supports best — is up to you.
+copies there so a new machine can be brought up from them. The
+`/set-up-new-computer` skill leans on this.
 
 ## Git strategy: commit and push automatically
 
