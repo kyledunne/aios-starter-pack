@@ -82,9 +82,20 @@ Netlify or similar if they ship websites, calendar-specific tools if
 their calendar work is heavy. Don't push — they'll know when they
 hit a task that needs a new connection.
 
+Now that this machine has real tooling and connections, **seed
+`devices.md`** at the repo root (create the file — this is the first
+machine). Add one short, non-sensitive section: the machine's name, OS,
+specs, and the connections now live. `devices.md` is the tracked roster
+a *future* machine reads to reach parity, so it's worth starting from
+this first machine rather than waiting for a second — the gitignored
+`local-setup.md` can't serve that purpose because it never leaves this
+machine. Keep `devices.md` to the overview; machine-specific or
+sensitive detail belongs in `local-setup.md`. (See
+[`CLAUDE.md` → Tracking machines and local setup](../../../CLAUDE.md).)
+
 Commit and push as one coherent unit per
 [`guidance/git-practices.md`](../../../guidance/git-practices.md).
-Commit message: `Connect Google Workspace and Slack`.
+Commit message: `Connect Google Workspace and Slack; seed devices.md`.
 
 ## What this skill doesn't cover
 

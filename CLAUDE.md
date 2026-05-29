@@ -135,9 +135,13 @@ matters:
 - **`devices.md`** (tracked, committed) — a roster of every machine the
   AIOS runs on, so each one knows the others: machine name, OS, specs,
   what it's used for, and which connections/tools are live on it.
-  **Overview only — no secrets or credential paths.** Update it when a
-  machine comes online or its role changes. It won't exist until there's
-  a second machine; create it then, and back-fill the first.
+  **Overview only — no secrets or credential paths.** Create it for the
+  **first** machine and keep it current — don't wait for a second. It's
+  the parity spec the `/set-up-new-computer` skill reads to know what a
+  complete setup looks like, and it's *tracked* for exactly that reason:
+  `local-setup.md` is gitignored and never reaches a new machine, so the
+  roster is the only record that travels. Update it when a machine comes
+  online or its role changes.
 - **`local-setup.md`** (gitignored, per-machine) — what's installed and
   configured *on this machine*: installed CLIs and tools, where each
   service is authenticated locally, credential file paths, and exact

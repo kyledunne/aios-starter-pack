@@ -35,11 +35,14 @@ never create a new app, project, or OAuth client when onboarding a machine.
   commit them. See [`CLAUDE.md` → Secrets](../../../CLAUDE.md). Keeping every
   value (and the path it belongs at) in one **"AIOS secrets"** note makes this a
   copy-each-block-to-its-destination job.
-- **Match the other machines.** `devices.md` (tracked) is the roster of what
-  each machine runs — read it to know the target set of tools and connections
-  for this one. Record this machine's local detail in its own gitignored
-  `local-setup.md` as you go. (On the *second* machine ever, `devices.md` won't
-  exist yet — create it and back-fill the first machine.)
+- **Match the other machines.** `devices.md` (tracked) is the **parity spec** —
+  read it first; it's the roster of what each existing machine runs, and it's
+  maintained from the first machine onward precisely so a new one can read it
+  (gitignored `local-setup.md` never travels here). Use it as the target set of
+  tools and connections for this machine, and record this machine's own local
+  detail in its gitignored `local-setup.md` as you go. (If `devices.md` is
+  somehow missing, the first machine was never recorded — create it and
+  back-fill that machine before using it as the target.)
 - **Interactive vs. automatable.** Browser logins and OS installers that prompt
   are run by the **user** in their own terminal; installs, file placement, and
   verification reads the agent runs itself. Mark which is which as you go.
@@ -136,10 +139,13 @@ reuses its cloud-side identity:
 1. **`local-setup.md`** (gitignored) — create it for this machine: specs,
    installed CLIs, local auth state, repo location. Use an existing machine's
    file as the template.
-2. **`devices.md`** (tracked) — add a section for this machine: name, OS, specs,
-   role, connections live, key tooling, status. **Overview only — no secrets or
-   credential paths.** If this is the second machine and `devices.md` doesn't
-   exist, create it and back-fill the first machine too.
+2. **`devices.md`** (tracked) — append a section for this machine: name, OS,
+   specs, role, connections live, key tooling, status. **Overview only — no
+   secrets or credential paths.** `devices.md` should already exist (it's
+   maintained from the first machine, and you read it for the parity target
+   up front) — you're adding to it, not creating it. If it's missing, that's an omission
+   from the first machine's setup: create it and back-fill that machine before
+   adding this one.
 3. **Commit and push** `devices.md` so the other machines learn about this one.
    Leave `local-setup.md` uncommitted — it's gitignored.
 
