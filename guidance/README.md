@@ -28,6 +28,9 @@ follow front-to-back.
 - [set-up-slack.md](set-up-slack.md) — Creating a per-AIOS Slack app
   with user-token scopes and wiring the token into the AIOS root
   `.env`.
+- [working-directory.md](working-directory.md) — The
+  `working/` + `working-archive/` pattern for organizing active work:
+  one subfolder per in-flight task, archived by date when done.
 - [more-guidance-online.md](more-guidance-online.md) — How to check the
   upstream starter-pack repo for newer guidance docs not in this local
   copy.
