@@ -37,7 +37,9 @@ so chronology is obvious from the filename alone.
 
 The agent reads `raw/` and writes a structured, human-readable knowledge
 base in Markdown. One file per concept, entity, or topic. Cross-link
-liberally with `[[wiki-link]]` style references.
+liberally with `[[wiki-link]]` references — Obsidian's native link
+syntax (see [Viewing the wiki in Obsidian](#viewing-the-wiki-in-obsidian)
+below).
 
 The wiki should always include:
 
@@ -62,6 +64,24 @@ chat response.
 
 Naming convention: ISO date + a short slug, e.g.
 `2026-05-25-subscription-cancellation-candidates.md`.
+
+## Viewing the wiki in Obsidian
+
+The `wiki/` layer is an interlinked set of Markdown files — exactly
+what Obsidian is built to browse, and the way Karpathy uses the
+pattern himself: the LLM agent open on one side, Obsidian on the
+other. Point an Obsidian vault at the project (or just the `wiki/`
+folder) and the `[[wiki-links]]` the agent writes become clickable
+navigation plus a live backlink graph — Karpathy calls the graph view
+"the best way to see the shape of your wiki — what's connected to
+what." The Dataview plugin can also query page frontmatter for ad-hoc
+views.
+
+This is why the wiki uses `[[...]]` links rather than Markdown path
+links: `[[...]]` is Obsidian's native syntax. (Karpathy leaves schema
+and tooling to the user's preference rather than mandating a link
+format — but since he recommends Obsidian as the viewer, its native
+wikilinks are the natural default.)
 
 ## Workflows
 
