@@ -1,0 +1,10 @@
+# Per-machine secrets and API tokens — never commit. See CLAUDE.md → Secrets.
+.env
+
+# Per-machine setup record — tooling, local auth, and specs that don't
+# transfer across machines, so each one keeps its own copy. See
+# CLAUDE.md → Tracking machines and local setup.
+local-setup.md
+
+# devices.md is intentionally NOT ignored — the machine roster is tracked
+# so every machine knows the others.

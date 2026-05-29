@@ -127,19 +127,33 @@ If you're working on a setup task this pack doesn't cover, check
 — Kyle keeps adding guidance to the upstream repo as new territory
 gets explored.
 
-## Tracking local setup
+## Tracking machines and local setup
 
-What's installed and configured *on this machine* lives in
-`local-setup.md` at the repo root — installed CLIs and tools, where
-each service is authenticated locally, and the machine's specs (CPU,
-GPU, RAM, OS). That file is gitignored: tooling, credentials, and
-OS-level config don't transfer across machines, so each machine keeps
-its own copy.
+Two files track *where this AIOS runs*, and the split between them
+matters:
 
-Update it whenever you install something or wire up a new service
-locally. On a fresh machine the file won't exist yet — create it,
-record the machine's specs as a starting point, and add entries as
-things get set up.
+- **`devices.md`** (tracked, committed) — a roster of every machine the
+  AIOS runs on, so each one knows the others: machine name, OS, specs,
+  what it's used for, and which connections/tools are live on it.
+  **Overview only — no secrets or credential paths.** Update it when a
+  machine comes online or its role changes. It won't exist until there's
+  a second machine; create it then, and back-fill the first.
+- **`local-setup.md`** (gitignored, per-machine) — what's installed and
+  configured *on this machine*: installed CLIs and tools, where each
+  service is authenticated locally, credential file paths, and exact
+  specs (CPU, GPU, RAM, OS). Gitignored because tooling, credentials,
+  and OS-level config don't transfer across machines, so each keeps its
+  own copy. On a fresh machine it won't exist yet — create it, record
+  the specs as a starting point, and add entries as things get set up.
+
+The line: anything safe to share *and* worth other machines knowing goes
+in `devices.md`; anything machine-specific or sensitive stays in
+`local-setup.md`. Update both as you install tools and wire up services.
+
+When bringing the AIOS up on a **new** machine, the
+`/set-up-new-computer` skill walks the whole flow — bootstrap,
+toolchain, secrets from the password manager, per-connection bring-up,
+and registering the machine in `devices.md`.
 
 ## Secrets
 
@@ -154,6 +168,13 @@ If a needed key isn't in it yet, tell the user which variable to add
 and where to get it, then read it back from the file once they've
 saved it. Never commit `.env`, never echo its contents back in full,
 and never copy a secret out of it into another tracked file.
+
+Because `.env` is per-machine and never committed, the cross-machine
+source of truth is the user's **password manager** — keep the canonical
+copies there so a new machine can be brought up from them. One "AIOS
+secrets" note holding every value *and the path it belongs at* makes
+that a copy-each-block job; the `/set-up-new-computer` skill leans on
+this.
 
 ## Git strategy: commit and push automatically
 
