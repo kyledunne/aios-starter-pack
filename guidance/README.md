@@ -18,8 +18,8 @@ follow front-to-back.
 - [set-up-codex.md](set-up-codex.md) — Adding the OpenAI Codex CLI as a
   second agent alongside Claude Code, sharing one `AGENTS.md`.
 - [set-up-google-workspace.md](set-up-google-workspace.md) — Connecting
-  Gmail, Drive, Calendar, and Docs via the `gws` CLI: install, OAuth
-  setup, scopes, and the known pre-1.0 gotchas.
+  Gmail, Drive, Sheets, Calendar, and Docs via the `gws` CLI: install,
+  OAuth setup, scopes, and the known pre-1.0 gotchas.
 - [set-up-playwright.md](set-up-playwright.md) — Giving the AIOS a
   headless browser for visual verification of frontend work.
 - [set-up-printing-press.md](set-up-printing-press.md) — Minting an

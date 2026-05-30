@@ -1,7 +1,7 @@
 # Set up Google Workspace access (`gws` CLI)
 
-Connects an AIOS to **Gmail, Drive, Calendar, and Docs** for one Google
-account using the [Google Workspace CLI](https://github.com/googleworkspace/cli)
+Connects an AIOS to **Gmail, Drive, Sheets, Calendar, and Docs** for one
+Google account using the [Google Workspace CLI](https://github.com/googleworkspace/cli)
 (`gws`). CLI is the deliberate choice over an MCP server or a raw API —
 see the *Connections* section of the AIOS's `CLAUDE.md` (CLI > API > MCP).
 
@@ -82,10 +82,12 @@ Five-step wizard:
    (e.g. `<org>-aios-cli`). The project is created under the work
    account's organisation, which is what later allows an `Internal`
    consent screen.
-4. **Select APIs to enable** — pick **Gmail, Drive, Calendar, Docs**
-   (four). Enabling an API is free and harmless; it only lets the
+4. **Select APIs to enable** — pick **Gmail, Drive, Sheets, Calendar,
+   Docs** (five). Enabling an API is free and harmless; it only lets the
    project *call* the service. Actual access is governed by OAuth
-   scopes in Step 5.
+   scopes in Step 5. (If one's missed, enable it later in one click at
+   <https://console.cloud.google.com/apis/library> — no wizard re-run
+   needed.)
 5. **Enter OAuth Client ID** — wizard pauses. The OAuth client does not
    exist yet; create it in Step 4 below, then paste it back.
 
@@ -133,8 +135,14 @@ scopes. Step 5 fixes that.
 **The step most likely to go wrong.** Have the user run:
 
 ```
-gws auth login --scopes https://www.googleapis.com/auth/gmail.modify,https://www.googleapis.com/auth/drive.readonly,https://www.googleapis.com/auth/calendar.readonly,https://www.googleapis.com/auth/documents.readonly
+gws auth login --scopes https://www.googleapis.com/auth/gmail.modify,https://www.googleapis.com/auth/drive,https://www.googleapis.com/auth/spreadsheets,https://www.googleapis.com/auth/calendar,https://www.googleapis.com/auth/documents
 ```
+
+This is the AIOS standard: full read/write for Drive, Sheets, Calendar,
+and Docs, plus Gmail `modify` (everything but permanent delete — see
+*Scopes reference*). For a tighter least-privilege grant, swap in the
+`.readonly` variants (`drive.readonly`, `calendar.readonly`,
+`documents.readonly`) and drop `spreadsheets`.
 
 Use **`--scopes` with full scope URLs**. Do **not** use `-s` /
 `--services` — that flag only filters an interactive scope picker, and
@@ -143,7 +151,7 @@ OpenID identity scopes, no Gmail/Drive access at all. `--scopes`
 bypasses the picker.
 
 Browser opens; user approves, signed in as the work account. The
-consent screen should list Gmail, Drive, Calendar, and Docs.
+consent screen should list Gmail, Drive, Sheets, Calendar, and Docs.
 
 ### Step 6 — Clear the stale token cache  *(agent runs this)*
 
@@ -190,16 +198,36 @@ whole org — each person authenticates as themselves against it.
 
 ## Scopes reference
 
+The AIOS standard — full read/write where it makes sense:
+
 | Scope | Grants |
 |---|---|
-| `gmail.modify` | Read, send, and organise mail (label, archive, mark read). Excludes permanent delete. |
-| `drive.readonly` | Read and download all Drive files. |
-| `calendar.readonly` | Read calendars and events. |
-| `documents.readonly` | Read Google Docs content. |
+| `gmail.modify` | Read, send, and organise mail (label, archive, mark read, **move to Trash**). Excludes only *permanent* delete — see below. |
+| `drive` | Full read/write — list, read, upload, edit, delete all Drive files. |
+| `spreadsheets` | Full read/write of Google Sheets. |
+| `calendar` | Full read/write — read, create, edit, delete events. |
+| `documents` | Full read/write of Google Docs content. |
 
-To broaden later (e.g. to create or edit files), re-run Step 5 with
-wider scopes — e.g. `https://www.googleapis.com/auth/drive` instead of
-`drive.readonly` — then redo Step 6.
+Tighter least-privilege alternatives, if a connection should stay
+read-only: `drive.readonly`, `calendar.readonly`, `documents.readonly`
+(and omit `spreadsheets`). `gmail.readonly` exists too, but
+`gmail.modify` is the practical default since the AIOS sends and triages
+mail.
+
+**On deleting email.** `gmail.modify` *can* move messages to **Trash**
+(reversible; Gmail auto-purges Trash after ~30 days), which covers
+ordinary inbox cleanup — bulk-trashing old mail works fine. What it
+can't do is `messages.delete`: immediate, permanent deletion that
+bypasses Trash. That requires the full `https://mail.google.com/` scope.
+Leaving it off is a deliberate safety margin — the AIOS can't
+irreversibly destroy mail. Once the user trusts the AIOS, upgrade by
+re-running Step 5 with `https://mail.google.com/` in place of
+`gmail.modify` (a superset), then redo Step 6.
+
+To change any scope later (either direction), re-run Step 5 with the
+desired scope URLs, then redo Step 6 (clear the token cache) — the new
+grant won't take effect until the stale cache is gone. If a *new*
+service is involved, also enable its API (Step 3.4 or the API library).
 
 ## Troubleshooting
 

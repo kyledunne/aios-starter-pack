@@ -23,7 +23,7 @@ detail, so this skill is mostly orchestration.
 
 ## Connection 1 — Google Workspace
 
-Connects Gmail, Drive, Calendar, and Docs via the `gws` CLI. Follow
+Connects Gmail, Drive, Sheets, Calendar, and Docs via the `gws` CLI. Follow
 [`guidance/set-up-google-workspace.md`](../../../guidance/set-up-google-workspace.md)
 end to end — it covers install, OAuth client creation, scopes, the
 stale-token-cache gotcha, and verification.
