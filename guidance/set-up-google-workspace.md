@@ -224,6 +224,20 @@ irreversibly destroy mail. Once the user trusts the AIOS, upgrade by
 re-running Step 5 with `https://mail.google.com/` in place of
 `gmail.modify` (a superset), then redo Step 6.
 
+**Deleting safely, the other services.** Gmail is the *only* service
+whose scopes distinguish "everything except permanent delete" from full
+access. Drive, Sheets, Docs, and Calendar have no such scope — full
+read/write includes permanent delete. So make it a **behavioral
+default** instead: always move to Trash, never permanently delete,
+unless the user asks. Trash is recoverable for ~30 days everywhere.
+Drive files (and Sheets/Docs, which are Drive files) trash via
+`drive files update` with `{"trashed":true}` rather than the permanent
+`drive files delete`; deleted Calendar events go to a 30-day Bin; and
+edits *inside* a Doc/Sheet are caught by automatic version history
+(`drive revisions list`). The stronger version of this guarantee is a
+thin wrapper CLI that only exposes the trash path — worth it once an
+AIOS runs unattended, overkill before then.
+
 To change any scope later (either direction), re-run Step 5 with the
 desired scope URLs, then redo Step 6 (clear the token cache) — the new
 grant won't take effect until the stale cache is gone. If a *new*
