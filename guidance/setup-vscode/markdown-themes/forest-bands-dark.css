@@ -1,5 +1,5 @@
 /*
- * Forest / Bands (dark) — green, olive, and amber headings on a deep green page.
+ * Forest / Bands (dark) — green, gold, and orange headings on a deep green page.
  * Same band formatting as citrus-bands — tinted heading bands with a left
  * accent bar, plus a divider that fades to nothing at both ends — but the
  * three heading levels step across a range of related hues (H1 -> H2 -> H3)
@@ -12,10 +12,10 @@
   --brand-bg:         #18211b;
   --brand-text:       #e3e8e0;
   --brand-h1:         #86d98f;
-  --brand-h2:         #c2d96f;
-  --brand-h3:         #e0b056;
+  --brand-h2:         #e6c34a;
+  --brand-h3:         #ef9355;
   --brand-link:       #86d98f;
-  --brand-code:       #d9b873;
+  --brand-code:       #8fd07e;
   --brand-quote-fill: rgba(130, 190, 110, 0.14);
   --brand-table-head: #284032;
   --brand-rule:       #324a36;
@@ -38,7 +38,7 @@ h2 {
   border-left: 4px solid var(--brand-h2) !important;
   border-radius: 0 5px 5px 0;
   padding: 0.32em 0.65em;
-  background: linear-gradient(90deg, rgba(194, 217, 111, 0.12), rgba(194, 217, 111, 0.015));
+  background: linear-gradient(90deg, rgba(230, 195, 74, 0.12), rgba(230, 195, 74, 0.015));
 }
 
 /* H3 - faint band, third hue. */
@@ -48,7 +48,7 @@ h3 {
   border-left: 3px solid var(--brand-h3) !important;
   border-radius: 0 5px 5px 0;
   padding: 0.28em 0.6em;
-  background: linear-gradient(90deg, rgba(224, 176, 86, 0.13), rgba(224, 176, 86, 0.02));
+  background: linear-gradient(90deg, rgba(239, 147, 85, 0.13), rgba(239, 147, 85, 0.02));
 }
 
 /* Divider - a gradient rule that fades out at both edges. */
