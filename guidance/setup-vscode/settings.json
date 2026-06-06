@@ -1,0 +1,27 @@
+{
+  // Editor defaults for an AIOS opened in VS Code.
+  // Copy this file to .vscode/settings.json (see this folder's README).
+  // Opens Markdown in a rendered preview, points HTML at the integrated browser,
+  // and applies the brand stylesheet (markdown-preview.css) that ships beside it.
+
+  // Open Markdown files in rendered preview by default instead of the raw source.
+  // To edit a file's source, use the "Open Source" action (the {} icon top-right)
+  // or right-click the file > Open With… > Text Editor.
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  },
+  // HTML has no built-in "open in browser" editor, and the Live Preview extension
+  // registers commands only (no custom editor), so it can't be set as a default
+  // editorAssociation the way Markdown can. Instead: open an .html file and click the
+  // globe "Show Preview" icon (top-right) or press Alt+L Alt+O to view it in the
+  // integrated browser. These keys make that preview use the embedded browser pane.
+  // The extension itself is recommended in .vscode/extensions.json so synced machines
+  // get prompted to install it.
+  "livePreview.openPreviewTarget": "Embedded Preview",
+  "livePreview.useIntegratedBrowser": true,
+  // Apply a custom stylesheet to the built-in Markdown preview for nicer typography
+  // and a brand palette. The colors are driven by --brand-* variables at the top of
+  // the file — edit them directly, swap in one of the named presets, or run
+  // /setup-environment to set them for you.
+  "markdown.styles": [".vscode/markdown-preview.css"]
+}

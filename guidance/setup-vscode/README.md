@@ -17,64 +17,25 @@ skill does all of this for you (and offers to pick a color palette). This
 is the underlying reference — read it to set things up by hand, or to
 understand what the skill writes.
 
-Create three files under a `.vscode/` folder at the repo root. The first
-two are short, so they're inline below; the third — the Markdown
-stylesheet — is long, so it ships beside this README as a ready-made file
-to copy: [`markdown-preview.css`](markdown-preview.css).
+Create three files under a `.vscode/` folder at the repo root. All three
+ship beside this README as ready-made files to copy —
+[`extensions.json`](extensions.json), [`settings.json`](settings.json),
+and [`markdown-preview.css`](markdown-preview.css); the sections below
+explain what each one does.
 
 ## `.vscode/extensions.json` — recommended extensions
 
-Prompts anyone who opens the repo to install the extensions it expects.
-
-```jsonc
-{
-  // Recommended on every machine this AIOS syncs to.
-  "recommendations": [
-    // Claude Code and Codex — the AI coding agents that drive this AIOS from inside
-    // the editor. Both read the same repo (AGENTS.md / CLAUDE.md, .claude/skills/),
-    // so either can pick up the work. Install whichever you use; having both lets you
-    // switch between them without leaving VS Code.
-    "anthropic.claude-code",
-    "openai.chatgpt",
-
-    // Live Preview gives a one-click integrated-browser preview of HTML files
-    // (globe "Show Preview" icon, or Alt+L Alt+O) — used for planet-analogy.html
-    // and any other HTML the AIOS produces. Matching settings live in
-    // .vscode/settings.json (livePreview.*).
-    "ms-vscode.live-server"
-  ]
-}
-```
+Prompts anyone who opens the repo to install the extensions it expects
+(Claude Code, Codex, and Live Preview). Copy
+[`extensions.json`](extensions.json) from this folder to
+`.vscode/extensions.json`.
 
 ## `.vscode/settings.json` — editor defaults
 
 Opens Markdown in a rendered preview, points HTML at the integrated
-browser, and applies the brand stylesheet below.
-
-```jsonc
-{
-  // Open Markdown files in rendered preview by default instead of the raw source.
-  // To edit a file's source, use the "Open Source" action (the {} icon top-right)
-  // or right-click the file > Open With… > Text Editor.
-  "workbench.editorAssociations": {
-    "*.md": "vscode.markdown.preview.editor"
-  },
-  // HTML has no built-in "open in browser" editor, and the Live Preview extension
-  // registers commands only (no custom editor), so it can't be set as a default
-  // editorAssociation the way Markdown can. Instead: open an .html file and click the
-  // globe "Show Preview" icon (top-right) or press Alt+L Alt+O to view it in the
-  // integrated browser. These keys make that preview use the embedded browser pane.
-  // The extension itself is recommended in .vscode/extensions.json so synced machines
-  // get prompted to install it.
-  "livePreview.openPreviewTarget": "Embedded Preview",
-  "livePreview.useIntegratedBrowser": true,
-  // Apply a custom stylesheet to the built-in Markdown preview for nicer typography
-  // and a brand palette. The colors are driven by --brand-* variables at the top of
-  // the file — edit them directly, swap in one of the named presets, or run
-  // /setup-environment to set them for you.
-  "markdown.styles": [".vscode/markdown-preview.css"]
-}
-```
+browser, and applies the brand stylesheet below. Copy
+[`settings.json`](settings.json) from this folder to
+`.vscode/settings.json`.
 
 ## `.vscode/markdown-preview.css` — brand-skinned Markdown preview
 
