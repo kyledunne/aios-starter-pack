@@ -1,24 +1,23 @@
 /*
- * Forest / Bands (dark) — green, light-green, and lime headings on a deep green page.
+ * Forest / Bands (dark) — bark-brown, forest-green, and sky-blue headings on a warm dark page.
  * Same band formatting as citrus-bands — tinted heading bands with a left
- * accent bar, plus a divider that fades to nothing at both ends — but the
- * three heading levels step across a range of related hues (H1 -> H2 -> H3)
- * for real differentiation, not just shades of one color. Pure CSS on the
- * normal Markdown structure: nothing in your .md files changes. One of a
- * light+dark band-theme family; swap the second "markdown.styles" entry to
- * flip between them.
+ * accent bar, plus a divider that fades to nothing at both ends — built from
+ * nature's own colors across the three heading levels: tree-bark brown (H1),
+ * foliage green (H2), sky blue (H3). Pure CSS on the normal Markdown
+ * structure: nothing in your .md files changes. One of a light+dark band-theme
+ * family; swap the second "markdown.styles" entry to flip between them.
  */
 :root {
-  --brand-bg:         #18211b;
-  --brand-text:       #e3e8e0;
-  --brand-h1:         #86d98f;
-  --brand-h2:         #aadd7c;
-  --brand-h3:         #d2e85f;
-  --brand-link:       #86d98f;
-  --brand-code:       #8fd07e;
-  --brand-quote-fill: rgba(130, 190, 110, 0.14);
-  --brand-table-head: #284032;
-  --brand-rule:       #324a36;
+  --brand-bg:         #1e1a16;
+  --brand-text:       #e8e1d6;
+  --brand-h1:         #d99a5e;
+  --brand-h2:         #84c98a;
+  --brand-h3:         #7cc3ea;
+  --brand-link:       #84c98a;
+  --brand-code:       #d99a5e;
+  --brand-quote-fill: rgba(217, 154, 94, 0.12);
+  --brand-table-head: #392f24;
+  --brand-rule:       #3a322a;
 }
 
 /* H1 - strongest band: tinted wash + thick accent bar, rounded right edge. */
@@ -28,27 +27,27 @@ h1 {
   border-left: 5px solid var(--brand-h1) !important;
   border-radius: 0 6px 6px 0;
   padding: 0.4em 0.7em;
-  background: linear-gradient(90deg, rgba(134, 217, 143, 0.13), rgba(134, 217, 143, 0.03));
+  background: linear-gradient(90deg, rgba(217, 154, 94, 0.13), rgba(217, 154, 94, 0.03));
 }
 
-/* H2 - middle band, middle hue. */
+/* H2 - middle band, foliage green. */
 h2 {
   color: var(--brand-h2);
   border: none;
   border-left: 4px solid var(--brand-h2) !important;
   border-radius: 0 5px 5px 0;
   padding: 0.32em 0.65em;
-  background: linear-gradient(90deg, rgba(170, 221, 124, 0.12), rgba(170, 221, 124, 0.015));
+  background: linear-gradient(90deg, rgba(132, 201, 138, 0.12), rgba(132, 201, 138, 0.015));
 }
 
-/* H3 - faint band, third hue. */
+/* H3 - faint band, sky blue. */
 h3 {
   color: var(--brand-h3);
   border: none;
   border-left: 3px solid var(--brand-h3) !important;
   border-radius: 0 5px 5px 0;
   padding: 0.28em 0.6em;
-  background: linear-gradient(90deg, rgba(210, 232, 95, 0.13), rgba(210, 232, 95, 0.02));
+  background: linear-gradient(90deg, rgba(124, 195, 234, 0.13), rgba(124, 195, 234, 0.02));
 }
 
 /* Divider - a gradient rule that fades out at both edges. */
