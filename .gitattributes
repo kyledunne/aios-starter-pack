@@ -1,4 +1,0 @@
-# Shell scripts MUST stay LF — they run under Git Bash, and CRLF breaks them
-# (the trailing \r becomes part of every command/argument). This overrides the
-# repo's core.autocrlf=true for these files, on every machine.
-*.sh text eol=lf
