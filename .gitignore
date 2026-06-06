@@ -19,3 +19,8 @@ local-setup.md
 # pack ships only this rule, not the folder.)
 references/local-vault/*
 !references/local-vault/README.md
+
+# OS-generated cruft — never content, varies by machine/platform.
+.DS_Store      # macOS Finder
+Thumbs.db      # Windows Explorer thumbnails
+Desktop.ini    # Windows folder settings
