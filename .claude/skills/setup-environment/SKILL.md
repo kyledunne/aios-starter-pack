@@ -1,6 +1,6 @@
 ---
 name: setup-environment
-description: Optional, run-anytime setup that adapts the AIOS repo to how you actually work with it — across three layers: the UI you read and edit it in (VS Code, a desktop app, a terminal), the AI agent(s) that drive it (Claude Code, Codex), and the operating system(s) of your machine(s). The pack ships nothing tool-specific by default; run this if you want editor polish, multi-agent skills routing, or cross-machine sync. Entirely optional and skippable — separate from onboarding and get-connected.
+description: "Optional, run-anytime setup that adapts the AIOS repo to how you actually work with it — across three layers: the UI you read and edit it in (VS Code, a desktop app, a terminal), the AI agent(s) that drive it (Claude Code, Codex), and the operating system(s) of your machine(s). The pack ships nothing tool-specific by default; run this if you want editor polish, multi-agent skills routing, or cross-machine sync. Entirely optional and skippable — separate from onboarding and get-connected."
 ---
 
 # Set up your environment — fit the AIOS to your tools
