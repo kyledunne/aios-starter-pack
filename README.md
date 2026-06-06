@@ -20,12 +20,12 @@ content be **created live, with you**:
 - **A primer** ([`AGENTS.md`](AGENTS.md)) — what an AIOS is, the four layers it
   grows through, and the principles (minimalism, CLIs-over-MCPs, commit-and-sync)
   that keep it lean. Read by both Claude Code and Codex.
-- **Skills** ([`.claude/skills/`](.claude/skills/)) — guided flows: `/onboarding` (set up who you
-  are), `/get-connected` (wire in Gmail, Slack, …), `/setup-new-computer`,
-  `/setup-environment` (tune your editor & agents — optional), `/whats-next`,
-  `/dream` (tend the memory store), `/grill-me` (get interviewed to extract a
-  plan), plus the `working/` task lifecycle (`/complete-working-task`,
-  `/checkpoint-working-task`).
+- **Skills** ([`.claude/skills/`](.claude/skills/)) — guided flows:
+  `/onboarding` (set up who you are), `/get-connected` (wire in Gmail,
+  Slack, …), `/setup-new-computer`, `/setup-environment` (tune your editor &
+  agents — optional), `/whats-next`, `/dream` (tend the memory store),
+  `/grill-me` (get interviewed to extract a plan), plus the `working/` task
+  lifecycle (`/complete-working-task`, `/checkpoint-working-task`).
 - **A setup manual** ([`guidance/`](guidance/)) — untailored, vendored notes for
   connecting services (Google Workspace, Slack, Playwright, …) and the patterns
   that hold it together (git habits, the working/ directory, directory
@@ -46,10 +46,10 @@ to fill in) is part of learning that the repo is yours to build and grow.
 ## Getting started
 
 If you want to build your own AIOS, **reach out and I'll walk you through it
-personally**: [kyle@kyledunne.ai](mailto:kyle@kyledunne.ai). We'll use this pack
-as the starting point — clone it, open it (VS Code with the Claude Code
-extension is the easy path, but any editor or a plain terminal works), and run
-`/onboarding`.
+personally**: [kyle@kyledunne.ai](mailto:kyle@kyledunne.ai). We'll use this
+pack as the starting point — clone it, open it (VS Code with the Claude Code
+extension is my recommended path, but you can also use the Claude desktop app,
+Codex desktop app, or one of many other options), and run `/onboarding`.
 
 For the visual primer, open [`planet-analogy.html`](planet-analogy.html) in any
 browser. (In VS Code, the Live Preview extension makes that one click — see
