@@ -1,9 +1,17 @@
 {
-  // Recommended on every machine this AIOS syncs to. Live Preview gives a one-click
-  // integrated-browser preview of HTML files (globe "Show Preview" icon, or Alt+L Alt+O) —
-  // used for planet-analogy.html and any other HTML the AIOS produces.
-  // The matching settings live in .vscode/settings.json (livePreview.*).
+  // Recommended on every machine this AIOS syncs to.
   "recommendations": [
+    // Claude Code and Codex — the AI coding agents that drive this AIOS from inside
+    // the editor. Both read the same repo (AGENTS.md / CLAUDE.md, .claude/skills/),
+    // so either can pick up the work. Install whichever you use; having both lets you
+    // switch between them without leaving VS Code.
+    "anthropic.claude-code",
+    "openai.chatgpt",
+
+    // Live Preview gives a one-click integrated-browser preview of HTML files
+    // (globe "Show Preview" icon, or Alt+L Alt+O) — used for planet-analogy.html
+    // and any other HTML the AIOS produces. Matching settings live in
+    // .vscode/settings.json (livePreview.*).
     "ms-vscode.live-server"
   ]
 }
