@@ -1,21 +1,23 @@
 /*
- * Plum / Bands (light) — soft lilac page, purple-magenta headings.
+ * Plum / Bands (light) — violet, fuchsia, and rose headings on a soft lilac page.
  * Same band formatting as citrus-bands — tinted heading bands with a left
- * accent bar, plus a divider that fades to nothing at both ends — in the
- * plum palette. Pure CSS on the normal Markdown structure: nothing in
- * your .md files changes. One of a light+dark band-theme family; swap the
- * second "markdown.styles" entry to flip between them.
+ * accent bar, plus a divider that fades to nothing at both ends — but the
+ * three heading levels step across a range of related hues (H1 -> H2 -> H3)
+ * for real differentiation, not just shades of one color. Pure CSS on the
+ * normal Markdown structure: nothing in your .md files changes. One of a
+ * light+dark band-theme family; swap the second "markdown.styles" entry to
+ * flip between them.
  */
 :root {
   --brand-bg:         #faf6fb;
   --brand-text:       #322a36;
-  --brand-h1:         #7e22ce;
-  --brand-h2:         #a21caf;
-  --brand-h3:         #9333ea;
-  --brand-link:       #7c3aed;
+  --brand-h1:         #7c3aed;
+  --brand-h2:         #c026d3;
+  --brand-h3:         #db2777;
+  --brand-link:       #9333ea;
   --brand-code:       #be185d;
-  --brand-quote-fill: rgba(162, 28, 175, 0.08);
-  --brand-table-head: rgba(162, 28, 175, 0.11);
+  --brand-quote-fill: rgba(192, 38, 211, 0.07);
+  --brand-table-head: rgba(192, 38, 211, 0.10);
   --brand-rule:       #ecdef0;
 }
 
@@ -26,27 +28,27 @@ h1 {
   border-left: 5px solid var(--brand-h1) !important;
   border-radius: 0 6px 6px 0;
   padding: 0.4em 0.7em;
-  background: linear-gradient(90deg, rgba(126, 34, 206, 0.13), rgba(126, 34, 206, 0.03));
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.13), rgba(124, 58, 237, 0.03));
 }
 
-/* H2 - lighter band. */
+/* H2 - middle band, middle hue. */
 h2 {
   color: var(--brand-h2);
   border: none;
   border-left: 4px solid var(--brand-h2) !important;
   border-radius: 0 5px 5px 0;
   padding: 0.32em 0.65em;
-  background: linear-gradient(90deg, rgba(162, 28, 175, 0.12), rgba(162, 28, 175, 0.015));
+  background: linear-gradient(90deg, rgba(192, 38, 211, 0.12), rgba(192, 38, 211, 0.015));
 }
 
-/* H3 - faint band, same shape as the others (just lighter). */
+/* H3 - faint band, third hue. */
 h3 {
   color: var(--brand-h3);
   border: none;
   border-left: 3px solid var(--brand-h3) !important;
   border-radius: 0 5px 5px 0;
   padding: 0.28em 0.6em;
-  background: linear-gradient(90deg, rgba(147, 51, 234, 0.13), rgba(147, 51, 234, 0.02));
+  background: linear-gradient(90deg, rgba(219, 39, 119, 0.13), rgba(219, 39, 119, 0.02));
 }
 
 /* Divider - a gradient rule that fades out at both edges. */
@@ -58,8 +60,9 @@ hr {
   border-radius: 2px;
   background: linear-gradient(to right,
     transparent,
-    var(--brand-h2) 22%,
-    var(--brand-h1) 50%,
-    var(--brand-h2) 78%,
+    var(--brand-h3) 18%,
+    var(--brand-h2) 40%,
+    var(--brand-h1) 60%,
+    var(--brand-h3) 82%,
     transparent);
 }
