@@ -54,7 +54,7 @@ top-level `skills/` folder shared by both tools: move the skill folders to
 `skills/`, then point **both** `.claude/skills` and `.agents/skills` at it. If all
 you actually want is for Codex to see the skills where they already live, the
 lighter move is a single link `.agents/skills` → `.claude/skills` — see
-[`set-up-codex.md`](set-up-codex.md).
+[`setup-codex.md`](setup-codex.md).
 
 ## Cross-OS: how to make a link
 

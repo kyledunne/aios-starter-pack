@@ -6,12 +6,12 @@
  * All color comes from the --brand-* variables in the ACTIVE PALETTE block
  * below. To rebrand the whole preview, change those values — nothing else.
  * Three ways to do it:
- *   1. Run /set-up-environment and pick a palette (or hand it your brand colors / site).
+ *   1. Run /setup-environment and pick a palette (or hand it your brand colors / site).
  *   2. Copy one of the named PRESETS (further down) over the ACTIVE block.
  *   3. Edit the hex values by hand.
  *
  * The default is a neutral, brand-agnostic graphite skin — it looks clean on
- * day one and gives /set-up-environment something to replace. The pane is skinned
+ * day one and gives /setup-environment something to replace. The pane is skinned
  * dark so fenced-code syntax colors stay legible on the default dark editor theme.
  */
 

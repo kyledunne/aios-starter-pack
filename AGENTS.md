@@ -106,13 +106,13 @@ The repo uses one structural pattern everywhere, and (per **Minimalism**)
 it grows only when a real need pushes it:
 
 - **Start flat.** A folder holds a `README.md` plus single Markdown files
-  — one file per thing (`guidance/set-up-slack.md`, one `SKILL.md` per
+  — one file per thing (`guidance/setup-slack.md`, one `SKILL.md` per
   skill, one snag per `issues-and-solutions/*.md`).
 - **Grow a file into a folder when it outgrows one file.** When a single
   topic gets too big or picks up supporting files (a long stylesheet,
   images, sub-pages), replace `topic.md` with a folder `topic/` of the
   *same name*, holding a `README.md` plus those files. The README carries
-  the topic's content and links out to them — e.g. `guidance/set-up-vscode/`
+  the topic's content and links out to them — e.g. `guidance/setup-vscode/`
   is a `README.md` beside a standalone `markdown-preview.css` it points at,
   rather than ~200 lines of CSS inlined. Small snippets still belong
   inline; externalize only what's genuinely large.
@@ -220,7 +220,7 @@ a machine):
 
 - **`devices.md`** (tracked, repo root) — the **roster** of every machine
   this AIOS runs on, high-level and secret-free. It's the **parity spec**
-  that [`/set-up-new-computer`](.claude/skills/set-up-new-computer/SKILL.md)
+  that [`/setup-new-computer`](.claude/skills/setup-new-computer/SKILL.md)
   reads when bringing up a new machine.
 - **`local-setup.md`** (gitignored, repo root) — the detail for *this*
   machine: installed versions, local auth state, file locations.
@@ -228,7 +228,7 @@ a machine):
 Update `local-setup.md` when you install or wire up something locally;
 add a line to `devices.md` when a machine's capabilities change. On a new
 machine, read `devices.md` for the parity target and run
-`/set-up-new-computer`.
+`/setup-new-computer`.
 
 ## Secrets
 

@@ -24,7 +24,7 @@ detail, so this skill is mostly orchestration.
 ## Connection 1 — Google Workspace
 
 Connects Gmail, Drive, Calendar, and Docs via the `gws` CLI. Follow
-[`guidance/set-up-google-workspace.md`](../../../guidance/set-up-google-workspace.md)
+[`guidance/setup-google-workspace.md`](../../../guidance/setup-google-workspace.md)
 end to end — it covers install, OAuth client creation, scopes, the
 stale-token-cache gotcha, and verification.
 
@@ -51,7 +51,7 @@ time.
 
 Creates a custom Slack app in the user's workspace with a User OAuth
 Token, then stores the token in the AIOS root `.env`. Follow
-[`guidance/set-up-slack.md`](../../../guidance/set-up-slack.md) end to
+[`guidance/setup-slack.md`](../../../guidance/setup-slack.md) end to
 end.
 
 Things to flag explicitly:

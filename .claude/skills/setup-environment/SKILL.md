@@ -1,5 +1,5 @@
 ---
-name: set-up-environment
+name: setup-environment
 description: Optional, run-anytime setup that adapts the AIOS repo to how you actually work with it — across three layers: the UI you read and edit it in (VS Code, a desktop app, a terminal), the AI agent(s) that drive it (Claude Code, Codex), and the operating system(s) of your machine(s). The pack ships nothing tool-specific by default; run this if you want editor polish, multi-agent skills routing, or cross-machine sync. Entirely optional and skippable — separate from onboarding and get-connected.
 ---
 
@@ -49,7 +49,7 @@ already see (you likely know the OS, and that Claude Code is running):
 ### 2. UI layer
 
 - **VS Code** → build the `.vscode/` folder from
-  [`guidance/set-up-vscode/`](../../../guidance/set-up-vscode/README.md): the
+  [`guidance/setup-vscode/`](../../../guidance/setup-vscode/README.md): the
   recommended extensions (Claude Code, Codex, Live Preview), the settings
   that open Markdown as a rendered preview and HTML in an integrated
   browser, and the brand `markdown-preview.css`. Then do the fun part —
@@ -87,7 +87,7 @@ design review.
 - **Claude Code** → the default. `.claude/skills/` ships in the box and
   is read automatically — nothing to do.
 - **Codex (as well as, or instead of, Claude Code)** → follow
-  [`guidance/set-up-codex.md`](../../../guidance/set-up-codex.md). The
+  [`guidance/setup-codex.md`](../../../guidance/setup-codex.md). The
   shared `AGENTS.md` glue already ships, so the main step is routing the
   skills folder to `.agents/skills/` (junction on Windows, symlink on
   macOS/Linux). Only if they actually run Codex on this repo.
@@ -102,19 +102,19 @@ design review.
   folder across tools. See
   [`guidance/memory-junctions.md`](../../../guidance/memory-junctions.md).
   Bringing a brand-new machine up to parity is its own flow:
-  [`/set-up-new-computer`](../set-up-new-computer/SKILL.md).
+  [`/setup-new-computer`](../setup-new-computer/SKILL.md).
 - Make sure each machine they use is recorded in `devices.md` (born the
   first time the AIOS runs on a machine).
 
 ### 5. Wrap up
 
 Recap what you set up, with clickable paths. Note that all of it is
-reversible and re-runnable — they can run `/set-up-environment` again
+reversible and re-runnable — they can run `/setup-environment` again
 anytime their tools change.
 
 ## Notes
 
-- This skill **orchestrates**; the `guidance/set-up-*.md` docs are the
+- This skill **orchestrates**; the `guidance/setup-*.md` docs are the
   source of truth for their own steps. Link, don't duplicate.
 - Tool-specific config is **opt-in by design** — the pack ships bare so
   it isn't opinionated about anyone's setup. Set up what they'll use,

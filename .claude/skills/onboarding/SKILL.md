@@ -149,7 +149,7 @@ paths so they can click through), and tell them what's next:
 > use (Gmail, Slack, etc.). When you're ready, run `/get-connected`
 > and we'll start with Google Workspace and Slack."
 
-Optionally, mention `/set-up-environment` — a separate, run-anytime skill
+Optionally, mention `/setup-environment` — a separate, run-anytime skill
 that tailors the repo to *your* tools (a brand-skinned Markdown preview in
 VS Code, adding Codex as a second agent, syncing across machines). It's
 purely about the dev environment, not the AIOS's content, so it's entirely

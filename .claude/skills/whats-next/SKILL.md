@@ -53,9 +53,9 @@ what's real, not exhaustively:
 For each guidance topic, classify it **done / partial / not started** by
 checking for its tailored record:
 
-- `set-up-google-workspace.md` → `tools-and-connections/google-workspace.md` exists → **done**
-- `set-up-slack.md` → `tools-and-connections/slack.md` exists → **done**
-- `set-up-playwright.md` → no `tools-and-connections/playwright.md` → **not started**
+- `setup-google-workspace.md` → `tools-and-connections/google-workspace.md` exists → **done**
+- `setup-slack.md` → `tools-and-connections/slack.md` exists → **done**
+- `setup-playwright.md` → no `tools-and-connections/playwright.md` → **not started**
 
 (The presence of the *tailored* doc — in `tools-and-connections/` — is
 the signal, not anything in `guidance/` itself.)

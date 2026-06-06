@@ -21,8 +21,8 @@ content be **created live, with you**:
   grows through, and the principles (minimalism, CLIs-over-MCPs, commit-and-sync)
   that keep it lean. Read by both Claude Code and Codex.
 - **Skills** ([`.claude/skills/`](.claude/skills/)) — guided flows: `/onboarding` (set up who you
-  are), `/get-connected` (wire in Gmail, Slack, …), `/set-up-new-computer`,
-  `/set-up-environment` (tune your editor & agents — optional), `/whats-next`,
+  are), `/get-connected` (wire in Gmail, Slack, …), `/setup-new-computer`,
+  `/setup-environment` (tune your editor & agents — optional), `/whats-next`,
   `/dream` (tend the memory store), `/grill-me` (get interviewed to extract a
   plan), plus the `working/` task lifecycle (`/complete-working-task`,
   `/checkpoint-working-task`).
@@ -35,7 +35,7 @@ content be **created live, with you**:
   opt-in and never shipped: a brand-skinned VS Code Markdown preview, routing
   skills to Codex, and cross-machine memory/skills junctions are all documented
   in [`guidance/`](guidance/) and set up on request by
-  [`/set-up-environment`](.claude/skills/set-up-environment/SKILL.md) — so the
+  [`/setup-environment`](.claude/skills/setup-environment/SKILL.md) — so the
   pack stays agnostic about the tools you actually use.
 
 The user-content folders — `about-<name>/`, `goals-and-priorities/`,
@@ -53,7 +53,7 @@ extension is the easy path, but any editor or a plain terminal works), and run
 
 For the visual primer, open [`planet-analogy.html`](planet-analogy.html) in any
 browser. (In VS Code, the Live Preview extension makes that one click — see
-[`guidance/set-up-vscode/`](guidance/set-up-vscode/README.md).)
+[`guidance/setup-vscode/`](guidance/setup-vscode/README.md).)
 
 ---
 

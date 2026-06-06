@@ -1,5 +1,5 @@
 ---
-name: set-up-new-computer
+name: setup-new-computer
 description: Bring the AIOS up on a new machine so it matches the others — install the toolchain, restore connections, and register the machine in devices.md. Use when setting up the AIOS on a computer for the first time. Walks the full flow: bare-metal bootstrap (git, an agent CLI, clone), toolchain install, secrets from the password manager, per-connection bring-up, and recording the machine.
 ---
 
@@ -65,7 +65,7 @@ to Phase 1.
 4. **Repo access to clone** — the host CLI/credentials that can read the private
    AIOS repo (e.g. `gh auth login`).
 5. **Clone the repo** to a standard location.
-6. **Launch the agent in the repo** and invoke `/set-up-new-computer`. The rest
+6. **Launch the agent in the repo** and invoke `/setup-new-computer`. The rest
    is below.
 
 ---
@@ -90,7 +90,7 @@ are **opt-in**, and both are per-machine. The full cross-OS how-to and the
 gotchas live in
 [`guidance/memory-junctions.md`](../../../guidance/memory-junctions.md); if the
 user runs Codex here,
-[`guidance/set-up-codex.md`](../../../guidance/set-up-codex.md) covers routing
+[`guidance/setup-codex.md`](../../../guidance/setup-codex.md) covers routing
 skills to it. Set these up only if `devices.md` shows the other machines use
 them — otherwise skip and move on.
 
@@ -125,7 +125,7 @@ connection below.
 
 ### Bring up each connection
 
-`tools-and-connections/` and the matching `guidance/set-up-*.md` files are the
+`tools-and-connections/` and the matching `guidance/setup-*.md` files are the
 live list — follow them; don't trust this skill's examples to stay current. Each connection
 reuses its cloud-side identity:
 
@@ -133,10 +133,10 @@ reuses its cloud-side identity:
   `client_secret.json`, then the user re-mints a refresh token with a browser
   login; you clear the token cache and verify. This is the *Adding another
   person* path in
-  [`guidance/set-up-google-workspace.md`](../../../guidance/set-up-google-workspace.md)
+  [`guidance/setup-google-workspace.md`](../../../guidance/setup-google-workspace.md)
   (same person, new device — same procedure).
 - **Slack** — the user token from `.env` *is* the connection; no new app.
-  Verify per [`guidance/set-up-slack.md`](../../../guidance/set-up-slack.md).
+  Verify per [`guidance/setup-slack.md`](../../../guidance/setup-slack.md).
 - **GitHub** — `gh auth login` per account.
 - **Hosting, database, anything else** — follow each one's note in
   `tools-and-connections/`.

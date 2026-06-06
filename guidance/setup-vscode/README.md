@@ -12,7 +12,7 @@ the repo feel native: Markdown opens as a rendered, brand-skinned preview
 instead of raw source, HTML previews in an integrated browser, and the
 agent/preview extensions are recommended on every machine you sync to.
 
-The [`/set-up-environment`](../../.claude/skills/set-up-environment/SKILL.md)
+The [`/setup-environment`](../../.claude/skills/setup-environment/SKILL.md)
 skill does all of this for you (and offers to pick a color palette). This
 is the underlying reference — read it to set things up by hand, or to
 understand what the skill writes.
@@ -71,7 +71,7 @@ browser, and applies the brand stylesheet below.
   // Apply a custom stylesheet to the built-in Markdown preview for nicer typography
   // and a brand palette. The colors are driven by --brand-* variables at the top of
   // the file — edit them directly, swap in one of the named presets, or run
-  // /set-up-environment to set them for you.
+  // /setup-environment to set them for you.
   "markdown.styles": [".vscode/markdown-preview.css"]
 }
 ```

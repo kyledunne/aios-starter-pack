@@ -21,24 +21,24 @@ follow front-to-back.
 - [scratchpad.md](scratchpad.md) — The shared-file-plus-two-skills
   pattern (`/scratchpad` to capture, `/review-scratchpad` to work
   through) for catching ideas without derailing in-flight work.
-- [set-up-codex.md](set-up-codex.md) — Adding the OpenAI Codex CLI as a
+- [setup-codex.md](setup-codex.md) — Adding the OpenAI Codex CLI as a
   second agent alongside Claude Code, sharing one `AGENTS.md`.
-- [set-up-google-workspace.md](set-up-google-workspace.md) — Connecting
+- [setup-google-workspace.md](setup-google-workspace.md) — Connecting
   Gmail, Drive, Sheets, Calendar, and Docs via the `gws` CLI: install,
   OAuth setup, scopes, and the known pre-1.0 gotchas.
-- [set-up-playwright.md](set-up-playwright.md) — Giving the AIOS a
+- [setup-playwright.md](setup-playwright.md) — Giving the AIOS a
   headless browser for visual verification of frontend work.
-- [set-up-printing-press.md](set-up-printing-press.md) — Minting an
+- [setup-printing-press.md](setup-printing-press.md) — Minting an
   agent-native CLI for any service that doesn't ship one, via the
   Printing Press generator and pre-built library.
-- [set-up-slack.md](set-up-slack.md) — Creating a per-AIOS Slack app
+- [setup-slack.md](setup-slack.md) — Creating a per-AIOS Slack app
   with user-token scopes and wiring the token into the AIOS root
   `.env`.
-- [set-up-vscode/](set-up-vscode/README.md) — Building the optional
+- [setup-vscode/](setup-vscode/README.md) — Building the optional
   `.vscode/` folder for VS Code users: recommended extensions, the
   Markdown-opens-as-preview settings, and a brand-skinned Markdown
   stylesheet with named palettes. Not shipped by default — the AIOS stays
-  editor-agnostic; the `/set-up-environment` skill drives this when wanted.
+  editor-agnostic; the `/setup-environment` skill drives this when wanted.
 - [working-directory.md](working-directory.md) — The
   `working/` + `working-archive/` pattern for organizing active work:
   one subfolder per in-flight task, archived by date when done; plus the
