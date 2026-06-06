@@ -3,25 +3,53 @@
 A starter pack for building a personal AI operating system (AIOS), by
 **Kyle Dunne**.
 
-This pack is intentionally minimal. Building an AIOS is highly personal —
-the structure, the connections, the workflows that matter, and the way
-the whole thing fits together all depend on the person it's built for.
-A generic, fill-in-the-blanks template doesn't save much real work, and
-in practice tends to get abandoned and rebuilt from scratch. So this
-isn't a template. It's a small library of reference material that
-speeds up the human-led setup work, paired with a visual primer for the
-underlying concept.
+An AIOS is a plain-text git repo that holds context about you, connects to the
+services you use, and grows workflows on top — until it's working on your behalf
+around the clock. This pack is what you start from.
 
-If you want to build your own AIOS, **reach out and I'll walk you
-through it personally**: [kyle@kyledunne.ai](mailto:kyle@kyledunne.ai).
-We'll use this starter pack as a reference along the way — not as a
-skeleton to fill in.
+## What this is (and isn't)
 
-For the visual primer, open
-[`planet-analogy.html`](planet-analogy.html) in a browser.
+It's **not** a fill-in-the-blanks template. A generic skeleton full of empty
+`about-you/` and `goals/` folders doesn't save much real work — the structure,
+the connections, and the workflows that matter all depend on the person, so a
+pre-filled template tends to get abandoned and rebuilt anyway.
+
+Instead, this pack ships the **machinery and the recipes**, and lets your actual
+content be **created live, with you**:
+
+- **A primer** ([`AGENTS.md`](AGENTS.md)) — what an AIOS is, the four layers it
+  grows through, and the principles (minimalism, CLIs-over-MCPs, commit-and-sync)
+  that keep it lean. Read by both Claude Code and Codex.
+- **Skills** ([`.claude/skills/`](.claude/skills/)) — guided flows: `/onboarding` (set up who you
+  are), `/get-connected` (wire in Gmail, Slack, …), `/set-up-new-computer`,
+  `/whats-next`, `/dream` (tend the memory store), `/grill-me` (get interviewed
+  to extract a plan), plus the `working/` task lifecycle
+  (`/complete-working-task`, `/checkpoint-working-task`).
+- **A setup manual** ([`guidance/`](guidance/)) — untailored, vendored notes for
+  connecting services (Google Workspace, Slack, Playwright, …) and the patterns
+  that hold it together (git habits, the working/ directory, directory
+  junctions).
+- **The plumbing** — sensible VS Code defaults (Markdown opens in a brand-skinned
+  preview you can recolor during onboarding) and the gitignore/secrets
+  conventions baked in from day one. Optional cross-tool memory and skills
+  junctions are documented in [`guidance/`](guidance/) for when you want them —
+  not forced on you at clone.
+
+The user-content folders — `about-<name>/`, `goals-and-priorities/`,
+`tools-and-connections/` — aren't shipped. They're **born during onboarding**,
+from scratch, because creating them with you (rather than handing you a skeleton
+to fill in) is part of learning that the repo is yours to build and grow.
+
+## Getting started
+
+If you want to build your own AIOS, **reach out and I'll walk you through it
+personally**: [kyle@kyledunne.ai](mailto:kyle@kyledunne.ai). We'll use this pack
+as the starting point — clone it, open it in VS Code, and run `/onboarding`.
+
+For the visual primer, open [`planet-analogy.html`](planet-analogy.html) in a
+browser (the recommended Live Preview extension makes that one click).
 
 ---
 
-*If you're an AI agent helping someone set up an AIOS using this pack,
-start with [`CLAUDE.md`](CLAUDE.md) and consult
-[`guidance/`](guidance/) as needed.*
+*If you're an AI agent helping someone set up an AIOS from this pack, start with
+[`AGENTS.md`](AGENTS.md) and consult [`guidance/`](guidance/) as needed.*

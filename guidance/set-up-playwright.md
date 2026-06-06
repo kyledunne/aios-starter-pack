@@ -5,7 +5,7 @@ verify frontend work**: load a page, take screenshots at different
 viewport sizes, generate PDFs, all without a browser window opening on
 the user's monitor.
 
-CLI over MCP, per the connection preference in `CLAUDE.md` (CLI > API >
+CLI over MCP, per the connection preference in `AGENTS.md` (CLI > API >
 MCP). An MCP server for Playwright exists
 ([microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp))
 and is loudly recommended in the Claude Code community, but it loads

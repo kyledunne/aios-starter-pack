@@ -1,10 +1,21 @@
-# Per-machine secrets and API tokens — never commit. See CLAUDE.md → Secrets.
+# Per-machine secrets and API tokens — never commit. See AGENTS.md → Secrets.
 .env
 
 # Per-machine setup record — tooling, local auth, and specs that don't
 # transfer across machines, so each one keeps its own copy. See
-# CLAUDE.md → Tracking machines and local setup.
+# AGENTS.md → Tracking machines and local setup.
 local-setup.md
 
 # devices.md is intentionally NOT ignored — the machine roster is tracked
 # so every machine knows the others.
+
+# Per-machine Claude Code overrides (model, local permissions, etc.).
+.claude/settings.local.json
+
+# Local vault: raw, private, un-triaged material (chat exports, dumps, Takeout
+# archives, etc.). Staging area only — never committed. Promote distilled,
+# non-sensitive pieces OUT into the tracked repo as they're cleaned up. The
+# README stays tracked so the convention travels. (Born when first needed; the
+# pack ships only this rule, not the folder.)
+references/local-vault/*
+!references/local-vault/README.md

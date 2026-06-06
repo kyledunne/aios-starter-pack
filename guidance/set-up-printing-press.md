@@ -13,7 +13,7 @@ Featured by [Nate Herk on 2026-05-09](https://youtu.be/YHk45NEpspE).
 ## Why this matters for an AIOS
 
 The standing connection preference is **CLIs over APIs over MCP
-servers** (see `CLAUDE.md`). When a service the user wants to wire in
+servers** (see `AGENTS.md`). When a service the user wants to wire in
 has no first-party CLI (or only a weak one), Printing Press is the way
 to mint one. Pitch: ~35× fewer tokens than the equivalent MCP server
 because the agent runs `tool subcommand --flag` and reads stdout, with

@@ -1,0 +1,195 @@
+/*
+ * Brand skin for VS Code's built-in Markdown preview.
+ * Wired up via "markdown.styles" in .vscode/settings.json.
+ *
+ * All color comes from the --brand-* variables in the ACTIVE PALETTE block
+ * below. To rebrand the whole preview, change those values — nothing else.
+ * Three ways to do it:
+ *   1. Run /onboarding and pick a palette (or hand it your brand colors / site).
+ *   2. Copy one of the named PRESETS (further down) over the ACTIVE block.
+ *   3. Edit the hex values by hand.
+ *
+ * The default is a neutral, brand-agnostic graphite skin — it looks clean on
+ * day one and gives /onboarding something to replace. The pane is skinned dark
+ * so fenced-code syntax colors stay legible on the default dark editor theme.
+ */
+
+:root {
+  /* ===== ACTIVE PALETTE — neutral "graphite" default ===== */
+  --brand-bg:         #1f2023;  /* page background                       */
+  --brand-text:       #e6e6e6;  /* body text                            */
+  --brand-h1:         #f5f5f5;  /* H1 + its underline                   */
+  --brand-h2:         #cfd2d6;  /* H2                                   */
+  --brand-h3:         #a9adb3;  /* H3 + horizontal rule                 */
+  --brand-link:       #7aa2cf;  /* links (the one accent)               */
+  --brand-code:       #d6b370;  /* inline code text + quote bar         */
+  --brand-quote-fill: rgba(255, 255, 255, 0.06); /* blockquote panel    */
+  --brand-table-head: rgba(255, 255, 255, 0.10); /* table header fill   */
+  --brand-rule:       #3a3d42;  /* hairline borders / dividers          */
+  /* ======================================================= */
+}
+
+/*
+ * ============================ PRESETS ============================
+ * To use one, copy its ten values over the ACTIVE PALETTE block above.
+ *
+ * --- slate (cool blue-gray, professional) ---
+ *   --brand-bg:#1e242b; --brand-text:#dde3ea; --brand-h1:#cfe3ff;
+ *   --brand-h2:#9ec5e8; --brand-h3:#7fa8c9; --brand-link:#6ab0e0;
+ *   --brand-code:#c9a96a; --brand-quote-fill:rgba(110,160,210,0.14);
+ *   --brand-table-head:#2f4458; --brand-rule:#3a4654;
+ *
+ * --- forest (deep green) ---
+ *   --brand-bg:#18211b; --brand-text:#e3e8e0; --brand-h1:#c9e6a8;
+ *   --brand-h2:#8fc77e; --brand-h3:#6fa85f; --brand-link:#7bc47f;
+ *   --brand-code:#d9b873; --brand-quote-fill:rgba(120,180,110,0.14);
+ *   --brand-table-head:#284032; --brand-rule:#324a36;
+ *
+ * --- plum (purple / magenta) ---
+ *   --brand-bg:#221a26; --brand-text:#ece4ee; --brand-h1:#e8b9e0;
+ *   --brand-h2:#c98fc4; --brand-h3:#a86f9f; --brand-link:#d07ac4;
+ *   --brand-code:#d6b370; --brand-quote-fill:rgba(150,90,150,0.18);
+ *   --brand-table-head:#3d2a3f; --brand-rule:#45324a;
+ *
+ * --- ocean (teal / blue) ---
+ *   --brand-bg:#15212a; --brand-text:#dbe8ee; --brand-h1:#a8e0e6;
+ *   --brand-h2:#6fc7c2; --brand-h3:#5fa8a8; --brand-link:#4fb0c9;
+ *   --brand-code:#d9be73; --brand-quote-fill:rgba(80,170,180,0.14);
+ *   --brand-table-head:#1f4452; --brand-rule:#2a4a52;
+ * ================================================================
+ */
+
+/* Skin the whole pane, overriding the editor theme background just for
+   the Markdown preview. */
+body {
+  background-color: var(--brand-bg) !important;
+  color: var(--brand-text) !important;
+
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* --- Headings --- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+}
+
+h1 {
+  font-size: 2em;
+  color: var(--brand-h1);
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid var(--brand-h1);
+}
+
+h2 {
+  font-size: 1.5em;
+  color: var(--brand-h2);
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--brand-rule);
+}
+
+h3 {
+  font-size: 1.25em;
+  color: var(--brand-h3);
+}
+
+h4, h5, h6 { color: var(--brand-text); }
+
+/* --- Paragraphs & lists --- */
+p, ul, ol {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+li { margin-bottom: 0.25em; }
+li > ul, li > ol { margin-bottom: 0; }
+
+strong { color: var(--brand-text); }
+
+/* --- Links --- */
+a {
+  color: var(--brand-link);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* --- Inline code --- */
+code {
+  font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--brand-code);
+  background: var(--brand-quote-fill);
+}
+
+/* --- Fenced code blocks (faint panel keeps theme syntax colors legible) --- */
+pre {
+  padding: 1em;
+  border-radius: 6px;
+  overflow: auto;
+  color: var(--brand-text);
+  background: var(--brand-quote-fill) !important;
+  border: 1px solid var(--brand-rule);
+}
+pre code {
+  padding: 0;
+  color: inherit;
+  background: none;
+}
+
+/* --- Blockquotes: accent bar on a faint panel --- */
+blockquote {
+  margin: 1em 0;
+  padding: 0.4em 1.2em;
+  color: var(--brand-text);
+  background: var(--brand-quote-fill);
+  border-left: 4px solid var(--brand-code);
+  border-radius: 0 4px 4px 0;
+}
+blockquote > :first-child { margin-top: 0; }
+blockquote > :last-child { margin-bottom: 0; }
+
+/* --- Tables --- */
+table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  display: block;
+  overflow: auto;
+}
+th, td {
+  padding: 0.5em 0.9em;
+  border: 1px solid var(--brand-rule);
+}
+th {
+  font-weight: 600;
+  color: var(--brand-text);
+  background: var(--brand-table-head);
+}
+td { color: var(--brand-text); }
+tr:nth-child(2n) td {
+  background: var(--brand-quote-fill);
+}
+
+/* --- Horizontal rule --- */
+hr {
+  height: 2px;
+  border: none;
+  margin: 2em 0;
+  background: var(--brand-h3);
+  opacity: 0.7;
+}
+
+/* --- Images --- */
+img {
+  max-width: 100%;
+  border-radius: 6px;
+}

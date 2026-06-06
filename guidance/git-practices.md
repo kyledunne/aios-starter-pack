@@ -56,3 +56,38 @@ Each of those is small but worth preserving on its own:
 Short and direct. Describe what changed in one line. Multi-paragraph
 messages are usually a sign that the unit isn't actually coherent —
 split it.
+
+## Multiple agents in one repo: keep commits scoped
+
+Expect more than one agent working in the same AIOS at once. The git **index
+(staging area) and HEAD are shared repo state**, not per-agent — so when two
+agents share one working copy, their commits can bleed into each other:
+
+- You stage your files, go to commit, and git says **"nothing to commit"** —
+  your changes already landed in *another* agent's commit, under an unrelated
+  message.
+- Or the reverse: **your** commit includes files you never touched, because you
+  staged broadly and scooped up another agent's in-flight work.
+
+Separate **git worktrees** would give each agent its own index and avoid this
+entirely, but they're awkward enough in practice that agents usually just share
+one working copy — so the discipline below is the real defense:
+
+- **One agent per `working/` project at a time.** Agents on *separate* projects
+  rarely interfere; the same task folder is where they collide. Inside your own
+  `working/<project>/` subfolder, commit freely — that's your sandbox.
+- **Outside your subfolder, scope every commit by explicit pathspec:**
+  `git commit -- path1 path2`, never `git add -A` / `git commit -a`. That keeps
+  unrelated work out of *your* commit.
+- **Don't leave files staged between steps.** The pathspec protects your commit's
+  *contents*, but not your *staged files* from another agent's broad commit.
+  Stage and commit in one motion — `git commit -- <paths>` commits the
+  working-tree version of tracked paths with no separate `git add`, so there's no
+  window where your changes sit staged for someone else to scoop. (New, untracked
+  files still need `git add` first — chain it:
+  `git add <new> && git commit -- <new> <others>` in one command to keep the
+  window to milliseconds.)
+- **If the bundling already happened and is pushed, leave it.** Don't rewrite
+  history to split it — especially with a concurrent writer active, where a
+  force-push turns a cosmetic problem into a real one. Verify your content is
+  intact, note the bundling, and move on.

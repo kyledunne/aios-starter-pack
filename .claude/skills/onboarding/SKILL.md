@@ -6,7 +6,7 @@ description: First-run onboarding for a new AIOS. Walks the user through the Con
 # Onboarding — set up the Context layer
 
 This skill is the first thing a new AIOS user runs. It builds **Layer 1
-— Core context** (see [`CLAUDE.md`](../../../CLAUDE.md)) by walking
+— Core context** (see [`AGENTS.md`](../../../AGENTS.md)) by walking
 through a short conversation and writing the answers into the repo as
 Markdown files the AIOS reads on every future session.
 
@@ -39,14 +39,14 @@ onboarding conversation feels.
 A short message: what an AIOS is in one sentence (a personal AI
 operating system, kept as a plain-text repo, that gets to know them
 and works on their behalf over time), and what this session will
-cover (five short questions, takes maybe 10 minutes). Then ask the
+cover (six quick questions, about 10–15 minutes). Then ask the
 first question.
 
 ### 2. Name
 
 > "First — what should I call you? Just a first name is fine."
 
-Use it to name the about-folder: lowercase, kebab-case — `about-claire/`,
+Use it to name the about-folder: lowercase, kebab-case — `about-sam/`,
 `about-jordan/`, `about-maria-sofia/`. From here on, that's the path
 you'll write context files into. Confirm the folder name back to them
 casually so it's not a surprise later: "Got it — I'll keep everything
@@ -139,7 +139,35 @@ Based on the answer, scaffold `goals-and-priorities/`:
 Keep the explanation in `goals-and-priorities/README.md` short — a few
 sentences and the naming convention. The user can grow it.
 
-### 7. Wrap up
+### 7. Make it yours — a color scheme
+
+A quick, fun one to finish. The AIOS is read as Markdown, and VS Code's
+preview is skinned by a small stylesheet
+([`.vscode/markdown-preview.css`](../../../.vscode/markdown-preview.css)) whose
+colors are all driven by `--brand-*` variables in one block at the top. Offer
+to set the palette so the repo feels like theirs:
+
+> "Last thing, and it's the fun one — want to pick a color scheme for how your
+> AIOS looks? I can use a ready-made palette, match your brand, or leave the
+> neutral default."
+
+Three ways to land it — whichever they pick, write the values into the
+**ACTIVE PALETTE** block at the top of `.vscode/markdown-preview.css`:
+
+- **A named preset** — the file ships with `slate`, `forest`, `plum`, and
+  `ocean` presets (listed in its comments) alongside the neutral default.
+  Copy the chosen preset's ten values over the ACTIVE PALETTE block.
+- **Their own brand colors** — ask for hex codes, or for a link to their
+  website / logo and pull the dominant colors from it. Map them onto the
+  `--brand-*` roles (background, text, headings, links, accents) and write
+  them in.
+- **Keep the default** — neutral graphite; nothing to change.
+
+Keep it light and reversible — it's just ten CSS variables, swappable any
+time. If a Markdown preview is open, mention they can reopen a `.md` file to
+see the new colors. This is a 60-second delight, not a design review.
+
+### 8. Wrap up
 
 Confirm what was written: list the files you created (with relative
 paths so they can click through), and tell them what's next:
@@ -160,7 +188,7 @@ Commit message: `Onboarding: initial Context layer for <name>`.
 - **Don't invent details.** If the user didn't say it, don't write
   it. Better to have a thin file than a confidently wrong one.
 - **Don't lecture about AIOS theory.** They can read
-  [`CLAUDE.md`](../../../CLAUDE.md) and the planet-analogy primer if
+  [`AGENTS.md`](../../../AGENTS.md) and the planet-analogy primer if
   they want depth. This skill is the doing, not the explaining.
 - **Don't push for completeness.** "Skip" is always a valid answer.
   Anything they skip can be filled in later — and probably will be,

@@ -71,6 +71,38 @@ same way each time:
 The point is to keep `working/` small and current while leaving a clean,
 dated trail in `working-archive/` of what got done, when, and how.
 
+## Snag: a folder move fails with "in use" / "Device or resource busy"
+
+Archiving a task means moving its folder, and that move can fail when an agent
+runs inside the VS Code extension:
+
+**Symptom.** A directory move or rename — Git Bash `mv`, PowerShell `Move-Item`,
+or `git mv` — fails with `Device or resource busy` (Git Bash) or `Cannot move
+item because the item ... is in use` (PowerShell). Retries don't clear it, and no
+`python` / `git` / `bash` process is holding the path. Most likely on a large or
+recently-written folder.
+
+**Cause.** VS Code's file watcher keeps an open handle on workspace folders, and
+that handle blocks the rename at the OS level. An agent running *inside* VS Code
+can't release it — it can't close the editor it lives in.
+
+**Fix.** Have the user move the folder manually (Explorer: select → Ctrl+X →
+navigate → Ctrl+V), or **close VS Code first** to release the watcher, then move
+it. Don't burn turns retrying programmatically — it won't clear while the watcher
+holds the handle. Only directory **moves/renames** are blocked; **editing files**
+inside the folder works fine throughout.
+
+## Related: the local vault (raw external material)
+
+`working/` is for the AIOS's own in-flight tasks. Raw, un-triaged material that
+comes from *outside* — chat exports, Takeout archives, zip dumps, another
+person's scrubbed export — is different: it's bulky, often private, and not yet
+distilled into anything the repo should track. Stage it in a **gitignored
+`references/local-vault/`** instead: a holding area that's never committed, from
+which you promote the cleaned-up, non-sensitive keepers OUT into the tracked
+repo. Keep a tracked `references/local-vault/README.md` documenting the
+convention so it travels even though the contents don't.
+
 ## Implementation notes
 
 This is a *pitch* for the pattern, not a copy of any one
@@ -79,4 +111,6 @@ implementation. The shape — two folders plus an optional wrap-up skill
 wrap-up README, whether to bother with a skill at all) are personal
 choices to make with the user when adopting it. Like everything in an
 AIOS, add it when the need shows up: the day scratch files start piling
-up in places they don't belong.
+up in places they don't belong. (This pack ships the wrap-up as
+`/complete-working-task`, with `/checkpoint-working-task` for mid-task
+save-points.)

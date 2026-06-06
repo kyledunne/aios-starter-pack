@@ -3,7 +3,7 @@
 Connects an AIOS to **Gmail, Drive, Sheets, Calendar, and Docs** for one
 Google account using the [Google Workspace CLI](https://github.com/googleworkspace/cli)
 (`gws`). CLI is the deliberate choice over an MCP server or a raw API —
-see the *Connections* section of the AIOS's `CLAUDE.md` (CLI > API > MCP).
+see the *Connections* section of the AIOS's `AGENTS.md` (CLI > API > MCP).
 
 ## Read this first
 

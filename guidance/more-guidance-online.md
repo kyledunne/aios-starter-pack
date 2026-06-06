@@ -6,7 +6,7 @@ to the upstream starter-pack repo as new AIOS-building territory gets
 explored.
 
 **Upstream repo:**
-<https://github.com/kyledunne/aios-starter-pack-project>
+<https://github.com/kyledunne/aios-starter-pack>
 
 ## For agents
 
@@ -18,12 +18,12 @@ simply be older than the latest.
 Two quick ways to check:
 
 - **Browse the folder on GitHub:**
-  <https://github.com/kyledunne/aios-starter-pack-project/tree/main/guidance>
+  <https://github.com/kyledunne/aios-starter-pack/tree/main/guidance>
 - **Pull the latest copy down** into a scratch directory (don't
   overwrite the local copy unless the user wants that):
 
   ```
-  git clone https://github.com/kyledunne/aios-starter-pack-project.git /tmp/aios-starter-pack-latest
+  git clone https://github.com/kyledunne/aios-starter-pack.git /tmp/aios-starter-pack-latest
   ls /tmp/aios-starter-pack-latest/guidance
   ```
 

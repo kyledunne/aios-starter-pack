@@ -7,8 +7,14 @@ follow front-to-back.
 ## Index
 
 - [git-practices.md](git-practices.md) — How to commit and push as the
-  AIOS grows: the default of auto-committing every coherent change, and
-  the handful of cases where it's wrong.
+  AIOS grows: the default of auto-committing every coherent change, the
+  handful of cases where it's wrong, and keeping commits scoped when
+  multiple agents share one repo.
+- [memory-junctions.md](memory-junctions.md) — *Optional* per-machine
+  directory junctions (Windows) / symlinks (macOS/Linux) for two upgrades:
+  syncing Claude's memory into a tracked `memory/` folder, and sharing one
+  skills folder across Claude Code and Codex. Not set up by default — a good
+  thing to reach for once you have a second machine or add Codex.
 - [karpathy-wiki.md](karpathy-wiki.md) — The `raw/` / `wiki/` /
   `outputs/` folder pattern for turning a messy corpus into a
   structured, LLM-maintained knowledge base.
@@ -30,7 +36,9 @@ follow front-to-back.
   `.env`.
 - [working-directory.md](working-directory.md) — The
   `working/` + `working-archive/` pattern for organizing active work:
-  one subfolder per in-flight task, archived by date when done.
+  one subfolder per in-flight task, archived by date when done; plus the
+  VS Code folder-lock snag and the `references/local-vault/` staging
+  convention.
 - [more-guidance-online.md](more-guidance-online.md) — How to check the
   upstream starter-pack repo for newer guidance docs not in this local
   copy.

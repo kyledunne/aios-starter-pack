@@ -32,7 +32,7 @@ never create a new app, project, or OAuth client when onboarding a machine.
   on. When you run this skill, treat Phase 0 as "verify it's done," then
   proceed.
 - **Secrets come from the password manager** — never email, paste into chat, or
-  commit them. See [`CLAUDE.md` → Secrets](../../../CLAUDE.md).
+  commit them. See [`AGENTS.md` → Secrets](../../../AGENTS.md).
 - **Match the other machines.** `devices.md` (tracked) is the **parity spec** —
   read it first; it's the roster of what each existing machine runs, and it's
   maintained from the first machine onward precisely so a new one can read it
@@ -70,17 +70,29 @@ to Phase 1.
 
 ---
 
-## Phase 1 — Machine-local plumbing  *(only if your AIOS uses any)*
+## Phase 1 — Machine-local plumbing
 
-Some AIOS setups bridge an agent-expected path to a tracked repo folder with a
-machine-local **junction (Windows) or symlink (macOS/Linux)** — for example,
-pointing the agent's memory or skills directory at a repo folder so it syncs
-across machines. These bridges are machine-local and must be recreated per
-machine; a starter AIOS may have none.
+On a fresh clone there's very little to do here: **skills ship as plain files in
+`.claude/skills/`**, so Claude Code sees them the moment you open the repo —
+nothing to wire up.
 
-If yours does, recreate them now and confirm the bridged paths resolve. A
-`SessionStart` hook often recreates them automatically — verify rather than
-assume. If the AIOS has none of this, skip the phase.
+Two **optional** bridges sync things across machines or share them across tools.
+A new machine only sets them up if the user already relies on them elsewhere —
+check `devices.md`:
+
+- **Memory sync** — bridge Claude Code's per-project memory dir into a tracked
+  `memory/` folder so memories travel via git.
+- **Skills sharing** — surface one skills folder to *both* Claude Code and Codex
+  (and, if preferred, keep it at a neutral top-level `skills/`).
+
+Both are directory **junctions (Windows)** or **symlinks (macOS/Linux)**, both
+are **opt-in**, and both are per-machine. The full cross-OS how-to and the
+gotchas live in
+[`guidance/memory-junctions.md`](../../../guidance/memory-junctions.md); if the
+user runs Codex here,
+[`guidance/set-up-codex.md`](../../../guidance/set-up-codex.md) covers routing
+skills to it. Set these up only if `devices.md` shows the other machines use
+them — otherwise skip and move on.
 
 ---
 
@@ -113,8 +125,8 @@ connection below.
 
 ### Bring up each connection
 
-`connections/` and the matching `guidance/set-up-*.md` files are the live list —
-follow them; don't trust this skill's examples to stay current. Each connection
+`tools-and-connections/` and the matching `guidance/set-up-*.md` files are the
+live list — follow them; don't trust this skill's examples to stay current. Each connection
 reuses its cloud-side identity:
 
 - **Google Workspace** — same OAuth client, new machine: place
@@ -127,7 +139,7 @@ reuses its cloud-side identity:
   Verify per [`guidance/set-up-slack.md`](../../../guidance/set-up-slack.md).
 - **GitHub** — `gh auth login` per account.
 - **Hosting, database, anything else** — follow each one's note in
-  `connections/`.
+  `tools-and-connections/`.
 
 ---
 
@@ -151,9 +163,9 @@ reuses its cloud-side identity:
 ## Phase 5 — Verify end-to-end  *(agent runs these)*
 
 Run each connection's own verification — the `auth status` plus a real read for
-each CLI, the Slack `auth.test`, and so on. Confirm any machine-local plumbing
-from Phase 1 resolves. If all pass, the machine is at parity — report what's
-live and anything that needs the user's follow-up.
+each CLI, the Slack `auth.test`, and so on. If you set up any of the optional
+bridges in Phase 1, confirm they resolve. If all pass, the machine is at parity —
+report what's live and anything that needs the user's follow-up.
 
 ## Notes
 
@@ -161,7 +173,7 @@ live and anything that needs the user's follow-up.
   of truth for their own steps. Link, don't duplicate.
 - The connections named above (Google Workspace, Slack, GitHub) are just the
   common starting set. Real machines will have more — let `devices.md` and
-  `connections/` drive the actual list, not this skill's examples.
+  `tools-and-connections/` drive the actual list, not this skill's examples.
 - Commit and push as one coherent unit per
   [`guidance/git-practices.md`](../../../guidance/git-practices.md). Commit
   message: `Set up AIOS on <machine name>`.

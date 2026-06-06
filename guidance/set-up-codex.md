@@ -42,6 +42,28 @@ over time, so don't restate them here. Follow the upstream docs:
 Once installed, `cd` into the AIOS repo and run Codex. It'll pick up
 `AGENTS.md` automatically.
 
+## Sharing the skills folder with Codex
+
+Claude Code reads skills from `.claude/skills/` (where this pack keeps
+them); Codex looks in `.agents/skills/`, scanning from the working dir up
+to the repo root. So out of the box Codex picks up `AGENTS.md` but **not**
+the skills. To share them, point `.agents/skills` at the skills folder with
+a directory junction (Windows) or symlink (macOS/Linux):
+
+```
+# Windows (junction, no admin needed)
+cmd /c mklink /J .agents\skills .claude\skills
+# macOS / Linux
+mkdir -p .agents && ln -s ../.claude/skills .agents/skills
+```
+
+Then add `.agents/skills` to `.gitignore` so git doesn't double-track the
+skills through the link. The SKILL.md `name`/`description` frontmatter is
+identical for both tools, so each skill works unmodified. Full cross-OS
+mechanics and the gotchas (plus the memory bridge and the `<slug>` rule)
+live in [`memory-junctions.md`](memory-junctions.md). Optional — do it when
+you actually run Codex on this repo, not before.
+
 ## Verify the handover
 
 Open the same AIOS repo in both agents in turn and ask each a small

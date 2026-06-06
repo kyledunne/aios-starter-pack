@@ -1,0 +1,9 @@
+{
+  // Recommended on every machine this AIOS syncs to. Live Preview gives a one-click
+  // integrated-browser preview of HTML files (globe "Show Preview" icon, or Alt+L Alt+O) —
+  // used for planet-analogy.html and any other HTML the AIOS produces.
+  // The matching settings live in .vscode/settings.json (livePreview.*).
+  "recommendations": [
+    "ms-vscode.live-server"
+  ]
+}
