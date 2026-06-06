@@ -17,11 +17,11 @@ skill does all of this for you (and offers to pick a color palette). This
 is the underlying reference — read it to set things up by hand, or to
 understand what the skill writes.
 
-Create three files under a `.vscode/` folder at the repo root. All three
-ship beside this README as ready-made files to copy —
-[`extensions.json`](extensions.json), [`settings.json`](settings.json),
-and [`markdown-preview.css`](markdown-preview.css); the sections below
-explain what each one does.
+Build a `.vscode/` folder at the repo root from the ready-made files that
+ship beside this README: [`extensions.json`](extensions.json),
+[`settings.json`](settings.json), [`markdown-preview.css`](markdown-preview.css),
+and a [`markdown-themes/`](markdown-themes/) folder of color themes. The
+sections below explain what each one does.
 
 ## `.vscode/extensions.json` — recommended extensions
 
@@ -37,27 +37,40 @@ browser, and applies the brand stylesheet below. Copy
 [`settings.json`](settings.json) from this folder to
 `.vscode/settings.json`.
 
-## `.vscode/markdown-preview.css` — brand-skinned Markdown preview
+## `.vscode/markdown-preview.css` + `markdown-themes/` — the skinned preview
 
-Copy the [`markdown-preview.css`](markdown-preview.css) file from this
-folder to `.vscode/markdown-preview.css`. The whole look is driven by the
-ten `--brand-*` variables in the **ACTIVE PALETTE** block at the top — to
-rebrand, change only those.
+The look is two layers, listed in order in `settings.json`'s
+`markdown.styles`:
+
+1. **`markdown-preview.css`** — the structural base (typography, spacing,
+   tables, code blocks) plus a neutral graphite fallback palette. Copy it
+   to `.vscode/markdown-preview.css`.
+2. **A color theme** from [`markdown-themes/`](markdown-themes/) — copy
+   that folder (or just the theme you want) to `.vscode/markdown-themes/`.
+   This is the **band-style** layer: tinted heading bands with a left
+   accent bar and a divider that fades out at both ends, in your chosen
+   palette.
 
 ### Picking a palette
 
+The themes come in four palettes — **ocean, slate, forest, plum** — each
+in a **light** and a **dark** variant (`ocean-bands.css`,
+`ocean-bands-dark.css`, …). The shipped default is `ocean-bands-dark`.
 Three ways to brand it:
 
-- **A named preset** — `slate`, `forest`, `plum`, or `ocean` (listed in
-  the file's comments). Copy the chosen preset's ten values over the
-  ACTIVE PALETTE block.
-- **Your own brand colors** — drop in your hex codes, or pull the
-  dominant colors from your website/logo and map them onto the
-  `--brand-*` roles (background, text, headings, links, accents).
-- **Keep the default** — neutral graphite; change nothing.
+- **Pick a shipped theme** — point the second `markdown.styles` entry at
+  any file in `markdown-themes/`. Dark variants keep fenced-code colors
+  legible on a dark editor theme; light variants suit a light editor.
+- **Your own brand colors** — copy a theme, rename it, and change only the
+  ten `--brand-*` values in its `:root` (your hex codes, or the dominant
+  colors pulled from your site/logo). The band rules derive their tints
+  from the heading colors, so leave them alone.
+- **Plain, no bands** — remove the second entry; the base's own graphite
+  palette (edit its ACTIVE PALETTE block to rebrand) shows with plain
+  underlined headings.
 
-It's just ten CSS variables, swappable anytime. If a Markdown preview is
-open, reopen a `.md` file to see the new colors.
+Swappable anytime. If a Markdown preview is open, reopen a `.md` file to
+see the change. See [`markdown-themes/README.md`](markdown-themes/README.md).
 
 ## Should I commit `.vscode/`?
 

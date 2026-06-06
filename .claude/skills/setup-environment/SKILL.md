@@ -65,22 +65,28 @@ already see (you likely know the OS, and that Claude Code is running):
 If they set up the VS Code folder, offer to brand the Markdown preview —
 a quick, reversible delight:
 
-> "Want to pick a color scheme for how your AIOS looks? I can use a
-> ready-made palette, match your brand, or leave the neutral default."
+> "Want to pick a color scheme for how your AIOS looks? There are four
+> palettes — ocean, slate, forest, plum — each in light and dark. Or I
+> can match your own brand colors."
 
-Write the chosen values into the **ACTIVE PALETTE** block at the top of
-`.vscode/markdown-preview.css`:
+The themes live in `.vscode/markdown-themes/` (band-style: tinted heading
+bands with an accent bar + a fading divider). To apply one, set the
+**second** `markdown.styles` entry in `.vscode/settings.json` to its path:
 
-- **A named preset** — `slate`, `forest`, `plum`, or `ocean` (listed in
-  the file's comments). Copy its ten values over the ACTIVE block.
-- **Their own brand colors** — ask for hex codes, or for a link to their
-  site/logo and pull the dominant colors from it; map them onto the
-  `--brand-*` roles.
-- **Keep the default** — neutral graphite; nothing to change.
+- **A shipped theme** — `ocean`, `slate`, `forest`, or `plum`, light or
+  dark (e.g. `.vscode/markdown-themes/forest-bands.css`). The default is
+  `ocean-bands-dark`. Steer dark for a dark editor theme, light for a
+  light one — it keeps fenced-code colors legible.
+- **Their own brand colors** — ask for hex codes, or a link to their
+  site/logo to pull dominant colors from; copy a theme, rename it, and
+  change only the ten `--brand-*` values in its `:root` (the band rules
+  derive from those).
+- **Plain / no bands** — remove the second entry for plain headings on
+  the base's neutral palette.
 
-Ten CSS variables, swappable anytime. If a preview is open, mention they
-can reopen a `.md` file to see the new colors. A 60-second delight, not a
-design review.
+Swappable anytime. If a preview is open, mention they can reopen a `.md`
+file to see it. A 60-second delight, not a design review. Details:
+[`markdown-themes/README.md`](../../../guidance/setup-vscode/markdown-themes/README.md).
 
 ### 3. Agentic layer
 

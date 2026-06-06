@@ -1,0 +1,65 @@
+/*
+ * Slate / Bands (dark) — charcoal page, soft blue headings.
+ * Same band formatting as citrus-bands — tinted heading bands with a left
+ * accent bar, plus a divider that fades to nothing at both ends — in the
+ * slate palette. Pure CSS on the normal Markdown structure: nothing in
+ * your .md files changes. One of a light+dark band-theme family; swap the
+ * second "markdown.styles" entry to flip between them.
+ */
+:root {
+  --brand-bg:         #1e242b;
+  --brand-text:       #dde3ea;
+  --brand-h1:         #cfe3ff;
+  --brand-h2:         #9ec5e8;
+  --brand-h3:         #7fa8c9;
+  --brand-link:       #6ab0e0;
+  --brand-code:       #c9a96a;
+  --brand-quote-fill: rgba(110, 160, 210, 0.14);
+  --brand-table-head: #2f4458;
+  --brand-rule:       #3a4654;
+}
+
+/* H1 - strongest band: tinted wash + thick accent bar, rounded right edge. */
+h1 {
+  color: var(--brand-h1);
+  border: none;
+  border-left: 5px solid var(--brand-h1) !important;
+  border-radius: 0 6px 6px 0;
+  padding: 0.4em 0.7em;
+  background: linear-gradient(90deg, rgba(207, 227, 255, 0.13), rgba(207, 227, 255, 0.03));
+}
+
+/* H2 - lighter band. */
+h2 {
+  color: var(--brand-h2);
+  border: none;
+  border-left: 4px solid var(--brand-h2) !important;
+  border-radius: 0 5px 5px 0;
+  padding: 0.32em 0.65em;
+  background: linear-gradient(90deg, rgba(158, 197, 232, 0.12), rgba(158, 197, 232, 0.015));
+}
+
+/* H3 - faint band, same shape as the others (just lighter). */
+h3 {
+  color: var(--brand-h3);
+  border: none;
+  border-left: 3px solid var(--brand-h3) !important;
+  border-radius: 0 5px 5px 0;
+  padding: 0.28em 0.6em;
+  background: linear-gradient(90deg, rgba(127, 168, 201, 0.13), rgba(127, 168, 201, 0.02));
+}
+
+/* Divider - a gradient rule that fades out at both edges. */
+hr {
+  height: 3px;
+  border: none;
+  margin: 2.4em 0;
+  opacity: 1;
+  border-radius: 2px;
+  background: linear-gradient(to right,
+    transparent,
+    var(--brand-h2) 22%,
+    var(--brand-h1) 50%,
+    var(--brand-h2) 78%,
+    transparent);
+}

@@ -20,8 +20,16 @@
   "livePreview.openPreviewTarget": "Embedded Preview",
   "livePreview.useIntegratedBrowser": true,
   // Apply a custom stylesheet to the built-in Markdown preview for nicer typography
-  // and a brand palette. The colors are driven by --brand-* variables at the top of
-  // the file — edit them directly, swap in one of the named presets, or run
-  // /setup-environment to set them for you.
-  "markdown.styles": [".vscode/markdown-preview.css"]
+  // and a brand palette. First entry is the structural base; the SECOND entry is the
+  // band-style color theme. Swap that second filename to any file in
+  // .vscode/markdown-themes/ to change palette or light/dark — or run
+  // /setup-environment to pick one for you:
+  //   light: ocean-bands, slate-bands, forest-bands, plum-bands
+  //   dark:  ocean-bands-dark, slate-bands-dark, forest-bands-dark, plum-bands-dark
+  // To drop the band styling entirely (plain headings + the base's own palette),
+  // remove the second entry. See markdown-themes/README.md.
+  "markdown.styles": [
+    ".vscode/markdown-preview.css",
+    ".vscode/markdown-themes/ocean-bands-dark.css"
+  ]
 }
