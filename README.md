@@ -22,18 +22,21 @@ content be **created live, with you**:
   that keep it lean. Read by both Claude Code and Codex.
 - **Skills** ([`.claude/skills/`](.claude/skills/)) — guided flows: `/onboarding` (set up who you
   are), `/get-connected` (wire in Gmail, Slack, …), `/set-up-new-computer`,
-  `/whats-next`, `/dream` (tend the memory store), `/grill-me` (get interviewed
-  to extract a plan), plus the `working/` task lifecycle
-  (`/complete-working-task`, `/checkpoint-working-task`).
+  `/set-up-environment` (tune your editor & agents — optional), `/whats-next`,
+  `/dream` (tend the memory store), `/grill-me` (get interviewed to extract a
+  plan), plus the `working/` task lifecycle (`/complete-working-task`,
+  `/checkpoint-working-task`).
 - **A setup manual** ([`guidance/`](guidance/)) — untailored, vendored notes for
   connecting services (Google Workspace, Slack, Playwright, …) and the patterns
   that hold it together (git habits, the working/ directory, directory
   junctions).
-- **The plumbing** — sensible VS Code defaults (Markdown opens in a brand-skinned
-  preview you can recolor during onboarding) and the gitignore/secrets
-  conventions baked in from day one. Optional cross-tool memory and skills
-  junctions are documented in [`guidance/`](guidance/) for when you want them —
-  not forced on you at clone.
+- **The conventions** — gitignore and secrets handling baked in from day one, so
+  a fresh clone is safe to work in immediately. Anything *tool*-specific is
+  opt-in and never shipped: a brand-skinned VS Code Markdown preview, routing
+  skills to Codex, and cross-machine memory/skills junctions are all documented
+  in [`guidance/`](guidance/) and set up on request by
+  [`/set-up-environment`](.claude/skills/set-up-environment/SKILL.md) — so the
+  pack stays agnostic about the tools you actually use.
 
 The user-content folders — `about-<name>/`, `goals-and-priorities/`,
 `tools-and-connections/` — aren't shipped. They're **born during onboarding**,
@@ -44,10 +47,13 @@ to fill in) is part of learning that the repo is yours to build and grow.
 
 If you want to build your own AIOS, **reach out and I'll walk you through it
 personally**: [kyle@kyledunne.ai](mailto:kyle@kyledunne.ai). We'll use this pack
-as the starting point — clone it, open it in VS Code, and run `/onboarding`.
+as the starting point — clone it, open it (VS Code with the Claude Code
+extension is the easy path, but any editor or a plain terminal works), and run
+`/onboarding`.
 
-For the visual primer, open [`planet-analogy.html`](planet-analogy.html) in a
-browser (the recommended Live Preview extension makes that one click).
+For the visual primer, open [`planet-analogy.html`](planet-analogy.html) in any
+browser. (In VS Code, the Live Preview extension makes that one click — see
+[`guidance/set-up-vscode/`](guidance/set-up-vscode/README.md).)
 
 ---
 

@@ -39,7 +39,7 @@ onboarding conversation feels.
 A short message: what an AIOS is in one sentence (a personal AI
 operating system, kept as a plain-text repo, that gets to know them
 and works on their behalf over time), and what this session will
-cover (six quick questions, about 10–15 minutes). Then ask the
+cover (five quick questions, about 10–15 minutes). Then ask the
 first question.
 
 ### 2. Name
@@ -139,35 +139,7 @@ Based on the answer, scaffold `goals-and-priorities/`:
 Keep the explanation in `goals-and-priorities/README.md` short — a few
 sentences and the naming convention. The user can grow it.
 
-### 7. Make it yours — a color scheme
-
-A quick, fun one to finish. The AIOS is read as Markdown, and VS Code's
-preview is skinned by a small stylesheet
-([`.vscode/markdown-preview.css`](../../../.vscode/markdown-preview.css)) whose
-colors are all driven by `--brand-*` variables in one block at the top. Offer
-to set the palette so the repo feels like theirs:
-
-> "Last thing, and it's the fun one — want to pick a color scheme for how your
-> AIOS looks? I can use a ready-made palette, match your brand, or leave the
-> neutral default."
-
-Three ways to land it — whichever they pick, write the values into the
-**ACTIVE PALETTE** block at the top of `.vscode/markdown-preview.css`:
-
-- **A named preset** — the file ships with `slate`, `forest`, `plum`, and
-  `ocean` presets (listed in its comments) alongside the neutral default.
-  Copy the chosen preset's ten values over the ACTIVE PALETTE block.
-- **Their own brand colors** — ask for hex codes, or for a link to their
-  website / logo and pull the dominant colors from it. Map them onto the
-  `--brand-*` roles (background, text, headings, links, accents) and write
-  them in.
-- **Keep the default** — neutral graphite; nothing to change.
-
-Keep it light and reversible — it's just ten CSS variables, swappable any
-time. If a Markdown preview is open, mention they can reopen a `.md` file to
-see the new colors. This is a 60-second delight, not a design review.
-
-### 8. Wrap up
+### 7. Wrap up
 
 Confirm what was written: list the files you created (with relative
 paths so they can click through), and tell them what's next:
@@ -176,6 +148,13 @@ paths so they can click through), and tell them what's next:
 > 2 — Connections**: wiring the AIOS into the services you actually
 > use (Gmail, Slack, etc.). When you're ready, run `/get-connected`
 > and we'll start with Google Workspace and Slack."
+
+Optionally, mention `/set-up-environment` — a separate, run-anytime skill
+that tailors the repo to *your* tools (a brand-skinned Markdown preview in
+VS Code, adding Codex as a second agent, syncing across machines). It's
+purely about the dev environment, not the AIOS's content, so it's entirely
+optional — flag it as something they *can* do, not a step they need to take
+now.
 
 Then commit and push everything as one coherent unit (see
 [`guidance/git-practices.md`](../../../guidance/git-practices.md)).

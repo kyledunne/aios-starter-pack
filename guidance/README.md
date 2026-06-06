@@ -34,6 +34,11 @@ follow front-to-back.
 - [set-up-slack.md](set-up-slack.md) — Creating a per-AIOS Slack app
   with user-token scopes and wiring the token into the AIOS root
   `.env`.
+- [set-up-vscode/](set-up-vscode/README.md) — Building the optional
+  `.vscode/` folder for VS Code users: recommended extensions, the
+  Markdown-opens-as-preview settings, and a brand-skinned Markdown
+  stylesheet with named palettes. Not shipped by default — the AIOS stays
+  editor-agnostic; the `/set-up-environment` skill drives this when wanted.
 - [working-directory.md](working-directory.md) — The
   `working/` + `working-archive/` pattern for organizing active work:
   one subfolder per in-flight task, archived by date when done; plus the

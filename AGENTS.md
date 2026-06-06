@@ -100,6 +100,31 @@ for capabilities the user doesn't yet need. Resist it, for two reasons:
 Growth is *pulled by need*, never *pushed by completeness*. (This is also
 why the starter pack ships no user-content folders — see the note above.)
 
+## Folder structure: flat until it grows
+
+The repo uses one structural pattern everywhere, and (per **Minimalism**)
+it grows only when a real need pushes it:
+
+- **Start flat.** A folder holds a `README.md` plus single Markdown files
+  — one file per thing (`guidance/set-up-slack.md`, one `SKILL.md` per
+  skill, one snag per `issues-and-solutions/*.md`).
+- **Grow a file into a folder when it outgrows one file.** When a single
+  topic gets too big or picks up supporting files (a long stylesheet,
+  images, sub-pages), replace `topic.md` with a folder `topic/` of the
+  *same name*, holding a `README.md` plus those files. The README carries
+  the topic's content and links out to them — e.g. `guidance/set-up-vscode/`
+  is a `README.md` beside a standalone `markdown-preview.css` it points at,
+  rather than ~200 lines of CSS inlined. Small snippets still belong
+  inline; externalize only what's genuinely large.
+- **Two kinds of README — don't conflate them.** An *index* README lists
+  the **distinct sibling things** in a collection folder (the guidance
+  docs, the skills, the issues). A *core-context* README **is the content**
+  of one thing that grew into a folder — it reads top-to-bottom and links
+  to its own supporting files; it does not index siblings.
+- **It's recursive.** The same choice repeats at every level: a file
+  inside a grown folder can itself later become a folder. Never pre-build
+  the tree — keep it flat until a file is actually unwieldy, then split.
+
 ## When something breaks, write it down
 
 When a setup step stalls, a command fails unexpectedly, or a workaround
@@ -172,8 +197,8 @@ engine, a find-a-file Slack bot, and a folder-watching poller.
 
 The [`guidance/`](guidance/) folder is the **general, untailored setup
 manual** — Google Workspace (`gws`), Slack, Codex, Playwright, Printing
-Press, plus general patterns (git habits, the scratchpad, the working/
-pattern, and optional memory/skills junctions). Treat it as **read-only locally**:
+Press, VS Code, plus general patterns (git habits, the scratchpad, the
+working/ pattern, and optional memory/skills junctions). Treat it as **read-only locally**:
 it's owned upstream (the `aios-starter-pack` repo), drawn on through two
 sanctioned flows — **sync-down** (pull newer docs from upstream) and
 **contribute-up** (send a generalized, human-approved lesson back) — never
