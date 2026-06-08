@@ -1,0 +1,4 @@
+# Normalize all text files to LF in both the repo and the working tree.
+# Overrides Windows' core.autocrlf=true so Git stops rewriting line endings
+# (the "LF will be replaced by CRLF" warnings on commit).
+* text=auto eol=lf

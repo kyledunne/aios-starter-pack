@@ -109,7 +109,9 @@ file to see it. A 60-second delight, not a design review. Details:
   Claude's memory into a tracked `memory/` folder, and sharing one skills
   folder across tools. See
   [`guidance/memory-junctions.md`](../../../guidance/memory-junctions.md).
-  Bringing a brand-new machine up to parity is its own flow:
+  The memory bridge can also be set up at the very start via
+  [`/first-time-setup`](../first-time-setup/SKILL.md); bringing a *new*
+  machine up to parity with an existing one is its own flow:
   [`/setup-new-computer`](../setup-new-computer/SKILL.md).
 - Make sure each machine they use is recorded in `devices.md` (born the
   first time the AIOS runs on a machine).

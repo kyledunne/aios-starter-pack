@@ -9,6 +9,12 @@ This skill brings a fresh machine up to parity with the user's other AIOS
 machines: the toolchain installed, every connection live, and the machine
 registered in `devices.md`.
 
+> **First machine?** This skill is for the **second and later** machines —
+> it matches them to an existing one via `devices.md`. The very first
+> computer has no parity target yet; use
+> [`/first-time-setup`](../first-time-setup/SKILL.md) instead, which births
+> `devices.md` and `local-setup.md` and hands off to `/onboarding`.
+
 ## The mental model
 
 Most of an AIOS's outside identity is **cloud-side and shared** — it is *not*
