@@ -111,11 +111,11 @@ it grows only when a real need pushes it:
 - **Grow a file into a folder when it outgrows one file.** When a single
   topic gets too big or picks up supporting files (a long stylesheet,
   images, sub-pages), replace `topic.md` with a folder `topic/` of the
-  *same name*, holding a `README.md` plus those files. The README carries
-  the topic's content and links out to them — e.g. `guidance/setup-vscode/`
-  is a `README.md` beside a standalone `markdown-preview.css` it points at,
-  rather than ~200 lines of CSS inlined. Small snippets still belong
-  inline; externalize only what's genuinely large.
+  *same name*, holding a `README.md` plus those files — the README carrying
+  the topic's content and linking out to them, rather than inlining, say,
+  ~200 lines of CSS. Small snippets still belong inline; externalize only
+  what's genuinely large. The reverse holds too: when a folder sheds its
+  supporting files, it collapses back to a single `topic.md`.
 - **Two kinds of README — don't conflate them.** An *index* README lists
   the **distinct sibling things** in a collection folder (the guidance
   docs, the skills, the issues). A *core-context* README **is the content**

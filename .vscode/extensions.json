@@ -1,7 +1,7 @@
 {
-  // Recommended extensions for an AIOS opened in VS Code.
-  // Copy this file to .vscode/extensions.json (see this folder's README).
-  // It prompts anyone who opens the repo to install the extensions it expects.
+  // Recommended extensions for an AIOS opened in VS Code. Part of the .vscode/
+  // folder that ships with the pack; it prompts anyone who opens the repo to
+  // install the extensions it expects. See guidance/setup-vscode.md.
   "recommendations": [
     // Claude Code and Codex — the AI coding agents that drive this AIOS from inside
     // the editor. Both read the same repo (AGENTS.md / CLAUDE.md, .claude/skills/),

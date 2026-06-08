@@ -31,12 +31,16 @@ content be **created live, with you**:
   that hold it together (git habits, the working/ directory, directory
   junctions).
 - **The conventions** — gitignore and secrets handling baked in from day one, so
-  a fresh clone is safe to work in immediately. Anything *tool*-specific is
-  opt-in and never shipped: a brand-skinned VS Code Markdown preview, routing
-  skills to Codex, and cross-machine memory/skills junctions are all documented
-  in [`guidance/`](guidance/) and set up on request by
-  [`/setup-environment`](.claude/skills/setup-environment/SKILL.md) — so the
-  pack stays agnostic about the tools you actually use.
+  a fresh clone is safe to work in immediately. The one bit of editor polish that
+  ships by default is a [`.vscode/`](.vscode/) folder — a brand-skinned VS Code
+  Markdown preview plus recommended extensions — and only because it's **inert
+  unless you open the repo in VS Code**, so it costs every other editor nothing
+  (see [`guidance/setup-vscode.md`](guidance/setup-vscode.md)). Everything else
+  *tool*-specific stays opt-in and unshipped — routing skills to Codex,
+  cross-machine memory/skills junctions — documented in [`guidance/`](guidance/)
+  and set up on request by
+  [`/setup-environment`](.claude/skills/setup-environment/SKILL.md), so the pack
+  stays agnostic about the tools you actually use.
 
 The user-content folders — `about-<name>/`, `goals-and-priorities/`,
 `tools-and-connections/` — aren't shipped. They're **born during onboarding**,
@@ -53,7 +57,7 @@ Codex desktop app, or one of many other options), and run `/onboarding`.
 
 For the visual primer, open [`planet-analogy.html`](planet-analogy.html) in any
 browser. (In VS Code, the Live Preview extension makes that one click — see
-[`guidance/setup-vscode/`](guidance/setup-vscode/README.md).)
+[`guidance/setup-vscode.md`](guidance/setup-vscode.md).)
 
 ---
 

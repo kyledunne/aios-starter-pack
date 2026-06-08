@@ -1,8 +1,9 @@
 {
-  // Editor defaults for an AIOS opened in VS Code.
-  // Copy this file to .vscode/settings.json (see this folder's README).
+  // Editor defaults for an AIOS opened in VS Code. Part of the .vscode/ folder
+  // that ships with the pack (inert unless the repo is opened in VS Code).
   // Opens Markdown in a rendered preview, points HTML at the integrated browser,
-  // and applies the brand stylesheet (markdown-preview.css) that ships beside it.
+  // and applies the brand stylesheet (markdown-preview.css) beside it. See
+  // guidance/setup-vscode.md to switch palette, disable, or rebrand.
 
   // Open Markdown files in rendered preview by default instead of the raw source.
   // To edit a file's source, use the "Open Source" action (the {} icon top-right)
@@ -27,7 +28,7 @@
   //   light: ocean-bands, slate-bands, forest-bands, plum-bands
   //   dark:  ocean-bands-dark, slate-bands-dark, forest-bands-dark, plum-bands-dark
   // To drop the band styling entirely (plain headings + the base's own palette),
-  // remove the second entry. See markdown-themes/README.md.
+  // remove the second entry. See guidance/setup-vscode.md.
   "markdown.styles": [
     ".vscode/markdown-preview.css",
     ".vscode/markdown-themes/ocean-bands-dark.css"

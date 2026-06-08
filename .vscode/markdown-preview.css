@@ -1,7 +1,7 @@
 /*
- * Brand skin for VS Code's built-in Markdown preview.
- * Copy this file to .vscode/markdown-preview.css, then wire it up via
- * "markdown.styles" in .vscode/settings.json (see this folder's README).
+ * Brand skin for VS Code's built-in Markdown preview. Ships in the .vscode/
+ * folder and is wired up via "markdown.styles" in .vscode/settings.json.
+ * See guidance/setup-vscode.md.
  *
  * All color comes from the --brand-* variables in the ACTIVE PALETTE block
  * below. To rebrand the whole preview, change those values — nothing else.

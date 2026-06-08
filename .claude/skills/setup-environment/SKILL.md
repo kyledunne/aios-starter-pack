@@ -1,14 +1,15 @@
 ---
 name: setup-environment
-description: "Optional, run-anytime setup that adapts the AIOS repo to how you actually work with it — across three layers: the UI you read and edit it in (VS Code, a desktop app, a terminal), the AI agent(s) that drive it (Claude Code, Codex), and the operating system(s) of your machine(s). The pack ships nothing tool-specific by default; run this if you want editor polish, multi-agent skills routing, or cross-machine sync. Entirely optional and skippable — separate from onboarding and get-connected."
+description: "Optional, run-anytime setup that adapts the AIOS repo to how you actually work with it — across three layers: the UI you read and edit it in (VS Code, a desktop app, a terminal), the AI agent(s) that drive it (Claude Code, Codex), and the operating system(s) of your machine(s). A default .vscode/ folder ships (inert unless opened in VS Code); nothing else tool-specific does. Run this to tune the editor look, route skills to multiple agents, or set up cross-machine sync. Entirely optional and skippable — separate from onboarding and get-connected."
 ---
 
 # Set up your environment — fit the AIOS to your tools
 
 The AIOS is just a git repo of Markdown, so it runs anywhere with zero
-setup — the pack ships **bare**, assuming only Claude Code reading plain
-files. This skill is the optional layer on top: it tunes the repo to
-*how you actually work with it*.
+setup. Apart from a default `.vscode/` folder (inert unless you open the
+repo in VS Code), the pack ships **bare** — assuming only Claude Code
+reading plain files. This skill is the optional layer on top: it tunes the
+repo to *how you actually work with it*.
 
 Run it whenever — now, later, or never. It's **separate from
 `/onboarding`** (which builds Layer 1, your context) and
@@ -48,22 +49,23 @@ already see (you likely know the OS, and that Claude Code is running):
 
 ### 2. UI layer
 
-- **VS Code** → build the `.vscode/` folder from
-  [`guidance/setup-vscode/`](../../../guidance/setup-vscode/README.md): the
-  recommended extensions (Claude Code, Codex, Live Preview), the settings
-  that open Markdown as a rendered preview and HTML in an integrated
-  browser, and the brand `markdown-preview.css`. Then do the fun part —
-  **pick a palette** (below).
+- **VS Code** → the [`.vscode/`](../../../.vscode/) folder already ships
+  (recommended extensions, Markdown-as-preview, HTML in the integrated
+  browser, the brand `markdown-preview.css`), so there's nothing to build —
+  they'll be prompted to install the extensions on first open. Just do the
+  fun part: **pick a palette** (below). Reference:
+  [`guidance/setup-vscode.md`](../../../guidance/setup-vscode.md).
 - **A desktop app (Claude / Codex)** → it brings its own UI; there's
-  little to configure. Markdown renders in-app; skip the VS Code folder.
+  little to configure. Markdown renders in-app; the shipped `.vscode/`
+  folder just sits there unused (delete it if they like).
 - **Terminal + browser / another editor** → nothing to install, it's
-  plain Markdown. Point out that `planet-analogy.html` opens in any
-  browser.
+  plain Markdown and the `.vscode/` folder is inert. Point out that
+  `planet-analogy.html` opens in any browser.
 
 #### Pick a palette  *(VS Code only — the fun one)*
 
-If they set up the VS Code folder, offer to brand the Markdown preview —
-a quick, reversible delight:
+If they use VS Code, offer to brand the Markdown preview — a quick,
+reversible delight (the `.vscode/` folder already ships):
 
 > "Want to pick a color scheme for how your AIOS looks? There are four
 > palettes — ocean, slate, forest, plum — each in light and dark. Or I
@@ -86,7 +88,7 @@ bands with an accent bar + a fading divider). To apply one, set the
 
 Swappable anytime. If a preview is open, mention they can reopen a `.md`
 file to see it. A 60-second delight, not a design review. Details:
-[`markdown-themes/README.md`](../../../guidance/setup-vscode/markdown-themes/README.md).
+[`guidance/setup-vscode.md`](../../../guidance/setup-vscode.md#palettes).
 
 ### 3. Agentic layer
 
@@ -122,9 +124,11 @@ anytime their tools change.
 
 - This skill **orchestrates**; the `guidance/setup-*.md` docs are the
   source of truth for their own steps. Link, don't duplicate.
-- Tool-specific config is **opt-in by design** — the pack ships bare so
-  it isn't opinionated about anyone's setup. Set up what they'll use,
-  skip the rest.
-- Commit what you create as one coherent unit (e.g. a new `.vscode/`),
-  per [`guidance/git-practices.md`](../../../guidance/git-practices.md).
+- Tool-specific config is **opt-in by design**, with one exception: the
+  `.vscode/` folder ships by default, because it's inert unless the repo is
+  opened in VS Code. Everything else (Codex routing, junctions) the pack
+  ships bare — set up only what they'll use, skip the rest.
+- Commit what you create as one coherent unit (a palette tweak, a Codex
+  routing setup), per
+  [`guidance/git-practices.md`](../../../guidance/git-practices.md).
   Machine-local junctions are gitignored, not committed.
