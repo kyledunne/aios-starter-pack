@@ -10,10 +10,14 @@
     "anthropic.claude-code",
     "openai.chatgpt",
 
-    // Live Preview gives a one-click integrated-browser preview of HTML files
-    // (globe "Show Preview" icon, or Alt+L Alt+O) — used for planet-analogy.html
-    // and any other HTML the AIOS produces. Matching settings live in
-    // .vscode/settings.json (livePreview.*).
+    // Live Preview is the COMPLEMENT to the bundled AIOS HTML Preview extension:
+    // it renders HTML that needs a real local server (fetch to a backend,
+    // client-side routing) in an integrated browser (globe "Show Preview" icon,
+    // or Alt+L Alt+O). For ordinary one-click preview of self-contained pages
+    // (like planet-analogy.html), the bundled .vscode/aios-html-preview/ extension
+    // handles it as the default *.html editor. That one isn't on the Marketplace,
+    // so it can't be listed here — it installs from its bundled .vsix; see
+    // .vscode/aios-html-preview/README.md and .vscode/settings.json.
     "ms-vscode.live-server"
   ]
 }

@@ -3,7 +3,7 @@
 VS Code is one nice way to read and work in an AIOS, and the pack **ships a
 [`.vscode/`](../.vscode/) folder by default** so it feels native the moment you
 open it: Markdown renders as a brand-skinned preview instead of raw source, HTML
-previews in an integrated browser, and the agent/preview extensions are
+opens as a one-click interactive preview, and the agent/preview extensions are
 recommended on every machine you sync to.
 
 Shipping it costs non-VS-Code users nothing. A `.vscode/` folder is **inert
@@ -21,12 +21,15 @@ what ships and how to change it.
 ## What ships
 
 - **[`.vscode/extensions.json`](../.vscode/extensions.json)** — recommends the
-  extensions the repo expects (Claude Code, Codex, and Live Preview), so anyone
-  who opens it gets prompted to install them.
-- **[`.vscode/settings.json`](../.vscode/settings.json)** — opens Markdown in a
-  rendered preview, points HTML at the integrated browser (Live Preview), and
+  Marketplace extensions the repo expects (Claude Code, Codex, and Live Preview),
+  so anyone who opens it gets prompted to install them.
+- **[`.vscode/settings.json`](../.vscode/settings.json)** — opens Markdown and
+  HTML in a rendered preview (see [HTML preview](#html-preview) below) and
   applies the stylesheet below. It does **not** set an editor color theme — your
   own theme is left untouched.
+- **[`.vscode/aios-html-preview/`](../.vscode/aios-html-preview/)** — a tiny
+  bundled VS Code extension (a prebuilt `.vsix` + its source) that renders HTML
+  as a one-click interactive preview. See [HTML preview](#html-preview).
 - **[`.vscode/markdown-preview.css`](../.vscode/markdown-preview.css)** — the
   structural base for the Markdown preview (typography, spacing, tables, code
   blocks) plus a neutral graphite fallback palette.
@@ -38,6 +41,45 @@ what ships and how to change it.
 
 The look is two layers, listed in order in `settings.json`'s `markdown.styles`:
 the base first, a color theme second.
+
+## HTML preview
+
+Markdown has a built-in VS Code preview; HTML doesn't. So the pack bundles a
+deliberately tiny extension —
+[`.vscode/aios-html-preview/`](../.vscode/aios-html-preview/) — that opens
+`.html` files as a **one-click, interactive rendered preview** instead of source.
+It's there so HTML your AIOS produces (like
+[`planet-analogy.html`](../planet-analogy.html)) reads as a page, not as code.
+
+It isn't on the VS Code Marketplace, so — unlike the extensions in
+`extensions.json` — it can't be auto-recommended. It ships as a prebuilt
+`.vsix` and is **inert until installed**. Until then, `.html` falls back to
+opening as source.
+
+**Install it:**
+
+```sh
+code --install-extension .vscode/aios-html-preview/aios-html-preview-0.1.0.vsix --force
+```
+
+[`/setup-environment`](../.claude/skills/setup-environment/SKILL.md) offers to do
+this (run it on each machine — a `.vsix` install is per-machine, not synced by
+git). The `*.html` → `aios.htmlPreview` association in `settings.json` already
+ships, so once it's installed, a single click previews.
+
+**Editing HTML source:** right-click the file → **Open With… → Text Editor**
+(or remove the `*.html` line from `settings.json` to make source the default).
+
+**What it renders:** self-contained pages — inline `<script>`/`<style>`, CDN
+tags (React, Tailwind), relative resources — and it live-reloads when you edit
+in a split text editor.
+
+**What it doesn't:** pages needing a real local server (`fetch('/api/...')`,
+client-side routing). Those are what the recommended **Live Preview** extension
+is for — open such a page and click its globe "Show Preview" icon (or press
+Alt+L Alt+O) for a server-backed integrated-browser preview. The two are
+complementary; Live Preview registers no custom editor, so it can't be a
+one-click default, which is why the bundled extension exists.
 
 ## Palettes
 

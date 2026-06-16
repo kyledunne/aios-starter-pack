@@ -2,3 +2,6 @@
 # Overrides Windows' core.autocrlf=true so Git stops rewriting line endings
 # (the "LF will be replaced by CRLF" warnings on commit).
 * text=auto eol=lf
+
+# Bundled VS Code extension package is a binary (zip) — never normalize it.
+*.vsix binary

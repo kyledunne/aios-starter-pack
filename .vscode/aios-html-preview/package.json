@@ -1,0 +1,40 @@
+{
+  "name": "aios-html-preview",
+  "displayName": "AIOS HTML Preview",
+  "description": "Open .html files as a rendered, interactive preview inside VS Code in one click.",
+  "version": "0.1.0",
+  "publisher": "aios",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "html",
+    "preview",
+    "webview",
+    "artifact"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aios/aios-html-preview"
+  },
+  "main": "./extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "aios.htmlPreview",
+        "displayName": "HTML Preview",
+        "selector": [
+          {
+            "filenamePattern": "*.html"
+          }
+        ],
+        "priority": "option"
+      }
+    ]
+  }
+}

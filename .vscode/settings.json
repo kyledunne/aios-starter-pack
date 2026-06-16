@@ -1,23 +1,30 @@
 {
   // Editor defaults for an AIOS opened in VS Code. Part of the .vscode/ folder
   // that ships with the pack (inert unless the repo is opened in VS Code).
-  // Opens Markdown in a rendered preview, points HTML at the integrated browser,
-  // and applies the brand stylesheet (markdown-preview.css) beside it. See
+  // Opens Markdown AND HTML in a rendered preview, and applies the brand
+  // stylesheet (markdown-preview.css) beside the Markdown one. See
   // guidance/setup-vscode.md to switch palette, disable, or rebrand.
 
-  // Open Markdown files in rendered preview by default instead of the raw source.
+  // Open Markdown and HTML files in rendered preview by default instead of raw
+  // source. Markdown uses VS Code's built-in preview; HTML uses the bundled
+  // AIOS HTML Preview extension (.vscode/aios-html-preview/) — a one-click,
+  // interactive webview render of the page. Until that extension is installed
+  // (see below), .html falls back to opening as source.
   // To edit a file's source, use the "Open Source" action (the {} icon top-right)
   // or right-click the file > Open With… > Text Editor.
   "workbench.editorAssociations": {
-    "*.md": "vscode.markdown.preview.editor"
+    "*.md": "vscode.markdown.preview.editor",
+    "*.html": "aios.htmlPreview"
   },
-  // HTML has no built-in "open in browser" editor, and the Live Preview extension
-  // registers commands only (no custom editor), so it can't be set as a default
-  // editorAssociation the way Markdown can. Instead: open an .html file and click the
-  // globe "Show Preview" icon (top-right) or press Alt+L Alt+O to view it in the
-  // integrated browser. These keys make that preview use the embedded browser pane.
-  // The extension itself is recommended in .vscode/extensions.json so synced machines
-  // get prompted to install it.
+  // The AIOS HTML Preview extension isn't on the Marketplace, so it can't be
+  // auto-recommended in extensions.json — it ships as a bundled .vsix. Install:
+  //   code --install-extension .vscode/aios-html-preview/aios-html-preview-0.1.0.vsix
+  // /setup-environment offers to do this. See .vscode/aios-html-preview/README.md.
+  //
+  // Live Preview (recommended in extensions.json) is the COMPLEMENT for pages that
+  // need a real local server (fetch to a backend, client-side routing) — those
+  // can't render in the static webview above. Open such a page and click the globe
+  // "Show Preview" icon (or Alt+L Alt+O) to view it in the integrated browser.
   "livePreview.openPreviewTarget": "Embedded Preview",
   "livePreview.useIntegratedBrowser": true,
   // Apply a custom stylesheet to the built-in Markdown preview for nicer typography
