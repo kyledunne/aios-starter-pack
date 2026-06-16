@@ -10,16 +10,25 @@
   // AIOS HTML Preview extension (.vscode/aios-html-preview/) — a one-click,
   // interactive webview render of the page. Until that extension is installed
   // (see below), .html falls back to opening as source.
+  //
+  // The associations below cover the Explorer, Quick Open, etc. — but the Claude
+  // Code chat panel BYPASSES editorAssociations and force-opens .md as source.
+  // The bundled AIOS Markdown Auto-Preview extension (.vscode/aios-markdown-auto-preview/)
+  // reacts after the fact and swaps such a file back to preview. It also isn't on
+  // the Marketplace; install it the same way (see below).
+  //
   // To edit a file's source, use the "Open Source" action (the {} icon top-right)
   // or right-click the file > Open With… > Text Editor.
   "workbench.editorAssociations": {
     "*.md": "vscode.markdown.preview.editor",
     "*.html": "aios.htmlPreview"
   },
-  // The AIOS HTML Preview extension isn't on the Marketplace, so it can't be
-  // auto-recommended in extensions.json — it ships as a bundled .vsix. Install:
-  //   code --install-extension .vscode/aios-html-preview/aios-html-preview-0.1.0.vsix
-  // /setup-environment offers to do this. See .vscode/aios-html-preview/README.md.
+  // The two bundled AIOS preview extensions aren't on the Marketplace, so they
+  // can't be auto-recommended in extensions.json — they ship as bundled .vsix.
+  // Install both (each is a per-machine install, not synced by git):
+  //   code --install-extension .vscode/aios-html-preview/aios-html-preview-0.1.0.vsix --force
+  //   code --install-extension .vscode/aios-markdown-auto-preview/aios-markdown-auto-preview-1.0.0.vsix --force
+  // /setup-environment offers to do this. See each extension's README in its folder.
   //
   // Live Preview (recommended in extensions.json) is the COMPLEMENT for pages that
   // need a real local server (fetch to a backend, client-side routing) — those

@@ -30,6 +30,11 @@ what ships and how to change it.
 - **[`.vscode/aios-html-preview/`](../.vscode/aios-html-preview/)** — a tiny
   bundled VS Code extension (a prebuilt `.vsix` + its source) that renders HTML
   as a one-click interactive preview. See [HTML preview](#html-preview).
+- **[`.vscode/aios-markdown-auto-preview/`](../.vscode/aios-markdown-auto-preview/)**
+  — a second tiny bundled extension that reopens a `.md` file as rendered preview
+  when something force-opens it as source — chiefly a link clicked in the Claude
+  Code chat panel, which bypasses the editor association. See
+  [Markdown auto-preview](#markdown-auto-preview).
 - **[`.vscode/markdown-preview.css`](../.vscode/markdown-preview.css)** — the
   structural base for the Markdown preview (typography, spacing, tables, code
   blocks) plus a neutral graphite fallback palette.
@@ -80,6 +85,39 @@ is for — open such a page and click its globe "Show Preview" icon (or press
 Alt+L Alt+O) for a server-backed integrated-browser preview. The two are
 complementary; Live Preview registers no custom editor, so it can't be a
 one-click default, which is why the bundled extension exists.
+
+## Markdown auto-preview
+
+Markdown already opens rendered, via the `*.md` → `vscode.markdown.preview.editor`
+association in `settings.json` — from the Explorer, Quick Open, and everywhere
+that honors editor associations. The one place that **doesn't** honor it is the
+**Claude Code chat panel**: it's a closed webview that bypasses the association
+and force-opens a `.md` link as raw **source**. No setting reaches it.
+
+So the pack bundles a second tiny extension —
+[`.vscode/aios-markdown-auto-preview/`](../.vscode/aios-markdown-auto-preview/) —
+that watches the editor tabs and, when a `.md` lands as source unexpectedly,
+closes it and reopens it as rendered preview. The payoff is reading Markdown the
+agent drafts for you in one click, straight from the chat. Like the HTML
+extension it isn't on the Marketplace, ships as a prebuilt `.vsix`, and is
+**inert until installed**.
+
+**Install it:**
+
+```sh
+code --install-extension .vscode/aios-markdown-auto-preview/aios-markdown-auto-preview-1.0.0.vsix --force
+```
+
+[`/setup-environment`](../.claude/skills/setup-environment/SKILL.md) offers this
+alongside the HTML one (per-machine; reload the window after). Unlike the HTML
+extension it registers **no custom editor** — it leans on VS Code's own Markdown
+preview, so it works with or without the `*.md` association.
+
+**Reading source when you want it:** on a preview, click **"Reopen as source
+file"** (it sticks); or Command Palette → **AIOS: Open This Markdown as Source**;
+or turn it off with **AIOS: Toggle Markdown Auto-Preview** (worth it if you edit
+`.md` source a lot). Full notes:
+[`.vscode/aios-markdown-auto-preview/README.md`](../.vscode/aios-markdown-auto-preview/README.md).
 
 ## Palettes
 
