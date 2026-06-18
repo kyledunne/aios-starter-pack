@@ -26,7 +26,7 @@ does.
 ## Install
 
 ```sh
-code --install-extension .vscode/aios-markdown-auto-preview/aios-markdown-auto-preview-1.0.0.vsix --force
+code --install-extension .vscode/aios-markdown-auto-preview/aios-markdown-auto-preview-1.0.2.vsix --force
 ```
 
 [`/setup-environment`](../../.claude/skills/setup-environment/SKILL.md) offers to
@@ -57,8 +57,8 @@ the `*.md` association (pairing them just removes the flash on Explorer opens).
 
 ## Known limits
 
-- **Markdown only.** (HTML chat links are a separate, worse upstream bug — they
-  currently do nothing on Windows — so this can't help there.)
+- **Markdown only.** (HTML chat links force-open source the same way; the sibling
+  [`aios-html-preview`](../aios-html-preview/README.md) handles those.)
 - **Brief source flash** as the swap happens — unavoidable with a reactive swap.
 - **Fights deliberate *cold* source opens** (it can't tell them from a forced
   one); the escape hatches above cover it.
