@@ -1,8 +1,8 @@
 {
   "name": "aios-html-preview",
   "displayName": "AIOS HTML Preview",
-  "description": "Open .html files as a rendered, interactive preview inside VS Code in one click.",
-  "version": "0.1.0",
+  "description": "Open .html files as a rendered, interactive preview inside VS Code in one click — including links force-opened as source from the Claude Code chat panel.",
+  "version": "1.0.0",
   "publisher": "aios",
   "license": "MIT",
   "engines": {
@@ -23,6 +23,9 @@
     "url": "https://github.com/aios/aios-html-preview"
   },
   "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "contributes": {
     "customEditors": [
       {
@@ -35,6 +38,41 @@
         ],
         "priority": "option"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "AIOS HTML Preview",
+      "properties": {
+        "htmlPreview.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically reopen HTML files that open as source (e.g. from a Claude Code chat link) in rendered preview."
+        },
+        "htmlPreview.debug": {
+          "type": "boolean",
+          "default": false,
+          "description": "Log tab events and swap decisions to the 'AIOS HTML Preview' output channel (for troubleshooting)."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "htmlPreview.toggle",
+        "title": "AIOS: Toggle HTML Auto-Preview"
+      },
+      {
+        "command": "htmlPreview.openSource",
+        "title": "AIOS: Open This HTML as Source",
+        "icon": "$(go-to-file)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "htmlPreview.openSource",
+          "when": "activeCustomEditorId == 'aios.htmlPreview'",
+          "group": "navigation"
+        }
+      ]
+    }
   }
 }

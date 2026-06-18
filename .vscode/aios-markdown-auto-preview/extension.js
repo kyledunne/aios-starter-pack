@@ -26,6 +26,14 @@ const vscode = require('vscode');
  *     ("Reopen as source file", or our own command) -> leave as source AND
  *     record it in `sourceTabs` so later change events don't bounce it back.
  *   - `sourceTabs` is cleared only when that text tab actually closes.
+ *
+ * "Was just preview" is judged by RECENCY, not a sticky flag: when a preview tab
+ * closes we drop it from `previewed` and timestamp the close. A source open is a
+ * downgrade only if a preview is still open OR closed within DOWNGRADE_WINDOW_MS
+ * (the near-instant close+open of "Reopen as source"). Closing a preview and
+ * reopening the same file later is past the window, so it correctly re-swaps —
+ * without this, the file stayed stuck in `previewed` and every other reopen
+ * wrongly kept source.
  */
 
 const PREVIEW_VIEW_TYPE = 'vscode.markdown.preview.editor';
@@ -43,6 +51,15 @@ const previewed = new Set();
 const sourceTabs = new Set();
 // Reentrancy guard so a swap-in-progress doesn't re-trigger itself.
 const swapping = new Set();
+// Preview tabs that have CLOSED, mapped to when (ms). A downgrade whose close and
+// open land in the SAME tab-change event is already caught below (the close
+// handler runs last, so `previewed` is still set when the open is processed).
+// This window only covers a downgrade SPLIT across events — which is programmatic
+// ("Reopen as source"), so it lands within a few ms. Kept short (300ms) so a
+// human who closes a preview and re-clicks the chat link a moment later gets
+// preview again, not source.
+const closedPreviewAt = new Map();
+const DOWNGRADE_WINDOW_MS = 300;
 
 function activate(context) {
   enabled = readConfig('enabled', true);
@@ -136,6 +153,14 @@ function isMarkdownTextTab(tab) {
   return input instanceof vscode.TabInputText && isMarkdownUri(input.uri);
 }
 
+// True if `key`'s preview tab closed within the downgrade window — i.e. recently
+// enough that an opening source tab is the close+open form of "Reopen as source"
+// rather than a fresh reopen that should swap back to preview.
+function recentlyClosedPreview(key) {
+  const t = closedPreviewAt.get(key);
+  return t !== undefined && Date.now() - t < DOWNGRADE_WINDOW_MS;
+}
+
 function activeMarkdownUri() {
   const ed = vscode.window.activeTextEditor;
   if (ed && ed.document.languageId === 'markdown') return ed.document.uri;
@@ -161,6 +186,7 @@ function onTabsChanged(e) {
       const key = tab.input.uri.toString();
       previewed.add(key);
       sourceTabs.delete(key);
+      closedPreviewAt.delete(key); // preview is live again; no stale close-stamp
     }
   }
 
@@ -178,10 +204,12 @@ function onTabsChanged(e) {
 
     if (swapping.has(key)) continue;
 
-    if (previewed.has(key)) {
+    if (previewed.has(key) || recentlyClosedPreview(key)) {
+      const via = previewed.has(key) ? 'previewed' : 'recency';
       previewed.delete(key);
+      closedPreviewAt.delete(key);
       sourceTabs.add(key);
-      log('keep-source (opened downgrade) ' + base(uri));
+      log('keep-source (opened downgrade, via ' + via + ') ' + base(uri));
       continue;
     }
 
@@ -202,11 +230,13 @@ function onTabsChanged(e) {
 
     if (sourceTabs.has(key)) continue; // already decided source; ignore noise
 
-    if (previewed.has(key)) {
+    if (previewed.has(key) || recentlyClosedPreview(key)) {
       // "Reopen as source file" delivered as an in-place tab change.
+      const via = previewed.has(key) ? 'previewed' : 'recency';
       previewed.delete(key);
+      closedPreviewAt.delete(key);
       sourceTabs.add(key);
-      log('keep-source (changed downgrade) ' + base(uri));
+      log('keep-source (changed downgrade, via ' + via + ') ' + base(uri));
       continue;
     }
 
@@ -220,6 +250,14 @@ function onTabsChanged(e) {
   //    race above.)
   for (const tab of e.closed) {
     if (isMarkdownTextTab(tab)) sourceTabs.delete(tab.input.uri.toString());
+    // A closing PREVIEW must drop out of `previewed` (or it stays stuck there and
+    // the next reopen is wrongly read as a downgrade) — timestamped so the
+    // close+open of "Reopen as source" within the window still keeps source.
+    if (isPreviewTab(tab)) {
+      const key = tab.input.uri.toString();
+      previewed.delete(key);
+      closedPreviewAt.set(key, Date.now());
+    }
   }
 }
 
@@ -229,6 +267,7 @@ async function swapToPreview(uri, tab) {
   swapping.add(key);
   previewed.add(key);
   sourceTabs.delete(key);
+  closedPreviewAt.delete(key);
   try {
     await vscode.window.tabGroups.close(tab);
     await vscode.commands.executeCommand(

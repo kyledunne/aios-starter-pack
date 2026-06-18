@@ -2,7 +2,7 @@
   "name": "aios-markdown-auto-preview",
   "displayName": "AIOS Markdown Auto-Preview",
   "description": "When a Markdown file opens as source (e.g. from a Claude Code chat link), automatically reopen it as rendered preview.",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "publisher": "aios",
   "license": "MIT",
   "engines": {
