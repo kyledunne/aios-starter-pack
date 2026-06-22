@@ -21,8 +21,12 @@ what ships and how to change it.
 ## What ships
 
 - **[`.vscode/extensions.json`](../.vscode/extensions.json)** — recommends the
-  Marketplace extensions the repo expects (Claude Code, Codex, and Live Preview),
-  so anyone who opens it gets prompted to install them.
+  Marketplace extensions the repo expects (Claude Code, Codex, and Live Preview).
+  Anyone who opens the repo in VS Code gets prompted to install them; and if you
+  run [`/setup-environment`](../.claude/skills/setup-environment/SKILL.md) and use
+  VS Code, it installs them for you in one pass (reading the ids from here, gated
+  on the `code` CLI being on PATH), alongside the two bundled `.vsix` below — so
+  the set is in place without relying on the popup.
 - **[`.vscode/settings.json`](../.vscode/settings.json)** — opens Markdown and
   HTML in a rendered preview (see [HTML preview](#html-preview) below) and
   applies the stylesheet below. It does **not** set an editor color theme — your

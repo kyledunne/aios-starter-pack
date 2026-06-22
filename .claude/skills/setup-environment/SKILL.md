@@ -51,17 +51,30 @@ already see (you likely know the OS, and that Claude Code is running):
 
 - **VS Code** → the [`.vscode/`](../../../.vscode/) folder already ships
   (recommended extensions, Markdown-as-preview, HTML-as-preview, the brand
-  `markdown-preview.css`), so there's little to build — they'll be prompted to
-  install the Marketplace extensions on first open. Two quick things to offer:
-  **(a)** install the **two bundled preview extensions** so `.html` opens as a
-  one-click interactive preview and a `.md` link clicked in the Claude Code chat
-  panel opens rendered instead of source (both are bundled `.vsix`, not on the
-  Marketplace, so they don't come from the install prompt) —
-  `code --install-extension .vscode/aios-html-preview/aios-html-preview-0.1.0.vsix --force`
-  and
-  `code --install-extension .vscode/aios-markdown-auto-preview/aios-markdown-auto-preview-1.0.0.vsix --force`;
-  and **(b)** the fun part: **pick a palette** (below). Reference:
-  [`guidance/setup-vscode.md`](../../../guidance/setup-vscode.md).
+  `markdown-preview.css`), so there's little to build. Two quick things to offer:
+  **(a)** **install the extensions this repo expects.** First confirm the `code`
+  CLI is on PATH (`code --version`) — this is also the check for whether they
+  really use VS Code on *this* machine. If it's missing, VS Code either isn't
+  installed here or its CLI isn't registered (Command Palette → *Shell Command:
+  Install 'code' command in PATH*); skip the install and move on. With `code`
+  available, install in one pass:
+    - the **recommended Marketplace extensions** (Claude Code, Codex, Live
+      Preview) — read the ids from
+      [`.vscode/extensions.json`](../../../.vscode/extensions.json)'s
+      `recommendations` (skip any listed in `unwantedRecommendations`) and run
+      `code --install-extension <id>` for each; already-installed ones are
+      skipped. This is the same set VS Code's first-open popup offers — doing it
+      here means it's in place, not left to a prompt they might dismiss.
+    - the **two bundled preview extensions**, so `.html` opens as a one-click
+      interactive preview and a `.md` link clicked in the Claude Code chat panel
+      opens rendered instead of source (both are bundled `.vsix`, not on the
+      Marketplace, so the popup never offers them) —
+      `code --install-extension .vscode/aios-html-preview/aios-html-preview-0.1.0.vsix --force`
+      and
+      `code --install-extension .vscode/aios-markdown-auto-preview/aios-markdown-auto-preview-1.0.0.vsix --force`.
+
+    Reload the window afterward. **(b)** the fun part: **pick a palette** (below).
+    Reference: [`guidance/setup-vscode.md`](../../../guidance/setup-vscode.md).
 - **A desktop app (Claude / Codex)** → it brings its own UI; there's
   little to configure. Markdown renders in-app; the shipped `.vscode/`
   folder just sits there unused (delete it if they like).
