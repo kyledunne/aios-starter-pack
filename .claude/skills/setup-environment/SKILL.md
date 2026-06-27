@@ -57,24 +57,18 @@ already see (you likely know the OS, and that Claude Code is running):
   really use VS Code on *this* machine. If it's missing, VS Code either isn't
   installed here or its CLI isn't registered (Command Palette → *Shell Command:
   Install 'code' command in PATH*); skip the install and move on. With `code`
-  available, install in one pass:
-    - the **recommended Marketplace extensions** (Claude Code, Codex, Live
-      Preview) — read the ids from
-      [`.vscode/extensions.json`](../../../.vscode/extensions.json)'s
-      `recommendations` (skip any listed in `unwantedRecommendations`) and run
-      `code --install-extension <id>` for each; already-installed ones are
-      skipped. This is the same set VS Code's first-open popup offers — doing it
-      here means it's in place, not left to a prompt they might dismiss.
-    - the **two bundled preview extensions**, so `.html` opens as a one-click
-      interactive preview and a `.md` link clicked in the Claude Code chat panel
-      opens rendered instead of source (both are bundled `.vsix`, not on the
-      Marketplace, so the popup never offers them) —
-      `code --install-extension .vscode/aios-html-preview/aios-html-preview-0.1.0.vsix --force`
-      and
-      `code --install-extension .vscode/aios-markdown-auto-preview/aios-markdown-auto-preview-1.0.0.vsix --force`.
-
-    Reload the window afterward. **(b)** the fun part: **pick a palette** (below).
-    Reference: [`guidance/setup-vscode.md`](../../../guidance/setup-vscode.md).
+  available, read the ids from
+  [`.vscode/extensions.json`](../../../.vscode/extensions.json)'s `recommendations`
+  (skip any in `unwantedRecommendations`) and run `code --install-extension <id>`
+  for each — already-installed ones are skipped. That set covers the AI agents
+  (Claude Code, Codex), Live Preview, and the AIOS preview helpers + icon theme
+  (all published on the Marketplace / Open VSX, so they auto-update). It's the same
+  set VS Code's first-open popup offers — doing it here means it's in place, not
+  left to a prompt they might dismiss. Optionally activate the **AIOS Icon Theme**
+  (set `"workbench.iconTheme": "aios-icon-theme"` in their settings, or via the
+  File Icon Theme picker), then reload the window. **(b)** the fun part: **pick a
+  palette** (below). Reference:
+  [`guidance/setup-vscode.md`](../../../guidance/setup-vscode.md).
 - **A desktop app (Claude / Codex)** → it brings its own UI; there's
   little to configure. Markdown renders in-app; the shipped `.vscode/`
   folder just sits there unused (delete it if they like).

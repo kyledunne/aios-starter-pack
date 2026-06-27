@@ -10,14 +10,27 @@
     "anthropic.claude-code",
     "openai.chatgpt",
 
-    // Live Preview is the COMPLEMENT to the bundled AIOS HTML Preview extension:
-    // it renders HTML that needs a real local server (fetch to a backend,
-    // client-side routing) in an integrated browser (globe "Show Preview" icon,
-    // or Alt+L Alt+O). For ordinary one-click preview of self-contained pages
-    // (like planet-analogy.html), the bundled .vscode/aios-html-preview/ extension
-    // handles it as the default *.html editor. That one isn't on the Marketplace,
-    // so it can't be listed here — it installs from its bundled .vsix; see
-    // .vscode/aios-html-preview/README.md and .vscode/settings.json.
+    // The two AIOS preview helpers — published on the VS Code Marketplace and Open
+    // VSX, so opening the repo prompts a one-click install and they auto-update.
+    //  - HTML Auto-Preview: opens .html as a one-click interactive rendered preview
+    //    (the default *.html editor, paired with the association in settings.json),
+    //    and re-renders .html links force-opened as source from the Claude Code chat.
+    //  - Markdown Auto-Preview: reopens a .md file as rendered preview when something
+    //    force-opens it as source — chiefly a link clicked in the Claude Code chat
+    //    panel, which bypasses editorAssociations.
+    "kyledunne.aios-html-auto-preview",
+    "kyledunne.aios-markdown-auto-preview",
+
+    // AIOS Icon Theme — file/folder icons that know the AIOS layout (memory/,
+    // working/, skills/, automations/, ...). Optional eye-candy; once installed,
+    // pick it via the theme picker (command: "Preferences: File Icon Theme") or
+    // let /setup-environment set it for you.
+    "kyledunne.aios-icon-theme",
+
+    // Live Preview — the COMPLEMENT to HTML Auto-Preview: it renders HTML that needs
+    // a real local server (fetch to a backend, client-side routing) in an integrated
+    // browser (globe "Show Preview" icon, or Alt+L Alt+O). HTML Auto-Preview handles
+    // self-contained pages; Live Preview handles server-backed ones.
     "ms-vscode.live-server"
   ]
 }
