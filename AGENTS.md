@@ -16,7 +16,8 @@ separate matter: they stay in the gitignored `.env`, never committed
 
 What you're reading is the **starter pack**: the machinery and recipes
 for an AIOS — this primer, the [`guidance/`](guidance/) manual, the
-[`.claude/skills/`](.claude/skills/), and the configs — but **not** the user's content.
+[`.claude/skills/`](.claude/skills/), the [`advisors/`](advisors/), and the
+configs — but **not** the user's content.
 There are no `about-the-user/`, `goals-and-priorities/`,
 `tools-and-connections/`, or `issues-and-solutions/` folders yet, and
 that's deliberate: those are **born during setup**, from scratch, as the
@@ -192,6 +193,26 @@ engine and the unattended front doors (folder watchers, Slack bots, cron). For
 example, a document-filing automation might pair a `/file-docs` skill (the
 agent's front door) with an `automations/file-docs/` folder holding the filing
 engine, a find-a-file Slack bot, and a folder-watching poller.
+
+## Personas: the advisors/ directory
+
+A skill is loaded *for a task*; an **advisor** is a persona that carries a
+whole conversation. It's one Markdown file in [`advisors/`](advisors/) whose
+body becomes that session's instructions — so instead of invoking a
+procedure mid-chat, the user picks who they're talking to. Apps that read
+`advisors/*.md` from the AIOS root (e.g. Planet You) surface them in a
+persona picker and label the chat with the advisor's name.
+
+The pack ships one:
+[`advisors/onboarding-advisor.md`](advisors/onboarding-advisor.md) — the
+guide that runs the Layer-1 opening interview and then stays on as the
+"what's next" guide once the interview is done. From a terminal CLI the
+same content is reachable as
+[`/onboarding`](.claude/skills/onboarding/SKILL.md), which is a thin shell
+pointing at it; the advisor file is the single source of the flow.
+
+The folder is flat (one file per advisor, no README) until a second advisor
+makes an index worth having — same rule as everything else here.
 
 ## How to use this starter pack
 

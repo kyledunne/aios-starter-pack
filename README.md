@@ -27,6 +27,11 @@ content be **created live, with you**:
   editor & agents — optional), `/whats-next`, `/dream` (tend the memory store),
   `/grill-me` (get interviewed to extract a plan), plus the `working/` task
   lifecycle (`/complete-working-task`, `/checkpoint-working-task`).
+- **An advisor** ([`advisors/`](advisors/)) — a persona that carries a whole
+  conversation rather than a single task. One ships: the **Onboarding
+  Advisor**, which runs the setup interview and then stays on as the guide
+  you ask "what's next?". Apps that read `advisors/*.md` (e.g. Planet You)
+  let you pick it directly; from a terminal it's `/onboarding`.
 - **A setup manual** ([`guidance/`](guidance/)) — untailored, vendored notes for
   connecting services (Google Workspace, Slack, Playwright, …) and the patterns
   that hold it together (git habits, the working/ directory, directory
