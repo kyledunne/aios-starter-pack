@@ -42,27 +42,25 @@ over time, so don't restate them here. Follow the upstream docs:
 Once installed, `cd` into the AIOS repo and run Codex. It'll pick up
 `AGENTS.md` automatically.
 
-## Sharing the skills folder with Codex
+## Skills: already shared, nothing to do
 
-Claude Code reads skills from `.claude/skills/` (where this pack keeps
-them); Codex looks in `.agents/skills/`, scanning from the working dir up
-to the repo root. So out of the box Codex picks up `AGENTS.md` but **not**
-the skills. To share them, point `.agents/skills` at the skills folder with
-a directory junction (Windows) or symlink (macOS/Linux):
+Codex looks for skills in `.agents/skills/`, scanning from the working dir
+up to the repo root; Claude Code looks in `.claude/skills/`. The pack keeps
+the real skill folders at top-level [`../skills/`](../skills/) and makes
+**both** of those paths machine-local links into it, so Codex sees the same
+eleven skills Claude does the first time you run it — no setup step.
 
-```
-# Windows (junction, no admin needed)
-cmd /c mklink /J .agents\skills .claude\skills
-# macOS / Linux
-mkdir -p .agents && ln -s ../.claude/skills .agents/skills
-```
+The links are made by `.claude/hooks/ensure-skills-link.mjs` on a
+`SessionStart` hook, wired from both `.claude/settings.json` and
+`.codex/hooks.json`, so whichever agent starts first heals both. The
+`SKILL.md` `name`/`description` frontmatter is identical for both tools, so
+each skill works unmodified. Full mechanics and the gotchas are in
+**Skills** in [`../AGENTS.md`](../AGENTS.md); the cross-OS link details (and
+the memory bridge) are in [`memory-junctions.md`](memory-junctions.md).
 
-Then add `.agents/skills` to `.gitignore` so git doesn't double-track the
-skills through the link. The SKILL.md `name`/`description` frontmatter is
-identical for both tools, so each skill works unmodified. Full cross-OS
-mechanics and the gotchas (plus the memory bridge and the `<slug>` rule)
-live in [`memory-junctions.md`](memory-junctions.md). Optional — do it when
-you actually run Codex on this repo, not before.
+**One thing you do have to do once:** Codex won't run a project hook until
+you trust the project. Run `/hooks` in Codex once to approve it — until you
+do, `.agents/skills` never gets created and Codex sees no skills.
 
 ## Verify the handover
 

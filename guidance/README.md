@@ -7,14 +7,15 @@ follow front-to-back.
 ## Index
 
 - [git-practices.md](git-practices.md) — How to commit and push as the
-  AIOS grows: the default of auto-committing every coherent change, the
-  handful of cases where it's wrong, and keeping commits scoped when
-  multiple agents share one repo.
-- [memory-junctions.md](memory-junctions.md) — *Optional* per-machine
-  directory junctions (Windows) / symlinks (macOS/Linux) for two upgrades:
-  syncing Claude's memory into a tracked `memory/` folder, and sharing one
-  skills folder across Claude Code and Codex. Not set up by default — a good
-  thing to reach for once you have a second machine or add Codex.
+  AIOS grows: the default of auto-committing every coherent change
+  (`working/` included), the handful of cases where it's wrong, and
+  keeping commits tidy when multiple agents share one repo.
+- [memory-junctions.md](memory-junctions.md) — The per-machine directory
+  junction (Windows) / symlink (macOS/Linux) that syncs Claude's memory into
+  a tracked `memory/` folder. *Optional*, and a good thing to reach for once
+  you have a second machine. (The sibling skills links are **not** optional —
+  the pack wires those up for both agents automatically; see **Skills** in
+  [`../AGENTS.md`](../AGENTS.md).)
 - [karpathy-wiki.md](karpathy-wiki.md) — The `raw/` / `wiki/` /
   `outputs/` folder pattern for turning a messy corpus into a
   structured, LLM-maintained knowledge base.

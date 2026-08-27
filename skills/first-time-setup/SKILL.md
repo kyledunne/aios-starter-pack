@@ -84,7 +84,7 @@ git like the rest of the repo. Offer it, and let the answer decide:
   before the need is real.)
 
 The **skills** junction is *not* part of this path — the pack reads
-skills as plain files in `.claude/skills/` already. Only reach for it if
+skills at top-level `skills/`, linked to both agents already. Only reach for it if
 the user runs **Codex** too, or wants the neutral top-level `skills/`
 layout; that's covered by
 [`guidance/setup-codex.md`](../../../guidance/setup-codex.md) and

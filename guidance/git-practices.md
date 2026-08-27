@@ -27,7 +27,9 @@ A handful of cases where the automatic-commit default is wrong:
 
 - **The change is mid-task / incomplete.** Part of a larger piece of
   in-progress work, not a standalone unit yet. Wait until it forms
-  one.
+  one. (This is about *when* to commit, not *whether*: in-flight work in
+  `working/` gets committed too — see
+  [working-directory.md](working-directory.md).)
 - **The change is experimental and may need reverting.** A try, not a
   conclusion. Stage it locally, sit on it, and revisit before
   committing.
@@ -57,11 +59,11 @@ Short and direct. Describe what changed in one line. Multi-paragraph
 messages are usually a sign that the unit isn't actually coherent —
 split it.
 
-## Multiple agents in one repo: keep commits scoped
+## Multiple agents in one repo
 
 Expect more than one agent working in the same AIOS at once. The git **index
 (staging area) and HEAD are shared repo state**, not per-agent — so when two
-agents share one working copy, their commits can bleed into each other:
+agents share one working copy, their commits bleed into each other:
 
 - You stage your files, go to commit, and git says **"nothing to commit"** —
   your changes already landed in *another* agent's commit, under an unrelated
@@ -71,22 +73,38 @@ agents share one working copy, their commits can bleed into each other:
 
 Separate **git worktrees** would give each agent its own index and avoid this
 entirely, but they're awkward enough in practice that agents usually just share
-one working copy — so the discipline below is the real defense:
+one working copy.
 
-- **One agent per `working/` project at a time.** Agents on *separate* projects
-  rarely interfere; the same task folder is where they collide. Inside your own
-  `working/<project>/` subfolder, commit freely — that's your sandbox.
-- **Outside your subfolder, scope every commit by explicit pathspec:**
-  `git commit -- path1 path2`, never `git add -A` / `git commit -a`. That keeps
-  unrelated work out of *your* commit.
-- **Don't leave files staged between steps.** The pathspec protects your commit's
-  *contents*, but not your *staged files* from another agent's broad commit.
-  Stage and commit in one motion — `git commit -- <paths>` commits the
-  working-tree version of tracked paths with no separate `git add`, so there's no
-  window where your changes sit staged for someone else to scoop. (New, untracked
-  files still need `git add` first — chain it:
-  `git add <new> && git commit -- <new> <others>` in one command to keep the
-  window to milliseconds.)
+### The habit that matters: one agent per `working/` project
+
+Agents on *separate* projects rarely interfere; the same task folder is where
+they genuinely collide — two agents editing the same files, overwriting each
+other's edits. **No commit discipline fixes that**, which is why this one is a
+real rule and the rest of this section is not.
+
+### Scoped commits: a courtesy, and when it's more than that
+
+Scoping each commit to your own paths — `git commit -- path1 path2` rather than
+`git add -A` / `git commit -a` — used to be a hard rule here. It has been
+downgraded, honestly, because the reason for it has weakened:
+
+- **If something is committing the repo automatically** — an always-on sync
+  process, an app that commits at every turn edge — then a neighbouring agent
+  sweeping your files into its commit costs you nothing. Those files were going
+  to be committed within the minute anyway, under someone's message. The
+  bundling is cosmetic.
+- **If nothing is** — a plain terminal or editor session on a machine with no
+  such process — then the old reasoning still holds exactly as written, and
+  scoping is what keeps another agent's half-done work out of your commit. Do
+  it there.
+
+Either way it produces tidier history, so it's worth doing when it's cheap:
+
+- **Stage and commit in one motion.** `git commit -- <paths>` commits the
+  working-tree version of tracked paths with no separate `git add`, so there's
+  no window where your changes sit staged for someone else to scoop. New,
+  untracked files still need `git add` first — chain it:
+  `git add <new> && git commit -- <new> <others>` in one command.
 - **If the bundling already happened and is pushed, leave it.** Don't rewrite
   history to split it — especially with a concurrent writer active, where a
   force-push turns a cosmetic problem into a real one. Verify your content is

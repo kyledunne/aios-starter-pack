@@ -12,6 +12,33 @@ local-setup.md
 # Per-machine Claude Code overrides (model, local permissions, etc.).
 .claude/settings.local.json
 
+# Machine-local links into the top-level `skills/` folder (a directory junction
+# on Windows, a symlink on Linux/macOS — Node's fs.symlinkSync picks per OS).
+# Claude Code only discovers skills under `.claude/skills/`, and OpenAI Codex CLI
+# discovers them under `.agents/skills/`; both are bridged to one source of
+# truth. Recreated automatically by a SessionStart hook
+# (.claude/hooks/ensure-skills-link.mjs) wired into both Claude Code
+# (`.claude/settings.json`) and Codex (`.codex/hooks.json`).
+# NOTE: no trailing slash — a Linux symlink is not a directory, so a
+# `skills/` pattern would miss it and the link would get committed.
+.claude/skills
+.agents/skills
+
+# App-owned, version-stamped content that Planet You writes into the AIOS. The
+# app regenerates it per version, and spaces sync between machines and people
+# who may be on different app versions, so tracking it would just churn.
+# `.planetyou/` itself stays TRACKED so `settings.json` — your own preferences —
+# syncs with the repo.
+.planetyou/docs/
+.planetyou/agents/
+
+# Disposable, generated in-flight output: any `scratch/` folder, at any depth.
+# The pattern carries no internal slash, so git applies it everywhere — most
+# often `working/<task>/scratch/`. Gitignored means NOT synced and NOT backed
+# up, so it's the right home for generated or throwaway output and the wrong
+# home for thinking you'd be sad to lose.
+scratch/
+
 # Local vault: raw, private, un-triaged material (chat exports, dumps, Takeout
 # archives, etc.). Staging area only — never committed. Promote distilled,
 # non-sensitive pieces OUT into the tracked repo as they're cleaned up. The

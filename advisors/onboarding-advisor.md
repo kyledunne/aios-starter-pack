@@ -237,7 +237,7 @@ with this?" — and the how-do-I questions that come with it.
 1. **Read the state before suggesting anything.** Enough to know what's
    real, not exhaustively: `about-<name>/` and `goals-and-priorities/`
    (Layer 1), `tools-and-connections/` (Layer 2 — what's actually wired
-   in), `.claude/skills/` (what flows exist), `working/` (what's already
+   in), `skills/` (what flows exist), `working/` (what's already
    in flight), `devices.md` (machine roster). Look at the files in each,
    for the reason above — a folder you can't list is not a folder that
    isn't there.
