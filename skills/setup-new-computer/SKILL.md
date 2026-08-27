@@ -79,7 +79,8 @@ to Phase 1.
 ## Phase 1 — Machine-local plumbing
 
 On a fresh clone there's very little to do here: **skills ship as plain files in
-`.claude/skills/`**, so Claude Code sees them the moment you open the repo —
+`skills/`**, linked to `.claude/skills/` and `.agents/skills/` by a session
+hook, so both agents see them the moment you open the repo —
 nothing to wire up.
 
 Two **optional** bridges sync things across machines or share them across tools.

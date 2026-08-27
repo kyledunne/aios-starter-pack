@@ -29,9 +29,9 @@ nothing — you just re-read the file and continue.
    `working/<topic-slug>/` and name the capture file descriptively — e.g.
    `working/<topic-slug>/grill-capture.md`. If the grill is part of an existing
    working task, drop the capture in that task's folder. Don't scatter captures
-   elsewhere. (`working/` is the one place not auto-committed, so the capture
-   stays local until the task is checkpointed or completed — which is fine;
-   that's the live scratch surface.)
+   elsewhere. (`working/` is committed like the rest of the repo, so the
+   capture is safe as soon as it lands — which is the point of writing to a
+   file rather than holding it in the conversation.)
    - Get today's date if you don't already know it:
      `Get-Date -Format yyyy-MM-dd` (PowerShell) or `date +%F` (Bash).
 2. **Create the file immediately** with a header: title, date, the goal of the

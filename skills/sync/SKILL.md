@@ -28,9 +28,10 @@ git status --short --branch
 Read off three things:
 
 - **Clean working tree, or uncommitted changes?** Uncommitted changes are almost
-  always live `working/` scratch — deliberately left uncommitted (see
-  [guidance/working-directory.md](../../../guidance/working-directory.md)). They
-  must be preserved.
+  always live `working/` edits that haven't been committed *yet* — `working/` is
+  tracked like everything else (see
+  [guidance/working-directory.md](../../../guidance/working-directory.md)), so
+  these are real work in progress. They must be preserved.
 - **Behind, ahead, or diverged** from `origin/main`? *Behind* = the remote has
   commits this copy doesn't (the normal case). *Ahead* = there are local commits
   not yet pushed. *Diverged* = both.
@@ -95,9 +96,11 @@ If step 1 showed local commits not yet on the remote (you were *ahead* or
 git push
 ```
 
-This is the user's own already-committed work going up — safe. (Don't commit
-uncommitted `working/` scratch just to push it; that stays local until its task
-is checkpointed or wrapped.)
+This is the user's own already-committed work going up — safe. (Don't sweep up
+uncommitted `working/` edits into a commit of your own just to push them — they
+belong to whatever task is in flight, and
+[`/checkpoint-working-task`](../checkpoint-working-task/SKILL.md) is how that
+task commits them, with a message that makes sense.)
 
 ### 5. Report plainly
 
@@ -116,7 +119,8 @@ Then stop.
 - **Don't discard uncommitted changes to force a pull through** — no
   `git reset --hard`, `git checkout -- .`, or `git clean` on a dirty tree. Stash
   instead.
-- **Don't commit `working/` scratch** just to get the pull through.
+- **Don't commit someone else's in-flight `working/` edits** just to get the
+  pull through — stash instead, then restore.
 - **Don't force-push or rewrite history** to resolve a divergence.
 - **Don't leave a conflicted or half-merged tree.** Finish it or abort it — never
   walk away mid-merge.

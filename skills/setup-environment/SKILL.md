@@ -106,7 +106,8 @@ file to see it. A 60-second delight, not a design review. Details:
 
 ### 3. Agentic layer
 
-- **Claude Code** → the default. `.claude/skills/` ships in the box and
+- **Claude Code** → the default. `skills/` ships in the box (linked to
+  `.claude/skills/` at session start) and
   is read automatically — nothing to do.
 - **Codex (as well as, or instead of, Claude Code)** → follow
   [`guidance/setup-codex.md`](../../../guidance/setup-codex.md). The

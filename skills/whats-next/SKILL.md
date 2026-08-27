@@ -43,7 +43,7 @@ what's real, not exhaustively:
 
 - `tools-and-connections/` — which services are wired in (connections) and
   which general capabilities are stood up (tools).
-- `.claude/skills/` — what workflows exist.
+- `skills/` — what workflows exist.
 - `devices.md` — machine roster / parity.
 - The four layers in [AGENTS.md](../../../AGENTS.md) — how far out the AIOS
   has been built.

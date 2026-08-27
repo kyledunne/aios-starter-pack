@@ -5,12 +5,14 @@ description: Save a mid-task snapshot of in-flight work — commit + push the cu
 
 # Checkpoint — save in-flight work without wrapping it up
 
-`working/` is the one place that is **not** auto-committed (see
+`working/` is committed like the rest of the repo (see
 [guidance/working-directory.md](../../../guidance/working-directory.md)), so
-in-flight scratch normally stays uncommitted until a task is done. This skill
-is the deliberate save-point in between: commit + push the current task folder
-so progress is backed up and synced across machines, **without** archiving or
-writing the full wrap-up overview. The task keeps going. But a checkpoint often
+this skill is not the only way in-flight work reaches git — it's the
+**deliberate save-point**: commit + push the current task folder *now*, at a
+milestone you chose, with a message that says what the milestone was, and a
+resume note to land on. Use it when you want a marked point to come back to, or
+when nothing else is committing the repo for you. It **doesn't** archive or
+write the full wrap-up overview. The task keeps going. But a checkpoint often
 exists precisely so the task can be paused and resumed later — or picked up on a
 different machine — so make sure there's a **light resume note** to land on
 (step 2).
