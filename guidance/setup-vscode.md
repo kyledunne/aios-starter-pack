@@ -12,7 +12,7 @@ unless the repo is opened in VS Code** — in a terminal, another editor, or a
 desktop app it's just a few unread files. (This is what makes it different from
 the pack's other tooling, like Codex routing or cross-machine junctions, which
 need active per-machine setup and so stay opt-in via
-[`/setup-environment`](../.claude/skills/setup-environment/SKILL.md).) If you
+[`/setup-environment`](../skills/setup-environment/SKILL.md).) If you
 don't use VS Code, ignore the folder or delete it — nothing else depends on it.
 
 The folder is **yours**, like the rest of the repo: edit it, pick a palette, add
@@ -25,7 +25,7 @@ what ships and how to change it.
   Marketplace / Open VSX extensions the repo expects (Claude Code, Codex, the two
   AIOS preview helpers, the AIOS Icon Theme, and Live Preview), so anyone who opens
   it in VS Code gets prompted to install them. If you run
-  [`/setup-environment`](../.claude/skills/setup-environment/SKILL.md) and use VS
+  [`/setup-environment`](../skills/setup-environment/SKILL.md) and use VS
   Code, it installs the whole set for you in one pass (reading the ids from here,
   gated on the `code` CLI being on PATH) — so they're in place without relying on
   the popup.
@@ -145,7 +145,7 @@ Point the **second** `markdown.styles` entry in
 ```
 
 Save, then reopen a `.md` preview to see it. Steer dark for a dark editor theme,
-light for a light one. [`/setup-environment`](../.claude/skills/setup-environment/SKILL.md)
+light for a light one. [`/setup-environment`](../skills/setup-environment/SKILL.md)
 can pick one for you.
 
 ### Plain, no bands

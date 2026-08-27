@@ -20,7 +20,7 @@ content be **created live, with you**:
 - **A primer** ([`AGENTS.md`](AGENTS.md)) — what an AIOS is, the four layers it
   grows through, and the principles (minimalism, CLIs-over-MCPs, commit-and-sync)
   that keep it lean. Read by both Claude Code and Codex.
-- **Skills** ([`.claude/skills/`](.claude/skills/)) — guided flows:
+- **Skills** ([`skills/`](skills/)) — guided flows:
   `/first-time-setup` (get your dev environment running on the first
   machine), `/onboarding` (set up who you are), `/get-connected` (wire in
   Gmail, Slack, …), `/setup-new-computer`, `/setup-environment` (tune your
@@ -34,18 +34,18 @@ content be **created live, with you**:
   let you pick it directly; from a terminal it's `/onboarding`.
 - **A setup manual** ([`guidance/`](guidance/)) — untailored, vendored notes for
   connecting services (Google Workspace, Slack, Playwright, …) and the patterns
-  that hold it together (git habits, the working/ directory, directory
-  junctions).
+  that hold it together (git habits, the working/ directory, the optional
+  memory junction).
 - **The conventions** — gitignore and secrets handling baked in from day one, so
   a fresh clone is safe to work in immediately. The one bit of editor polish that
   ships by default is a [`.vscode/`](.vscode/) folder — a brand-skinned VS Code
   Markdown preview plus recommended extensions — and only because it's **inert
   unless you open the repo in VS Code**, so it costs every other editor nothing
   (see [`guidance/setup-vscode.md`](guidance/setup-vscode.md)). Everything else
-  *tool*-specific stays opt-in and unshipped — routing skills to Codex,
-  cross-machine memory/skills junctions — documented in [`guidance/`](guidance/)
+  *tool*-specific stays opt-in and unshipped — the cross-machine memory
+  junction — documented in [`guidance/`](guidance/)
   and set up on request by
-  [`/setup-environment`](.claude/skills/setup-environment/SKILL.md), so the pack
+  [`/setup-environment`](skills/setup-environment/SKILL.md), so the pack
   stays agnostic about the tools you actually use.
 
 The user-content folders — `about-<name>/`, `goals-and-priorities/`,

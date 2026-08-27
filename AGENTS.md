@@ -16,13 +16,13 @@ separate matter: they stay in the gitignored `.env`, never committed
 
 What you're reading is the **starter pack**: the machinery and recipes
 for an AIOS — this primer, the [`guidance/`](guidance/) manual, the
-[`.claude/skills/`](.claude/skills/), the [`advisors/`](advisors/), and the
+[`skills/`](skills/), the [`advisors/`](advisors/), and the
 configs — but **not** the user's content.
 There are no `about-the-user/`, `goals-and-priorities/`,
 `tools-and-connections/`, or `issues-and-solutions/` folders yet, and
 that's deliberate: those are **born during setup**, from scratch, as the
-[`/onboarding`](.claude/skills/onboarding/SKILL.md) and
-[`/get-connected`](.claude/skills/get-connected/SKILL.md) flows run and as real
+[`/onboarding`](skills/onboarding/SKILL.md) and
+[`/get-connected`](skills/get-connected/SKILL.md) flows run and as real
 work turns up real snags. Creating them live — rather than filling in a
 pre-made skeleton — is part of teaching the user (and you) that this repo
 is built, not templated. So when this primer names a folder that isn't
@@ -164,12 +164,21 @@ enough that an API wins. Default, not a rule.)
 Projects that are actively underway live in `working/`, one subfolder per
 task — brainstorms, plans, and intermediate files together in one place.
 It keeps the live surface of the repo small while work is still
-half-formed. Two things make it different from the rest of the repo: it's
-the **one place not auto-committed** (live scratch stays uncommitted
-until the task wraps), and finished tasks don't linger — promote the real
-artifact to its permanent home and move the folder into `working-archive/`
-by date. See [`guidance/working-directory.md`](guidance/working-directory.md)
-for the full pattern. (Both folders are born the first time a task starts.)
+half-formed. What makes it different from the rest of the repo is that
+finished tasks don't linger — promote the real artifact to its permanent
+home and move the folder into `working-archive/` by date. See
+[`guidance/working-directory.md`](guidance/working-directory.md) for the
+full pattern. (Both folders are born the first time a task starts.)
+
+**`working/` is committed like everything else.** In-flight notes are
+exactly the work you'd be sorriest to lose, and an AIOS that syncs itself
+between machines has to carry them. For genuinely disposable output —
+generated files, throwaway dumps, intermediate artifacts you'd regenerate
+without a thought — use **`working/<task>/scratch/`**: every `scratch/`
+folder, at any depth, is gitignored. The trade is the point, so read it
+plainly: gitignored means **not synced and not backed up**. `scratch/` is
+for output that is *disposable*, never for thinking that is merely
+*unfinished*.
 
 ## Built automations: the automations/ directory
 
@@ -177,15 +186,15 @@ Once a workflow is **built and running** (layers 3–4 — a workflow the AIOS
 *does*, or an always-on process), it lives in `automations/`, the
 root-level home for all of them, **one subfolder per automation**. This is
 the permanent counterpart to `working/`: `working/` holds half-formed scratch
-and is not auto-committed; `automations/` holds finished, in-service machinery
-and is tracked and auto-committed like the rest of the repo.
+that is eventually archived or thrown away; `automations/` holds finished,
+in-service machinery that stays. Both are tracked and auto-committed.
 
 Don't put an automation's engine code loose at the repo root — it belongs under
 `automations/<name>/`. Each subfolder is self-contained: the engine code, its
 runners/schedulers (e.g. the Windows task launchers), any bot front doors, and
 its own ops doc (`<NAME>.md` / `BOT.md`) all live together.
 
-**Relationship to `.claude/skills/`:** a skill is *how an agent drives* a capability
+**Relationship to [`skills/`](skills/):** a skill is *how an agent drives* a capability
 (instructions, loaded on demand); an automation is *the machinery that runs* —
 often headless, scheduled, or always-on. They commonly share a name and pair up:
 the skill is the agent's front door, the `automations/<name>/` folder is the
@@ -193,6 +202,38 @@ engine and the unattended front doors (folder watchers, Slack bots, cron). For
 example, a document-filing automation might pair a `/file-docs` skill (the
 agent's front door) with an `automations/file-docs/` folder holding the filing
 engine, a find-a-file Slack bot, and a folder-watching poller.
+
+## Skills: the skills/ directory
+
+A skill is a re-runnable procedure invoked as a slash command — one folder
+per skill under [`skills/`](skills/), each holding a `SKILL.md` whose
+frontmatter carries the description the agent sees and whose body is the
+procedure. [`skills/README.md`](skills/README.md) indexes the ones the pack
+ships.
+
+**Top-level `skills/` is the single source of truth, and both agents are
+bridged to it.** Claude Code only discovers skills under `.claude/skills/`,
+and the OpenAI Codex CLI only under `.agents/skills/` — so each of those is
+a **machine-local link** into `skills/`: a directory junction on Windows (no
+admin rights needed), a plain symlink on macOS and Linux.
+
+Both links are recreated at the start of every session by one cross-platform
+Node script,
+[`.claude/hooks/ensure-skills-link.mjs`](.claude/hooks/ensure-skills-link.mjs),
+wired as a `SessionStart` hook from **both** agents — Claude Code via
+[`.claude/settings.json`](.claude/settings.json) and Codex via
+[`.codex/hooks.json`](.codex/hooks.json) — so whichever one starts first
+heals both links. Node's `fs.symlinkSync(target, path, 'junction')` picks the
+right kind of link per OS, which is why a single script covers every machine.
+The script is conservative: a real directory with files at either path is left
+alone and reported, and it always exits 0.
+
+The links themselves are **gitignored** (`.claude/skills`, `.agents/skills`
+— deliberately with no trailing slash, because a Linux symlink is not a
+directory, so a `skills/` pattern would miss it and the link would get
+committed). A fresh clone has neither until the first session creates them.
+There's nothing to run by hand; if you ever need to, it's
+`node .claude/hooks/ensure-skills-link.mjs`.
 
 ## Personas: the advisors/ directory
 
@@ -208,7 +249,7 @@ The pack ships one:
 guide that runs the Layer-1 opening interview and then stays on as the
 "what's next" guide once the interview is done. From a terminal CLI the
 same content is reachable as
-[`/onboarding`](.claude/skills/onboarding/SKILL.md), which is a thin shell
+[`/onboarding`](skills/onboarding/SKILL.md), which is a thin shell
 pointing at it; the advisor file is the single source of the flow.
 
 The folder is flat (one file per advisor, no README) until a second advisor
@@ -230,7 +271,7 @@ folder.
 
 See [`guidance/README.md`](guidance/README.md) for the full split and a
 one-line description of each doc; consult a doc when its task comes up
-(it's reference, not a script). [`/whats-next`](.claude/skills/whats-next/SKILL.md)
+(it's reference, not a script). [`/whats-next`](skills/whats-next/SKILL.md)
 runs the sync-down + suggest flow. For territory this pack doesn't cover,
 check [`guidance/more-guidance-online.md`](guidance/more-guidance-online.md).
 
@@ -241,7 +282,7 @@ a machine):
 
 - **`devices.md`** (tracked, repo root) — the **roster** of every machine
   this AIOS runs on, high-level and secret-free. It's the **parity spec**
-  that [`/setup-new-computer`](.claude/skills/setup-new-computer/SKILL.md)
+  that [`/setup-new-computer`](skills/setup-new-computer/SKILL.md)
   reads when bringing up a new machine.
 - **`local-setup.md`** (gitignored, repo root) — the detail for *this*
   machine: installed versions, local auth state, file locations.
@@ -272,8 +313,8 @@ carries credentials to a new machine, not git and not chat.
 When a coherent unit of work is complete — even small ones like a single
 scratchpad note — commit and push it automatically, without asking.
 Keeping the AIOS synced across machines is the whole point of it being a
-git repo, so this is the normal habit, not a per-change decision. (The
-standing exception is `working/`, above.) See
+git repo, so this is the normal habit, not a per-change decision — and it
+covers `working/` too, which used to be carved out and no longer is. See
 [`guidance/git-practices.md`](guidance/git-practices.md) for the fuller
 rationale and the edge cases where you should pause and confirm first.
 
@@ -285,10 +326,15 @@ keeps memory in its own local store outside the repo — there's nothing to comm
 
 **Expect company: multiple agents often run in this AIOS at once**
 (worktrees would isolate them but are awkward in practice, so assume a
-shared working copy). Two habits keep them from colliding: **one agent per
-`working/` project at a time**, and **keep every commit scoped to your own
-work** — inside your own `working/<project>/` subfolder commit freely, but
-outside it commit by explicit pathspec (`git commit -- <paths>`, never
-`git add -A` / `-a`) and don't leave files staged between steps, or a
-concurrent broad commit can sweep your changes into its own. Full writeup:
-[`guidance/git-practices.md`](guidance/git-practices.md).
+shared working copy). The habit that matters is **one agent per `working/`
+project at a time** — two agents editing the same task folder collide over
+the files themselves, which no commit discipline fixes.
+
+Scoping each commit by explicit pathspec (`git commit -- <paths>` rather
+than `git add -A` / `-a`) is a **courtesy, not a hard rule**: it makes for
+tidier history, and it genuinely matters in an AIOS where nothing else is
+committing — a plain terminal or editor session with no always-on sync
+process running. Where something *is* committing everything on a timer, a
+neighbouring agent sweeping your files into its commit costs you nothing,
+because those files were going to be committed within the minute anyway.
+Full writeup: [`guidance/git-practices.md`](guidance/git-practices.md).

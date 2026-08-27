@@ -41,16 +41,33 @@ overhead isn't worth it for a five-minute change.
 (`draft-q3-newsletter`, not `task-3`). The archive prefixes each with
 the day it was completed.
 
-## Git is different here
+## Git: `working/` is committed like everything else
 
-`working/` is the one place that is **not** auto-committed. (See
-[git-practices.md](git-practices.md) for the auto-commit default
-everywhere else.) In-flight work stays uncommitted until the task is
-wrapped up or the user asks to checkpoint — this is deliberately a
-surface for live, half-formed thinking, and committing every
-intermediate scribble would just be noise. Finished artifacts get
-promoted to their permanent home or archived; the scratch around them
-doesn't need to be preserved blow-by-blow.
+`working/` used to be carved out of the auto-commit default (see
+[git-practices.md](git-practices.md)) on the theory that half-formed
+thinking is noise in the history. That was the wrong trade, and the pack
+no longer makes it: in-flight notes are the work you'd be sorriest to
+lose, and an AIOS that syncs itself between machines has to carry them.
+Half-finished plans are exactly what you want waiting for you on the
+other laptop. So `working/` commits like the rest of the repo — whether
+that happens automatically at the end of a turn, or via
+`/checkpoint-working-task` at a milestone, or as part of the wrap-up.
+
+### `scratch/`: the disposable half
+
+Some in-flight output genuinely shouldn't be committed — a 200 MB export
+you'd regenerate without a thought, a scraped page dump, a throwaway
+build directory. That goes in **`working/<task>/scratch/`**. Every
+`scratch/` folder is gitignored, at any depth (the pattern carries no
+internal slash, so git applies it everywhere), which means you can give
+each task its own without touching `.gitignore` again. When a scratch
+file turns out to be a keeper, move it up out of `scratch/` and it
+starts being tracked.
+
+**Read the trade plainly: gitignored means not synced and not backed
+up.** `scratch/` is the right home for output that is *disposable*, and
+the wrong home for thinking that is merely *unfinished* — "not ready
+yet" is precisely the case that committing exists to stop you losing.
 
 ## Wrapping up a task
 
@@ -65,8 +82,8 @@ same way each time:
 2. **Capture any reusable lessons** wherever the AIOS keeps them, so a
    problem that took real diagnosis isn't re-debugged next time.
 3. **Move the folder** into `working-archive/<year>/<month>/<day>-<task-name>/`.
-4. **Commit and push** — the archived task is now a coherent unit of
-   work, so the normal auto-commit habit applies again.
+4. **Commit and push** — archiving the task is its own coherent unit of
+   work, so it gets its own commit.
 
 The point is to keep `working/` small and current while leaving a clean,
 dated trail in `working-archive/` of what got done, when, and how.

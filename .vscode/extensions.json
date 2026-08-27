@@ -4,7 +4,7 @@
   // install the extensions it expects. See guidance/setup-vscode.md.
   "recommendations": [
     // Claude Code and Codex — the AI coding agents that drive this AIOS from inside
-    // the editor. Both read the same repo (AGENTS.md / CLAUDE.md, .claude/skills/),
+    // the editor. Both read the same repo (AGENTS.md / CLAUDE.md, skills/),
     // so either can pick up the work. Install whichever you use; having both lets you
     // switch between them without leaving VS Code.
     "anthropic.claude-code",
