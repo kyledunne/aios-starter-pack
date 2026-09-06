@@ -318,6 +318,18 @@ covers `working/` too, which used to be carved out and no longer is. See
 [`guidance/git-practices.md`](guidance/git-practices.md) for the fuller
 rationale and the edge cases where you should pause and confirm first.
 
+**Unless something else is already committing this repo for you.** An AIOS
+opened inside an app that syncs it — Planet You commits and pushes the whole
+repo at every turn edge and on a timer — does not need agent commits at all:
+routine ones spend turns and tokens on work that lands in git within the
+minute regardless. Leave those to the sync and keep working. A deliberate
+commit is still worth making where a coherent unit deserves its own message;
+what to drop is the reflex after every change. In a plain terminal or editor
+session nothing else is syncing the repo, so the habit above stands exactly
+as written. **How to tell which you are in:** a `.planetyou/` folder at the
+repo root means the space was scaffolded through Planet You and its Gravity
+sync is running.
+
 This includes **Claude memories** — *if* you've set up the optional memory
 junction (see [`guidance/memory-junctions.md`](guidance/memory-junctions.md)).
 With it, memories live in the repo's `memory/` folder and *are* tracked in git,
@@ -332,9 +344,9 @@ the files themselves, which no commit discipline fixes.
 
 Scoping each commit by explicit pathspec (`git commit -- <paths>` rather
 than `git add -A` / `-a`) is a **courtesy, not a hard rule**: it makes for
-tidier history, and it genuinely matters in an AIOS where nothing else is
-committing — a plain terminal or editor session with no always-on sync
-process running. Where something *is* committing everything on a timer, a
-neighbouring agent sweeping your files into its commit costs you nothing,
-because those files were going to be committed within the minute anyway.
+tidier history, and it genuinely matters in the same sessions the habit above
+does — a plain terminal or editor session with nothing else committing. Under
+Gravity, a neighbouring agent sweeping your files into its commit costs you
+nothing, because those files were going to be committed within the minute
+anyway.
 Full writeup: [`guidance/git-practices.md`](guidance/git-practices.md).

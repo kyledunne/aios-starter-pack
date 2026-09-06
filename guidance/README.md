@@ -8,8 +8,9 @@ follow front-to-back.
 
 - [git-practices.md](git-practices.md) — How to commit and push as the
   AIOS grows: the default of auto-committing every coherent change
-  (`working/` included), the handful of cases where it's wrong, and
-  keeping commits tidy when multiple agents share one repo.
+  (`working/` included), the cases where it's wrong — including a
+  Planet You space, where the app's own sync already commits everything
+  — and keeping commits tidy when multiple agents share one repo.
 - [memory-junctions.md](memory-junctions.md) — The per-machine directory
   junction (Windows) / symlink (macOS/Linux) that syncs Claude's memory into
   a tracked `memory/` folder. *Optional*, and a good thing to reach for once

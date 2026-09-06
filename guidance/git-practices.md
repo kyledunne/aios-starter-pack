@@ -40,6 +40,27 @@ A handful of cases where the automatic-commit default is wrong:
 
 Outside those cases, default to committing and pushing.
 
+## The exception: when something else is already committing
+
+The default above assumes you are the only thing that commits this repo.
+That holds in a terminal or editor session, and it is exactly why the
+habit matters there — nothing else will get the work into git.
+
+It does not hold in an AIOS opened through **Planet You**, whose Gravity
+sync commits and pushes the whole repo at every turn edge and on a timer.
+There, an agent's routine commits are duplicated effort: the work lands in
+git within the minute whether or not a turn is spent on it. So:
+
+- **Don't commit reflexively after each change.** Make the edit and move
+  on; the sync takes it.
+- **Deliberate commits are still fine.** Where a coherent unit genuinely
+  deserves its own message — a finished piece of work, a milestone worth
+  landing on — commit it. What to drop is the habit, not the act.
+
+**How to tell which session you're in:** a `.planetyou/` folder at the repo
+root means the space was scaffolded through Planet You and Gravity is
+syncing it. No `.planetyou/`, no sync — the default applies in full.
+
 ## Why this works
 
 The AIOS grows in lots of tiny increments — a scratchpad note here, a
@@ -88,11 +109,10 @@ Scoping each commit to your own paths — `git commit -- path1 path2` rather tha
 `git add -A` / `git commit -a` — used to be a hard rule here. It has been
 downgraded, honestly, because the reason for it has weakened:
 
-- **If something is committing the repo automatically** — an always-on sync
-  process, an app that commits at every turn edge — then a neighbouring agent
-  sweeping your files into its commit costs you nothing. Those files were going
-  to be committed within the minute anyway, under someone's message. The
-  bundling is cosmetic.
+- **If something is committing the repo automatically** — Planet You's Gravity,
+  or any always-on sync process — then a neighbouring agent sweeping your files
+  into its commit costs you nothing. Those files were going to be committed
+  within the minute anyway, under someone's message. The bundling is cosmetic.
 - **If nothing is** — a plain terminal or editor session on a machine with no
   such process — then the old reasoning still holds exactly as written, and
   scoping is what keeps another agent's half-done work out of your commit. Do
