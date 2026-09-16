@@ -1,6 +1,6 @@
 ---
 name: sync
-description: Bring this machine's copy of the AIOS up to date — `git pull` from GitHub (and push any local commits), safely handling uncommitted work and merge conflicts so nothing is lost. Use when the user wants to sync, get up to date, or pull the latest before starting work.
+description: Safely bring this machine's AIOS repository up to date when the user asks to sync.
 ---
 
 # Sync — get this AIOS up to date

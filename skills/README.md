@@ -38,7 +38,9 @@ Add a skill here and both agents see it. See **Skills** in
 - [grill-me](grill-me/SKILL.md) — interview the user one question at a time to
   get a plan out of their head and into a capture file.
 - [dream](dream/SKILL.md) — sweep the `memory/` store, repair what's broken,
-  and resync the index.
+  relocate non-ambient facts, and resync the index.
+- [clean-up-aios](clean-up-aios/SKILL.md) — audit the whole AIOS, settle the
+  important choices, and require plan approval before making cleanup edits.
 
 ### The `working/` task lifecycle
 
@@ -64,3 +66,14 @@ Same rule as everything else here (**Minimalism**): add a skill when a real
 procedure has been done twice by hand, not in anticipation. Create
 `skills/<name>/SKILL.md` with `name` and `description` frontmatter, add a line
 to the index above, and both agents pick it up on their next session.
+
+Descriptions are trigger metadata, not mini-procedures: keep each to one
+discriminating sentence and put the workflow in the body. Natural-language
+invocation is the default. For rare explicit-only skills, set both Claude's
+`disable-model-invocation: true` frontmatter key and Codex's
+`policy.allow_implicit_invocation: false` in `agents/openai.yaml`.
+
+An optional `project: <id>` frontmatter field may file Run-launched chats into a
+fixed project when almost every legitimate use belongs there. Do not bind
+generic task-lifecycle skills to a project. See
+[`guidance/context-and-maintenance.md`](../guidance/context-and-maintenance.md).

@@ -1,6 +1,6 @@
 ---
 name: checkpoint-working-task
-description: Save a mid-task snapshot of in-flight work — commit + push the current `working/` task folder without wrapping it up or archiving. Use when the user wants to checkpoint progress so it syncs across machines, while the task is still going.
+description: Checkpoint an in-flight working task when the user wants its current state synced.
 ---
 
 # Checkpoint — save in-flight work without wrapping it up

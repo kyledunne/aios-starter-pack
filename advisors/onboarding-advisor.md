@@ -100,7 +100,8 @@ conversation feels.
 A short message: what an AIOS is in one sentence (a personal AI operating
 system, kept as a plain-text repo, that gets to know them and works on
 their behalf over time), and what this session will cover (five quick
-questions, about 10–15 minutes). Then ask the first question.
+questions, about 10–15 minutes — six if step 7 applies). Then ask the
+first question.
 
 If Step 0 found no track, this is where that one extra question goes —
 folded into the opening, not as a separate interrogation.
@@ -200,7 +201,79 @@ Based on the answer, scaffold `goals-and-priorities/`:
 Keep the explanation in `goals-and-priorities/README.md` short — a few
 sentences and the naming convention. The user can grow it.
 
-## 7. Wrap up
+## 7. Conversation categories — Planet You only
+
+**Check silently first.** If there is no `.planetyou/` folder at the AIOS
+root, skip this step and say nothing about it — an AIOS built in a terminal
+has no Conversations rail to organise. Same posture as Step 0: one check,
+no comment.
+
+Planet You keeps the user's chats in two levels — **categories** are plain
+containers, **projects** are the coloured things inside them that
+conversations file under. The file order is the menu order, so the
+categories run **most serious first**: work before life before fun.
+
+You already know what they do from questions 3 and 4, so don't interrogate
+them from scratch. **Propose a starting taxonomy built from their own
+answers** and let them adjust it. Step 6 already said "last one", so frame
+this as the extra it is:
+
+> "One more, while I'm here — Planet You files your chats into categories,
+> most serious first. From what you've told me I'd start with: **Acme**
+> (your work), holding *Website redesign* and *Q3 planning*; then **Side
+> Projects**; then **Life** for things like taxes and fitness. Roughly
+> right? Add, rename, drop or reorder anything."
+
+One round of adjustment, conversational, not a form. Keep the question in
+their language — the file shape below is yours to handle, not a form for
+them to fill in. Skip is valid here as everywhere: if they'd rather not,
+write nothing and tell them the rail organises itself as they go.
+
+### Writing `.planetyou/projects.yaml`
+
+One `nodes:` list, flat, each entry a category or a project:
+
+```yaml
+# Conversations-rail categories and projects. Order is meaningful:
+# category order = menu order, project order within a category = menu order.
+nodes:
+  - id: tetherpoint
+    name: Tetherpoint
+    path: 2pt0c            # optional, AIOS-root-relative directory
+  - id: umich-clearinghouse
+    name: UMich Clearinghouse
+    category: tetherpoint  # ref by id; present = project, absent = category
+    color: teal            # palette token; projects only
+    path: 2pt0c/projects/umich-clearinghouse
+  - id: side-projects
+    name: Side Projects    # fixed: synthesized if missing, delete refused
+  - id: miscellaneous
+    name: Miscellaneous    # fixed: synthesized, fully locked, always last
+```
+
+- **`id` is a kebab-case slug, minted once from the name and never
+  rewritten.** Conversations store the id, so a later rename is a `name`
+  edit and only a `name` edit.
+- **Categories in seriousness order, each followed by its own projects.**
+  An entry with a `category:` is a project and that field names its
+  category by `id`; an entry without one is a category.
+- **`color:` goes on projects only**, and is one of these twelve tokens,
+  never a hex value:
+
+      red  orange  amber  lime  green  teal  sky  blue  purple  magenta  pink  brown
+
+  Assign the least-used one each time so the colours spread evenly.
+- **`path:` only where a real folder already backs it** — one you can see
+  in the repo, or one the user named. Never invent a path.
+- **Don't write `miscellaneous` or `side-projects` yourself.** The app has
+  both whether or not the file names them; the example shows them as they
+  look once the app has written them. The one time you write
+  `side-projects` is when the user puts a project under it.
+
+If `.planetyou/docs/` is present, its `conversation-projects.md` is the
+full contract — read it before doing anything the rules above don't cover.
+
+## 8. Wrap up
 
 Confirm what was written: list the files you created (with paths so they
 can click through), and tell them what's next:
@@ -209,6 +282,11 @@ can click through), and tell them what's next:
 > Connections**: wiring the AIOS into the services you actually use (Gmail,
 > Slack, etc.). When you're ready, run `/get-connected` and we'll start
 > with Google Workspace and Slack."
+
+If you wrote `.planetyou/projects.yaml`, add a line that those categories
+and projects now live in the Projects view of the Conversations pane, and
+that they can ask you — or any agent working in this AIOS — to reshape
+them any time.
 
 Also mention `/setup-environment` — a separate, run-anytime flow that
 tailors the repo to *their* tools (a brand-skinned Markdown preview in VS

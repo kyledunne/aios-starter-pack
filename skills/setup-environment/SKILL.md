@@ -1,6 +1,6 @@
 ---
 name: setup-environment
-description: "Optional, run-anytime setup that adapts the AIOS repo to how you actually work with it — across three layers: the UI you read and edit it in (VS Code, a desktop app, a terminal), the AI agent(s) that drive it (Claude Code, Codex), and the operating system(s) of your machine(s). A default .vscode/ folder ships (inert unless opened in VS Code); nothing else tool-specific does. Run this to tune the editor look, route skills to multiple agents, or set up cross-machine sync. Entirely optional and skippable — separate from onboarding and get-connected."
+description: Adapt an AIOS to the user's editors, agents, operating systems, and sync preferences.
 ---
 
 # Set up your environment — fit the AIOS to your tools

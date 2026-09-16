@@ -25,7 +25,8 @@ content be **created live, with you**:
   machine), `/onboarding` (set up who you are), `/get-connected` (wire in
   Gmail, Slack, …), `/setup-new-computer`, `/setup-environment` (tune your
   editor & agents — optional), `/whats-next`, `/dream` (tend the memory store),
-  `/grill-me` (get interviewed to extract a plan), plus the `working/` task
+  `/clean-up-aios` (approval-gated whole-repo maintenance), `/grill-me` (get
+  interviewed to extract a plan), plus the `working/` task
   lifecycle (`/complete-working-task`, `/checkpoint-working-task`).
 - **An advisor** ([`advisors/`](advisors/)) — a persona that carries a whole
   conversation rather than a single task. One ships: the **Onboarding
@@ -35,7 +36,7 @@ content be **created live, with you**:
 - **A setup manual** ([`guidance/`](guidance/)) — untailored, vendored notes for
   connecting services (Google Workspace, Slack, Playwright, …) and the patterns
   that hold it together (git habits, the working/ directory, the optional
-  memory junction).
+  memory junction, and context/maintenance standards).
 - **The conventions** — gitignore and secrets handling baked in from day one, so
   a fresh clone is safe to work in immediately. The one bit of editor polish that
   ships by default is a [`.vscode/`](.vscode/) folder — a brand-skinned VS Code

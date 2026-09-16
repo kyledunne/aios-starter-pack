@@ -1,6 +1,6 @@
 ---
 name: first-time-setup
-description: "First-machine on-ramp — get a working dev environment on the very first computer this AIOS runs on: verify the essentials are in place, optionally bridge Claude's memory into the repo, and register the machine in devices.md. The first-machine counterpart to /setup-new-computer (which matches every machine after to the first). Run it once, before /onboarding."
+description: Prepare the first computer for a new AIOS before onboarding begins.
 ---
 
 # First-time setup — get your dev environment running

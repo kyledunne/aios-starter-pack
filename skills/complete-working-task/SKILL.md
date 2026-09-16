@@ -1,6 +1,6 @@
 ---
 name: complete-working-task
-description: Wrap up a finished task — write a short overview README, log any non-trivial snags hit during the work, archive the task folder under working-archive/YYYY/MM-month/DD-task-name/, and commit + push. Use when the user wants to complete, finish, wrap up, close out, or archive a task in `working/`, or says a working task is done.
+description: Document and archive a finished working task when the user says it is done.
 ---
 
 # Complete — wrap up and archive a finished task

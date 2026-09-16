@@ -1,6 +1,6 @@
 ---
 name: whats-next
-description: Survey upgrade options for the AIOS — sync guidance from the upstream starter pack, compare it against what's already set up here, and propose a few high-leverage next steps. Use when the user asks "what should we do next?" or wants to level up / upgrade the AIOS.
+description: Compare an AIOS with current starter guidance and propose a few high-leverage next steps.
 ---
 
 # What's next — survey upgrade options from guidance
