@@ -1,6 +1,6 @@
 ---
 name: setup-new-computer
-description: Bring the AIOS up on a new machine so it matches the others — install the toolchain, restore connections, and register the machine in devices.md. Use when setting up the AIOS on a computer for the first time. Walks the full flow: bare-metal bootstrap (git, an agent CLI, clone), toolchain install, secrets from the password manager, per-connection bring-up, and recording the machine.
+description: Bring a new computer up to parity with the AIOS's existing devices.
 ---
 
 # Set up the AIOS on a new computer

@@ -6,6 +6,10 @@ follow front-to-back.
 
 ## Index
 
+- [context-and-maintenance.md](context-and-maintenance.md) — Keeping the
+  always-loaded kernel and ambient memory small; landing pages, skill routing,
+  explicit-only controls, project declarations, and the `/clean-up-aios`
+  lifecycle.
 - [git-practices.md](git-practices.md) — How to commit and push as the
   AIOS grows: the default of auto-committing every coherent change
   (`working/` included), the cases where it's wrong — including a
