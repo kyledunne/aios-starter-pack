@@ -9,7 +9,7 @@ description the agent sees in its skills list; the body is the procedure.
 **machine-local links** into here (a directory junction on Windows, a symlink on
 macOS/Linux), recreated at the start of every session by
 [`.claude/hooks/ensure-skills-link.mjs`](../.claude/hooks/ensure-skills-link.mjs).
-Add a skill here and both agents see it. See **Skills** in
+Add a skill here and both agents see it. See **Skills and selected context** in
 [`AGENTS.md`](../AGENTS.md) for the full picture.
 
 ## Index
@@ -48,9 +48,11 @@ See [`guidance/working-directory.md`](../guidance/working-directory.md) for the
 pattern these two serve.
 
 - [checkpoint-working-task](checkpoint-working-task/SKILL.md) — an explicit
-  save-point: commit and push a task folder mid-flight, without wrapping it up.
+  save-point: commit a task folder mid-flight (and push it, outside Planet You),
+  without wrapping it up.
 - [complete-working-task](complete-working-task/SKILL.md) — write the wrap-up
-  README, capture the lessons, archive the folder by date, commit and push.
+  README, capture the lessons, archive the folder by date, and commit (and push,
+  outside Planet You).
 
 ## A note on relative links
 

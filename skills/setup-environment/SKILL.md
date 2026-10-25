@@ -1,17 +1,17 @@
 ---
 name: setup-environment
-description: Adapt an AIOS to the user's editors, agents, operating systems, and sync preferences.
+description: Optionally tune an AIOS to a developer's editors, agents, and computers.
 ---
 
 # Set up your environment — fit the AIOS to your tools
 
 The AIOS is just a git repo of Markdown, so it runs anywhere with zero
 setup. Apart from a default `.vscode/` folder (inert unless you open the
-repo in VS Code), the pack ships **bare** — assuming only Claude Code
+repo in VS Code), the pack ships **bare** — assuming only an agent
 reading plain files. This skill is the optional layer on top: it tunes the
 repo to *how you actually work with it*.
 
-Run it whenever — now, later, or never. It's **separate from
+It's for developers and tinkerers: run it whenever — now, later, or never. It's **separate from
 `/onboarding`** (which builds Layer 1, your context) and
 **`/get-connected`** (Layer 2, your connections); this is purely your dev
 environment, not the AIOS's content. Some people love tuning their
@@ -109,20 +109,18 @@ file to see it. A 60-second delight, not a design review. Details:
 - **Claude Code** → the default. `skills/` ships in the box (linked to
   `.claude/skills/` at session start) and
   is read automatically — nothing to do.
-- **Codex (as well as, or instead of, Claude Code)** → follow
-  [`guidance/setup-codex.md`](../../../guidance/setup-codex.md). The
-  shared `AGENTS.md` glue already ships, so the main step is routing the
-  skills folder to `.agents/skills/` (junction on Windows, symlink on
-  macOS/Linux). Only if they actually run Codex on this repo.
+- **Codex (as well as, or instead of, Claude Code)** → the shared
+  `AGENTS.md` and the `.agents/skills/` link already ship. The one step is
+  approving the project's hook once with `/hooks` in Codex; see
+  [`guidance/setup-codex.md`](../../../guidance/setup-codex.md).
 
 ### 4. OS layer / multiple machines
 
 - Note the host OS — junctions (Windows) vs symlinks (macOS/Linux) differ;
   the guidance docs give both.
 - If they'll run the AIOS on **more than one machine**, that's where the
-  optional **memory + skills junctions** earn their keep — syncing
-  Claude's memory into a tracked `memory/` folder, and sharing one skills
-  folder across tools. See
+  optional **memory link** earns its keep — syncing Claude's memory into a
+  tracked `memory/` folder. See
   [`guidance/memory-junctions.md`](../../../guidance/memory-junctions.md).
   The memory bridge can also be set up at the very start via
   [`/first-time-setup`](../first-time-setup/SKILL.md); bringing a *new*
@@ -143,9 +141,9 @@ anytime their tools change.
   source of truth for their own steps. Link, don't duplicate.
 - Tool-specific config is **opt-in by design**, with one exception: the
   `.vscode/` folder ships by default, because it's inert unless the repo is
-  opened in VS Code. Everything else (Codex routing, junctions) the pack
+  opened in VS Code. Everything else (the memory link, palettes) the pack
   ships bare — set up only what they'll use, skip the rest.
-- Commit what you create as one coherent unit (a palette tweak, a Codex
-  routing setup), per
-  [`guidance/git-practices.md`](../../../guidance/git-practices.md).
-  Machine-local junctions are gitignored, not committed.
+- Commit what you create as one coherent unit (a palette tweak, say), per
+  [`guidance/git-practices.md`](../../../guidance/git-practices.md); inside
+  Planet You, skip the commit. Machine-local links are gitignored, not
+  committed.

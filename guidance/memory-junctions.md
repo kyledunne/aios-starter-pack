@@ -17,7 +17,7 @@ shows up. Minimalism: don't wire this in before then.
 **The skills links are a different story: they already ship.** `.claude/skills`
 and `.agents/skills` are created for you at every session start, so both Claude
 Code and Codex read the one top-level `skills/` folder with nothing to set up.
-That's described in **Skills** in [`../AGENTS.md`](../AGENTS.md); this doc keeps
+That's described in **Skills and selected context** in [`../AGENTS.md`](../AGENTS.md); this doc keeps
 them in its table below only because the mechanics are shared.
 
 ## What a junction / symlink is

@@ -62,7 +62,7 @@ diagnosis** to figure out — not obvious typos or one-line fixes. The test:
 meaningful time?*
 
 For each one that passes, write it down in the **right place**, per the
-*When something breaks, write it down* convention in
+snag-recording rule at the end of *Work and safety* in
 [AGENTS.md](../../../AGENTS.md):
 
 - **One tool, service, or skill** → that tool's file in
@@ -93,16 +93,17 @@ Examples:
 Use lowercase month names. Two-digit day with leading zero. Create the
 year and month directories if they don't exist yet.
 
-Use `git mv` to move the folder so git tracks it as a rename rather than a
-delete + add — that preserves history of any tracked files inside. Files
-that were untracked just come along as a regular directory move.
+In a git repository, use `git mv` to move the folder so git tracks it as a
+rename rather than a delete + add — that preserves history of any tracked
+files inside. Files that were untracked just come along as a regular
+directory move.
 
 If the move fails with `Device or resource busy` / `item is in use`, VS Code's
 file watcher has the folder locked — see the VS Code folder-lock note in
 [`guidance/working-directory.md`](../../../guidance/working-directory.md)
 (have the user move it manually, then resume from step 5).
 
-### 5. Commit and push
+### 5. Commit
 
 Stage the moved folder (now at its archive path), any snag notes written in
 step 3, and any other AIOS-repo files the task happened to leave dirty that
@@ -116,16 +117,18 @@ complete-working-task: <task-name>
 <one-sentence recap of what the task accomplished>.
 
 Archived to working-archive/YYYY/MM-month/DD-task-name/.
-
-Co-Authored-By: <Claude attribution>
 ```
 
-Push to origin.
+Outside Planet You, push to origin. Inside Planet You, don't push: Planet You
+pushes on its own (see
+[guidance/git-practices.md](../../../guidance/git-practices.md)). If the AIOS
+folder is not a git repository, move the folder without git and skip the
+commit.
 
 ### 6. Confirm to the user
 
 One sentence: where the folder ended up, whether any snags were logged (and
-where), and that the commit is pushed. Then stop.
+where), and that it's saved. Then stop.
 
 ## What not to do
 

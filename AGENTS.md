@@ -28,8 +28,8 @@ material is indexed in [guidance/README.md](guidance/README.md).
 
 1. **Context:** who the user is, their work, relationships, goals, preferences,
    and voice.
-2. **Extensions:** account-backed connections, general tools, and reference
-   knowledge.
+2. **Connections:** the accounts, tools, and reference knowledge the AIOS can
+   reach.
 3. **Workflows:** repeatable work, first with human review and later with more
    automation as the process proves itself.
 4. **Always-on:** scheduled or remotely reachable machinery. Build this only
@@ -67,6 +67,9 @@ short routing metadata; procedures live in their bodies and load only when
 needed. Natural-language invocation is the default. For rare explicit-only
 skills, use both provider controls documented in
 [guidance/context-and-maintenance.md](guidance/context-and-maintenance.md).
+The hooks run on Node.js; if an agent does not recognize one of these slash
+commands (a new computer may have no Node.js yet), read
+`skills/<name>/SKILL.md` and follow it.
 
 An advisor or agent is selected for a whole conversation. Keep its distinct
 persona and standing context there; keep repeatable procedures in skills rather
@@ -105,7 +108,8 @@ editing the same working task. Prefer commits scoped to your own paths.
 In a normal terminal or editor session, commit and push each coherent completed
 unit. In Planet You, Gravity already commits and pushes at turn edges and on a
 timer, so routine agent commits are redundant; make a deliberate commit only
-when a unit deserves its own message. Full details are in
+when a unit deserves its own message. If the AIOS folder is not a git
+repository, do not create one. Full details are in
 [guidance/git-practices.md](guidance/git-practices.md).
 
 ## Context maintenance

@@ -19,12 +19,12 @@ Two quick ways to check:
 
 - **Browse the folder on GitHub:**
   <https://github.com/kyledunne/aios-starter-pack/tree/main/guidance>
-- **Pull the latest copy down** into a scratch directory (don't
-  overwrite the local copy unless the user wants that):
+- **Pull the latest copy down** into the AIOS's gitignored `scratch/`
+  folder (don't overwrite the local copy unless the user wants that):
 
   ```
-  git clone https://github.com/kyledunne/aios-starter-pack.git /tmp/aios-starter-pack-latest
-  ls /tmp/aios-starter-pack-latest/guidance
+  git clone --depth 1 https://github.com/kyledunne/aios-starter-pack.git scratch/aios-starter-pack-latest
+  ls scratch/aios-starter-pack-latest/guidance
   ```
 
 If a relevant new doc exists upstream, read it inline rather than

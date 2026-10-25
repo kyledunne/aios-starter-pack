@@ -5,6 +5,10 @@ description: Prepare the first computer for a new AIOS before onboarding begins.
 
 # First-time setup — get your dev environment running
 
+> **Using Planet You?** Its setup already installed and signed in your AI and
+> created this folder, so skip this skill: Planet You opens the Onboarding
+> Advisor for you.
+
 This is the **on-ramp**: the very first time this AIOS runs on a
 computer, this skill gets the dev environment working and registers the
 machine. It's deliberately small — most of the heavy lifting (your
@@ -37,7 +41,7 @@ through it; don't push tooling on someone who just wants the Markdown.
   is a quick checklist, not an install marathon.
 - **Secrets stay out of git.** Create the gitignored `.env` if it's
   missing; never paste secrets into chat. See
-  [`AGENTS.md` → Secrets](../../../AGENTS.md).
+  [`AGENTS.md`, Work and safety](../../../AGENTS.md).
 - **Platform differences.** The one OS-dependent piece here is the memory
   bridge — a **junction** on Windows (`mklink /J`), a **symlink** on
   macOS/Linux (`ln -s`). Note the host OS and adapt.
@@ -49,8 +53,10 @@ through it; don't push tooling on someone who just wants the Markdown.
 A quick pass — confirm each, and only act where something's missing:
 
 1. **git** — installed, and the repo is cloned to a sensible location.
-2. **The agent's runtime** — e.g. Node.js LTS for Claude Code / Codex.
-3. **The agent CLI** — installed and logged in (you're proof it is).
+2. **Node.js** — the session hook that links `skills/` for Claude Code and
+   Codex runs on it. If `node --version` fails, have the user install the LTS
+   from nodejs.org; until then the pack's slash commands aren't found.
+3. **The agent CLI** — installed and signed in (you're proof it is).
 4. **`.env`** — create it at the repo root if absent (it's already
    gitignored). Leave it empty for now; connections fill it later.
 
@@ -82,13 +88,6 @@ git like the rest of the repo. Offer it, and let the answer decide:
   [`/setup-new-computer`](../setup-new-computer/SKILL.md) can add it
   whenever a second machine shows up. (Minimalism: don't wire it in
   before the need is real.)
-
-The **skills** junction is *not* part of this path — the pack reads
-skills at top-level `skills/`, linked to both agents already. Only reach for it if
-the user runs **Codex** too, or wants the neutral top-level `skills/`
-layout; that's covered by
-[`guidance/setup-codex.md`](../../../guidance/setup-codex.md) and
-[`/setup-environment`](../setup-environment/SKILL.md), not here.
 
 ---
 

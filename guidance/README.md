@@ -19,14 +19,15 @@ follow front-to-back.
   junction (Windows) / symlink (macOS/Linux) that syncs Claude's memory into
   a tracked `memory/` folder. *Optional*, and a good thing to reach for once
   you have a second machine. (The sibling skills links are **not** optional —
-  the pack wires those up for both agents automatically; see **Skills** in
+  the pack wires those up for both agents automatically; see **Skills and selected context** in
   [`../AGENTS.md`](../AGENTS.md).)
 - [karpathy-wiki.md](karpathy-wiki.md) — The `raw/` / `wiki/` /
   `outputs/` folder pattern for turning a messy corpus into a
   structured, LLM-maintained knowledge base.
 - [scratchpad.md](scratchpad.md) — The shared-file-plus-two-skills
   pattern (`/scratchpad` to capture, `/review-scratchpad` to work
-  through) for catching ideas without derailing in-flight work.
+  through) for catching ideas without derailing in-flight work. The two
+  skills don't ship; build them when you want the pattern.
 - [setup-codex.md](setup-codex.md) — Adding the OpenAI Codex CLI as a
   second agent alongside Claude Code, sharing one `AGENTS.md`.
 - [setup-google-workspace.md](setup-google-workspace.md) — Connecting
