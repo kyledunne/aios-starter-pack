@@ -1,6 +1,6 @@
 ---
 name: whats-next
-description: Survey upgrade options for the AIOS — sync guidance from the upstream starter pack, compare it against what's already set up here, and propose a few high-leverage next steps. Use when the user asks "what should we do next?" or wants to level up / upgrade the AIOS.
+description: Compare an AIOS with current starter guidance and propose a few high-leverage next steps.
 ---
 
 # What's next — survey upgrade options from guidance
@@ -73,11 +73,10 @@ Present **about three** concrete options, ranked by leverage. Rules:
 - **Tie each to its guidance doc**, so the user can read the recipe before
   committing.
 - **Infrastructure counts too.** Beyond connections, a high-leverage step can be
-  plumbing — e.g. the optional memory/skills junctions
-  ([`memory-junctions.md`](../../../guidance/memory-junctions.md)) that sync
-  Claude's memory across machines and let Codex share the skills folder. Surface
-  it when the user gets a second machine or starts running Codex — pulled by that
-  need, not before.
+  plumbing — e.g. the optional memory link
+  ([`memory-junctions.md`](../../../guidance/memory-junctions.md)) that syncs
+  Claude's memory across machines. Surface it when the user gets a second
+  machine — pulled by that need, not before.
 
 Let the user pick. The chosen one becomes a `working/` task; when it's a
 setup, its tailored record lands in `tools-and-connections/` (and any

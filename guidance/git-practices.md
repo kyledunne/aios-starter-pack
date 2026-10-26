@@ -3,7 +3,7 @@
 The whole point of an AIOS living in a git repo is that it's
 version-controlled and synced across machines. Lean into that.
 
-## Default: commit and push every coherent unit of change, automatically
+## Default outside Planet You: commit and push every coherent unit of change
 
 When a unit of work in the AIOS is complete, **commit and push it
 automatically, by default, without asking first.** Even small ones —
@@ -57,9 +57,19 @@ git within the minute whether or not a turn is spent on it. So:
   deserves its own message — a finished piece of work, a milestone worth
   landing on — commit it. What to drop is the habit, not the act.
 
-**How to tell which session you're in:** a `.planetyou/` folder at the repo
-root means the space was scaffolded through Planet You and Gravity is
-syncing it. No `.planetyou/`, no sync — the default applies in full.
+**How to tell which session you're in:** inside Planet You, your session
+begins with a note saying "You are running inside Planet You". No such note
+means a terminal or editor session, even when a `.planetyou/` folder is
+present (it syncs between machines), and the default applies in full.
+
+**Inside Planet You, don't push.** Gravity pushes on its own, and a push of
+your own can race it. A deliberate commit is fine; leave the push to Gravity.
+
+**No git repository at all.** A Planet You user who skipped the GitHub step
+during setup has an AIOS folder that is not a git repository (`git status`
+fails with "not a git repository"). Don't run git commands there and don't
+create a repository. Tell the user, once, that their files are saved on this
+computer only.
 
 ## Why this works
 

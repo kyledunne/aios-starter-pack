@@ -1,6 +1,6 @@
 ---
 name: checkpoint-working-task
-description: Save a mid-task snapshot of in-flight work — commit + push the current `working/` task folder without wrapping it up or archiving. Use when the user wants to checkpoint progress so it syncs across machines, while the task is still going.
+description: Checkpoint an in-flight working task when the user wants its current state synced.
 ---
 
 # Checkpoint — save in-flight work without wrapping it up
@@ -8,7 +8,7 @@ description: Save a mid-task snapshot of in-flight work — commit + push the cu
 `working/` is committed like the rest of the repo (see
 [guidance/working-directory.md](../../../guidance/working-directory.md)), so
 this skill is not the only way in-flight work reaches git — it's the
-**deliberate save-point**: commit + push the current task folder *now*, at a
+**deliberate save-point**: commit the current task folder *now*, at a
 milestone you chose, with a message that says what the milestone was, and a
 resume note to land on. Use it when you want a marked point to come back to, or
 when nothing else is committing the repo for you. It **doesn't** archive or
@@ -39,21 +39,25 @@ Keep it light — this is a sticky note, not the finished overview that
 `/complete-working-task` writes. Don't document the whole task, restructure the
 folder, or log snags; that's wrap-up work, and the task isn't done.
 
-### 3. Commit and push
+### 3. Commit
 
-Stage just that folder, commit, and push to origin. Suggested message:
+Commit just that folder. Suggested message:
 
 ```
 checkpoint-working-task: <task-name>
 
 <optional one-line note on where things stand>.
-
-Co-Authored-By: <Claude attribution>
 ```
+
+Outside Planet You, push to origin. Inside Planet You, don't push: Planet You
+pushes on its own (see
+[guidance/git-practices.md](../../../guidance/git-practices.md)). If the AIOS
+folder is not a git repository, skip this step and tell the user the notes are
+saved on this computer.
 
 Don't archive, and don't touch other `working/` folders.
 
 ### 4. Confirm to the user
 
-One line: that the folder is committed and pushed, and the task is still open.
+One line: that the folder is saved, and the task is still open.
 Then stop.

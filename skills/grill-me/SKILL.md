@@ -1,6 +1,6 @@
 ---
 name: grill-me
-description: Interview the user relentlessly about a plan, design, or topic — one question at a time, each with a recommended answer — checkpointing every answer to a capture file so nothing is lost as context fills up. Use when the user wants to stress-test a plan, get grilled on a design, run a brainstorm or discovery session, extract what's in their head into a doc, or says "grill me".
+description: Interview the user one question at a time, with recommendations and durable checkpoints, when a plan or idea needs discovery.
 ---
 
 # Grill Me

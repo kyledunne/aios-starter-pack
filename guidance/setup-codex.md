@@ -48,14 +48,14 @@ Codex looks for skills in `.agents/skills/`, scanning from the working dir
 up to the repo root; Claude Code looks in `.claude/skills/`. The pack keeps
 the real skill folders at top-level [`../skills/`](../skills/) and makes
 **both** of those paths machine-local links into it, so Codex sees the same
-eleven skills Claude does the first time you run it — no setup step.
+skills Claude does the first time you run it — no setup step.
 
 The links are made by `.claude/hooks/ensure-skills-link.mjs` on a
 `SessionStart` hook, wired from both `.claude/settings.json` and
 `.codex/hooks.json`, so whichever agent starts first heals both. The
 `SKILL.md` `name`/`description` frontmatter is identical for both tools, so
 each skill works unmodified. Full mechanics and the gotchas are in
-**Skills** in [`../AGENTS.md`](../AGENTS.md); the cross-OS link details (and
+**Skills and selected context** in [`../AGENTS.md`](../AGENTS.md); the cross-OS link details (and
 the memory bridge) are in [`memory-junctions.md`](memory-junctions.md).
 
 **One thing you do have to do once:** Codex won't run a project hook until

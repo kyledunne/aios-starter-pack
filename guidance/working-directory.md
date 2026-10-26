@@ -71,22 +71,11 @@ yet" is precisely the case that committing exists to stop you losing.
 
 ## Wrapping up a task
 
-When a task is done, the move out of `working/` is worth making a small
-ritual — optionally a thin `/complete`-style skill that does it the
-same way each time:
-
-1. **Write a short overview** in the task folder (a `README.md`): a
-   sentence or two on what the task was, a short list of what was
-   actually done, and an inventory of the files left behind. High-level
-   only — the git log carries the detail.
-2. **Capture any reusable lessons** wherever the AIOS keeps them, so a
-   problem that took real diagnosis isn't re-debugged next time.
-3. **Move the folder** into `working-archive/<year>/<month>/<day>-<task-name>/`.
-4. **Commit and push** — archiving the task is its own coherent unit of
-   work, so it gets its own commit.
-
-The point is to keep `working/` small and current while leaving a clean,
-dated trail in `working-archive/` of what got done, when, and how.
+When a task is done, run
+[`/complete-working-task`](../skills/complete-working-task/SKILL.md): it
+writes a short overview, captures any lessons, and moves the folder into
+`working-archive/<year>/<month>/<day>-<task-name>/`. The point is to keep
+`working/` small and current while leaving a dated trail of what got done.
 
 ## Snag: a folder move fails with "in use" / "Device or resource busy"
 

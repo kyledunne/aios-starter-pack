@@ -1,11 +1,11 @@
 ---
 name: get-connected
-description: Walk a new AIOS user through their first two connections — Google Workspace (Gmail / Drive / Calendar / Docs) and Slack. Use as the natural next step after `/onboarding`, when the Context layer exists and the user is ready to wire the AIOS into the services they actually use day-to-day.
+description: Connect a new AIOS to Google Workspace and Slack after onboarding.
 ---
 
 # Get connected — first two connections
 
-This skill is the user's introduction to **Layer 2 — Extensions** (see
+This skill is the user's introduction to **Layer 2 — Connections** (see
 [`AGENTS.md`](../../../AGENTS.md)). It walks them through two
 connections to start: **Google Workspace** and **Slack**. Both are
 high-leverage — they cover most people's daily communication and
@@ -82,20 +82,18 @@ Netlify or similar if they ship websites, calendar-specific tools if
 their calendar work is heavy. Don't push — they'll know when they
 hit a task that needs a new connection.
 
-Now that this machine has real tooling and connections, **seed
-`devices.md`** at the repo root (create the file — this is the first
-machine). Add one short, non-sensitive section: the machine's name, OS,
-specs, and the connections now live. `devices.md` is the tracked roster
-a *future* machine reads to reach parity, so it's worth starting from
-this first machine rather than waiting for a second — the gitignored
-`local-setup.md` can't serve that purpose because it never leaves this
-machine. Keep `devices.md` to the overview; machine-specific or
-sensitive detail belongs in `local-setup.md`. (See
-[`AGENTS.md` → Tracking machines and local setup](../../../AGENTS.md).)
+Now record the connections in **`devices.md`** at the repo root, the tracked
+roster a *future* machine reads to reach parity. Add the connections now live
+to this machine's section (name, OS, specs, connections). If the file or the
+section doesn't exist yet, as on an AIOS set up through Planet You, create it.
+Keep `devices.md` to the overview; machine-specific or sensitive detail
+belongs in the gitignored `local-setup.md`. (See
+[`AGENTS.md`, Routing](../../../AGENTS.md).)
 
-Commit and push as one coherent unit per
-[`guidance/git-practices.md`](../../../guidance/git-practices.md).
-Commit message: `Connect Google Workspace and Slack; seed devices.md`.
+Outside Planet You, commit and push as one coherent unit per
+[`guidance/git-practices.md`](../../../guidance/git-practices.md), with the
+message `Connect Google Workspace and Slack; update devices.md`. Inside Planet
+You, skip the commit: Planet You backs the change up on its own.
 
 ## What this skill doesn't cover
 

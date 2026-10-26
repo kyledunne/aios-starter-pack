@@ -9,7 +9,7 @@ description the agent sees in its skills list; the body is the procedure.
 **machine-local links** into here (a directory junction on Windows, a symlink on
 macOS/Linux), recreated at the start of every session by
 [`.claude/hooks/ensure-skills-link.mjs`](../.claude/hooks/ensure-skills-link.mjs).
-Add a skill here and both agents see it. See **Skills** in
+Add a skill here and both agents see it. See **Skills and selected context** in
 [`AGENTS.md`](../AGENTS.md) for the full picture.
 
 ## Index
@@ -38,7 +38,9 @@ Add a skill here and both agents see it. See **Skills** in
 - [grill-me](grill-me/SKILL.md) — interview the user one question at a time to
   get a plan out of their head and into a capture file.
 - [dream](dream/SKILL.md) — sweep the `memory/` store, repair what's broken,
-  and resync the index.
+  relocate non-ambient facts, and resync the index.
+- [clean-up-aios](clean-up-aios/SKILL.md) — audit the whole AIOS, settle the
+  important choices, and require plan approval before making cleanup edits.
 
 ### The `working/` task lifecycle
 
@@ -46,9 +48,11 @@ See [`guidance/working-directory.md`](../guidance/working-directory.md) for the
 pattern these two serve.
 
 - [checkpoint-working-task](checkpoint-working-task/SKILL.md) — an explicit
-  save-point: commit and push a task folder mid-flight, without wrapping it up.
+  save-point: commit a task folder mid-flight (and push it, outside Planet You),
+  without wrapping it up.
 - [complete-working-task](complete-working-task/SKILL.md) — write the wrap-up
-  README, capture the lessons, archive the folder by date, commit and push.
+  README, capture the lessons, archive the folder by date, and commit (and push,
+  outside Planet You).
 
 ## A note on relative links
 
@@ -64,3 +68,14 @@ Same rule as everything else here (**Minimalism**): add a skill when a real
 procedure has been done twice by hand, not in anticipation. Create
 `skills/<name>/SKILL.md` with `name` and `description` frontmatter, add a line
 to the index above, and both agents pick it up on their next session.
+
+Descriptions are trigger metadata, not mini-procedures: keep each to one
+discriminating sentence and put the workflow in the body. Natural-language
+invocation is the default. For rare explicit-only skills, set both Claude's
+`disable-model-invocation: true` frontmatter key and Codex's
+`policy.allow_implicit_invocation: false` in `agents/openai.yaml`.
+
+An optional `project: <id>` frontmatter field may file Run-launched chats into a
+fixed project when almost every legitimate use belongs there. Do not bind
+generic task-lifecycle skills to a project. See
+[`guidance/context-and-maintenance.md`](../guidance/context-and-maintenance.md).

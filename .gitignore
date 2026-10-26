@@ -1,9 +1,9 @@
-# Per-machine secrets and API tokens — never commit. See AGENTS.md → Secrets.
+# Per-machine secrets and API tokens — never commit. See AGENTS.md, "Work and safety".
 .env
 
 # Per-machine setup record — tooling, local auth, and specs that don't
 # transfer across machines, so each one keeps its own copy. See
-# AGENTS.md → Tracking machines and local setup.
+# AGENTS.md, "Routing".
 local-setup.md
 
 # devices.md is intentionally NOT ignored — the machine roster is tracked
@@ -47,7 +47,11 @@ scratch/
 references/local-vault/*
 !references/local-vault/README.md
 
-# OS-generated cruft — never content, varies by machine/platform.
-.DS_Store      # macOS Finder
-Thumbs.db      # Windows Explorer thumbnails
-Desktop.ini    # Windows folder settings
+# OS-generated cruft — never content, varies by machine/platform. Git has no
+# inline comments: a "#" after a pattern becomes part of the pattern.
+# macOS Finder
+.DS_Store
+# Windows Explorer thumbnails
+Thumbs.db
+# Windows folder settings
+Desktop.ini

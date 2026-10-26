@@ -19,7 +19,8 @@ The scratchpad is *not* a task tracker, a roadmap, or a sprint backlog
 ## Two thin skills bracket it
 
 The pattern is the *file plus two skills*; the skills are what make it
-disciplined.
+disciplined. Neither skill ships with the pack: write them (one short
+`SKILL.md` each, under `skills/`) when you adopt the pattern.
 
 ### `/scratchpad` — capture only
 

@@ -1,6 +1,6 @@
 ---
 name: sync
-description: Bring this machine's copy of the AIOS up to date — `git pull` from GitHub (and push any local commits), safely handling uncommitted work and merge conflicts so nothing is lost. Use when the user wants to sync, get up to date, or pull the latest before starting work.
+description: Safely bring this machine's AIOS repository up to date when the user asks to sync.
 ---
 
 # Sync — get this AIOS up to date
@@ -10,9 +10,24 @@ it runs on. `/sync` brings *this* copy up to date — pulls down whatever change
 elsewhere, and pushes up any local commits that haven't gone out yet — so the
 user can start work knowing they're current.
 
-It's built to be safe for a non-technical user: just type `/sync` and let Claude
+It's built to be safe for a non-technical user: just type `/sync` and let the agent
 handle the git. Two promises hold no matter what: **nothing done locally gets
 lost**, and **the repo is never left in a broken half-merged state**.
+
+## Inside Planet You
+
+Planet You already commits, pulls and pushes this AIOS at the start and end of
+every turn, so there is usually nothing to do, and the steps below would race
+it. Instead:
+
+1. Run `git status --short --branch`.
+2. If it lists unmerged paths (a merge Planet You paused on), resolve them as in
+   step 3 below, then commit the merge.
+3. Otherwise tell the user their AIOS is already kept up to date by Planet You,
+   and stop.
+
+If the AIOS folder is not a git repository, say there is nothing to sync: the
+files are saved on this computer only. Everywhere else, follow the steps below.
 
 ## Steps
 

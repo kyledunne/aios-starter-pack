@@ -1,6 +1,6 @@
 ---
 name: setup-new-computer
-description: Bring the AIOS up on a new machine so it matches the others — install the toolchain, restore connections, and register the machine in devices.md. Use when setting up the AIOS on a computer for the first time. Walks the full flow: bare-metal bootstrap (git, an agent CLI, clone), toolchain install, secrets from the password manager, per-connection bring-up, and recording the machine.
+description: Bring a new computer up to parity with the AIOS's existing devices.
 ---
 
 # Set up the AIOS on a new computer
@@ -38,7 +38,7 @@ never create a new app, project, or OAuth client when onboarding a machine.
   on. When you run this skill, treat Phase 0 as "verify it's done," then
   proceed.
 - **Secrets come from the password manager** — never email, paste into chat, or
-  commit them. See [`AGENTS.md` → Secrets](../../../AGENTS.md).
+  commit them. See [`AGENTS.md`, Work and safety](../../../AGENTS.md).
 - **Match the other machines.** `devices.md` (tracked) is the **parity spec** —
   read it first; it's the roster of what each existing machine runs, and it's
   maintained from the first machine onward precisely so a new one can read it
@@ -64,15 +64,19 @@ agent) are reading this from inside the repo, it's already done — skim and mov
 to Phase 1.
 
 1. **git** — install it for the OS.
-2. **The agent's runtime** — whatever the agent CLI needs (e.g. Node.js LTS for
-   Claude Code or Codex).
-3. **The agent CLI** — install it and log in once (e.g.
-   `npm install -g @anthropic-ai/claude-code`, then run it).
+2. **Node.js LTS** — the session hook that links `skills/` for the agents runs
+   on it.
+3. **An agent** — Planet You, which installs and signs in Claude Code and
+   Codex for you, or the Claude Code or Codex CLI installed per its vendor's
+   current instructions and signed in once.
 4. **Repo access to clone** — the host CLI/credentials that can read the private
    AIOS repo (e.g. `gh auth login`).
 5. **Clone the repo** to a standard location.
 6. **Launch the agent in the repo** and invoke `/setup-new-computer`. The rest
    is below.
+
+With Planet You, its setup's **My AIOS is on GitHub** choice covers steps 1
+and 3 to 5: it sets up git, signs in to GitHub and downloads the AIOS for you.
 
 ---
 
@@ -83,23 +87,14 @@ On a fresh clone there's very little to do here: **skills ship as plain files in
 hook, so both agents see them the moment you open the repo —
 nothing to wire up.
 
-Two **optional** bridges sync things across machines or share them across tools.
-A new machine only sets them up if the user already relies on them elsewhere —
-check `devices.md`:
-
-- **Memory sync** — bridge Claude Code's per-project memory dir into a tracked
-  `memory/` folder so memories travel via git.
-- **Skills sharing** — surface one skills folder to *both* Claude Code and Codex
-  (and, if preferred, keep it at a neutral top-level `skills/`).
-
-Both are directory **junctions (Windows)** or **symlinks (macOS/Linux)**, both
-are **opt-in**, and both are per-machine. The full cross-OS how-to and the
-gotchas live in
-[`guidance/memory-junctions.md`](../../../guidance/memory-junctions.md); if the
-user runs Codex here,
-[`guidance/setup-codex.md`](../../../guidance/setup-codex.md) covers routing
-skills to it. Set these up only if `devices.md` shows the other machines use
-them — otherwise skip and move on.
+One **optional** bridge, **memory sync**, links Claude Code's per-project
+memory dir into a tracked `memory/` folder so memories travel via git. It is a
+directory **junction (Windows)** or **symlink (macOS/Linux)**, opt-in and
+per-machine. Set it up only if `devices.md` shows the other machines use it,
+following
+[`guidance/memory-junctions.md`](../../../guidance/memory-junctions.md);
+otherwise skip and move on. If the user runs Codex here, it asks once to trust
+the project's hook ([`guidance/setup-codex.md`](../../../guidance/setup-codex.md)).
 
 ---
 
@@ -162,8 +157,9 @@ reuses its cloud-side identity:
    up front) — you're adding to it, not creating it. If it's missing, that's an omission
    from the first machine's setup: create it and back-fill that machine before
    adding this one.
-3. **Commit and push** `devices.md` so the other machines learn about this one.
-   Leave `local-setup.md` uncommitted — it's gitignored.
+3. **Commit and push** `devices.md` so the other machines learn about this one
+   (inside Planet You, skip this: it backs the change up on its own). Leave
+   `local-setup.md` uncommitted — it's gitignored.
 
 ---
 
@@ -181,6 +177,6 @@ report what's live and anything that needs the user's follow-up.
 - The connections named above (Google Workspace, Slack, GitHub) are just the
   common starting set. Real machines will have more — let `devices.md` and
   `tools-and-connections/` drive the actual list, not this skill's examples.
-- Commit and push as one coherent unit per
+- Outside Planet You, commit and push as one coherent unit per
   [`guidance/git-practices.md`](../../../guidance/git-practices.md). Commit
   message: `Set up AIOS on <machine name>`.
