@@ -64,8 +64,8 @@ agent) are reading this from inside the repo, it's already done — skim and mov
 to Phase 1.
 
 1. **git** — install it for the OS.
-2. **Node.js LTS** — the session hook that links `skills/` for the agents runs
-   on it.
+2. **Node.js LTS** — only outside Planet You: the session hook that links
+   `skills/` for the agents runs on it. Planet You makes those links itself.
 3. **An agent** — Planet You, which installs and signs in Claude Code and
    Codex for you, or the Claude Code or Codex CLI installed per its vendor's
    current instructions and signed in once.
@@ -84,7 +84,8 @@ and 3 to 5: it sets up git, signs in to GitHub and downloads the AIOS for you.
 
 On a fresh clone there's very little to do here: **skills ship as plain files in
 `skills/`**, linked to `.claude/skills/` and `.agents/skills/` by a session
-hook, so both agents see them the moment you open the repo —
+hook (outside Planet You; inside it, Planet You makes both links itself), so
+both agents see them the moment you open the repo —
 nothing to wire up.
 
 One **optional** bridge, **memory sync**, links Claude Code's per-project
@@ -93,8 +94,8 @@ directory **junction (Windows)** or **symlink (macOS/Linux)**, opt-in and
 per-machine. Set it up only if `devices.md` shows the other machines use it,
 following
 [`guidance/memory-junctions.md`](../../../guidance/memory-junctions.md);
-otherwise skip and move on. If the user runs Codex here, it asks once to trust
-the project's hook ([`guidance/setup-codex.md`](../../../guidance/setup-codex.md)).
+otherwise skip and move on. Outside Planet You, if the user runs Codex here,
+it asks once to trust the project's hook ([`guidance/setup-codex.md`](../../../guidance/setup-codex.md)).
 
 ---
 

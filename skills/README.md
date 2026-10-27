@@ -7,7 +7,8 @@ description the agent sees in its skills list; the body is the procedure.
 **This folder is the single source of truth.** Claude Code discovers skills at
 `.claude/skills/` and the OpenAI Codex CLI at `.agents/skills/`; both are
 **machine-local links** into here (a directory junction on Windows, a symlink on
-macOS/Linux), recreated at the start of every session by
+macOS/Linux), made by Planet You each time it starts and, outside Planet You,
+recreated at the start of every session by
 [`.claude/hooks/ensure-skills-link.mjs`](../.claude/hooks/ensure-skills-link.mjs).
 Add a skill here and both agents see it. See **Skills and selected context** in
 [`AGENTS.md`](../AGENTS.md) for the full picture.

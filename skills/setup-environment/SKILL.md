@@ -110,8 +110,9 @@ file to see it. A 60-second delight, not a design review. Details:
   `.claude/skills/` at session start) and
   is read automatically — nothing to do.
 - **Codex (as well as, or instead of, Claude Code)** → the shared
-  `AGENTS.md` and the `.agents/skills/` link already ship. The one step is
-  approving the project's hook once with `/hooks` in Codex; see
+  `AGENTS.md` and the `.agents/skills/` link already ship. Outside Planet You,
+  the one step is approving the project's hook once with `/hooks` in Codex
+  (Planet You makes the link itself); see
   [`guidance/setup-codex.md`](../../../guidance/setup-codex.md).
 
 ### 4. OS layer / multiple machines
