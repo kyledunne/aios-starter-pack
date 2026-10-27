@@ -61,6 +61,11 @@ the PowerShell line in Step 2, or have the user open a **new** terminal. In
 PowerShell, if `npm` fails with "running scripts is disabled on this system",
 call `npm.cmd` instead (and `gws.cmd` for `gws`).
 
+**Gotcha:** on macOS, if `npm install -g` fails with `EACCES`, give npm
+a folder the user owns and rerun it: `npm config set prefix ~/.local`,
+then add `export PATH="$HOME/.local/bin:$PATH"` to `~/.zprofile` and run
+the same `export` in the current shell. Do not use `sudo npm`.
+
 Verify with `node --version`, then:
 
 ```
