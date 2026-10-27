@@ -50,7 +50,9 @@ the real skill folders at top-level [`../skills/`](../skills/) and makes
 **both** of those paths machine-local links into it, so Codex sees the same
 skills Claude does the first time you run it — no setup step.
 
-The links are made by `.claude/hooks/ensure-skills-link.mjs` on a
+Planet You makes both links each time it starts, so inside Planet You there is
+nothing to do here. Outside it, the links are made by
+`.claude/hooks/ensure-skills-link.mjs` on a
 `SessionStart` hook, wired from both `.claude/settings.json` and
 `.codex/hooks.json`, so whichever agent starts first heals both. The
 `SKILL.md` `name`/`description` frontmatter is identical for both tools, so
@@ -58,7 +60,7 @@ each skill works unmodified. Full mechanics and the gotchas are in
 **Skills and selected context** in [`../AGENTS.md`](../AGENTS.md); the cross-OS link details (and
 the memory bridge) are in [`memory-junctions.md`](memory-junctions.md).
 
-**One thing you do have to do once:** Codex won't run a project hook until
+**Outside Planet You, one thing you do have to do once:** Codex won't run a project hook until
 you trust the project. Run `/hooks` in Codex once to approve it — until you
 do, `.agents/skills` never gets created and Codex sees no skills.
 

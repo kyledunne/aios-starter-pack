@@ -31,15 +31,43 @@ see the core principles in the AIOS's `AGENTS.md` (CLI > API > MCP).
 
 ## Full setup
 
-### Step 1 — Install `gws`  *(agent runs this)*
+### Step 1 — Install Node.js and `gws`  *(agent runs this)*
 
-Requires Node.js (`node --version` to check). Then:
+`gws` installs through npm, which comes with Node.js. Check first:
+
+```
+node --version
+```
+
+If that prints a version, skip to the `npm install` below. Otherwise install
+the current LTS release. On Windows:
+
+```
+winget install --id OpenJS.NodeJS.LTS --exact --silent --accept-package-agreements --accept-source-agreements
+```
+
+On macOS, download the LTS installer from nodejs.org and open it; the user
+clicks through it and enters their Mac password:
+
+```
+v=$(curl -fsSL https://nodejs.org/dist/index.json | tr '{' '\n' | grep -v '"lts":false' | grep -o '"version":"v[0-9.]*"' | head -1 | cut -d'"' -f4)
+curl -fsSLo "/tmp/node-$v.pkg" "https://nodejs.org/dist/$v/node-$v.pkg"
+open "/tmp/node-$v.pkg"
+```
+
+**Gotcha:** on Windows, a freshly installed `node` and `npm` are not on `PATH`
+in any terminal that was already open. Refresh `PATH` from the registry with
+the PowerShell line in Step 2, or have the user open a **new** terminal. In
+PowerShell, if `npm` fails with "running scripts is disabled on this system",
+call `npm.cmd` instead (and `gws.cmd` for `gws`).
+
+Verify with `node --version`, then:
 
 ```
 npm install -g @googleworkspace/cli
 ```
 
-Confirm with `gws --version`.
+Confirm with `gws --version` (on Windows, after the same `PATH` refresh).
 
 ### Step 2 — Install `gcloud`  *(agent runs this)*
 

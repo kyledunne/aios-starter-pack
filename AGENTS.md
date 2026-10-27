@@ -61,14 +61,15 @@ AIOS-wide or standalone tasks.
 
 ## Skills and selected context
 
-The top-level `skills/` folder is the source of truth. Session-start hooks link
-it into both Claude Code and Codex discovery locations. Skill descriptions are
+The top-level `skills/` folder is the source of truth. Planet You links it into
+both Claude Code and Codex discovery locations each time it starts; outside
+Planet You, session-start hooks do. Skill descriptions are
 short routing metadata; procedures live in their bodies and load only when
 needed. Natural-language invocation is the default. For rare explicit-only
 skills, use both provider controls documented in
 [guidance/context-and-maintenance.md](guidance/context-and-maintenance.md).
 The hooks run on Node.js; if an agent does not recognize one of these slash
-commands (a new computer may have no Node.js yet), read
+commands (outside Planet You, a new computer may have no Node.js yet), read
 `skills/<name>/SKILL.md` and follow it.
 
 An advisor or agent is selected for a whole conversation. Keep its distinct

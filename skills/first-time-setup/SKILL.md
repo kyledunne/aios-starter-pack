@@ -53,15 +53,13 @@ through it; don't push tooling on someone who just wants the Markdown.
 A quick pass — confirm each, and only act where something's missing:
 
 1. **git** — installed, and the repo is cloned to a sensible location.
-2. **Node.js** — the session hook that links `skills/` for Claude Code and
-   Codex runs on it. If `node --version` fails, have the user install the LTS
-   from nodejs.org; until then the pack's slash commands aren't found.
-3. **The agent CLI** — installed and signed in (you're proof it is).
-4. **`.env`** — create it at the repo root if absent (it's already
+2. **The agent CLI** — installed and signed in (you're proof it is).
+3. **`.env`** — create it at the repo root if absent (it's already
    gitignored). Leave it empty for now; connections fill it later.
 
-If all four are present, say so and move on. This is the verify-don't-
-reinstall phase.
+If all three are present, say so and move on. This is the verify-don't-
+reinstall phase. Node.js is not needed yet: `/get-connected` installs it when
+its Google step needs it.
 
 ---
 
